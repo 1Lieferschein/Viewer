@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projekte\\1Lieferschein\\1Lieferschein-PoC\\1Lieferschein\\1Lieferschein.csproj": {}
+    "C:\\Users\\e.anselm\\source\\repos\\1Lieferschein\\1Lieferschein\\1Lieferschein.csproj": {}
   },
   "projects": {
-    "C:\\Projekte\\1Lieferschein\\1Lieferschein-PoC\\1Lieferschein\\1Lieferschein.csproj": {
+    "C:\\Users\\e.anselm\\source\\repos\\1Lieferschein\\1Lieferschein\\1Lieferschein.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projekte\\1Lieferschein\\1Lieferschein-PoC\\1Lieferschein\\1Lieferschein.csproj",
+        "projectUniqueName": "C:\\Users\\e.anselm\\source\\repos\\1Lieferschein\\1Lieferschein\\1Lieferschein.csproj",
         "projectName": "1Lieferschein",
-        "projectPath": "C:\\Projekte\\1Lieferschein\\1Lieferschein-PoC\\1Lieferschein\\1Lieferschein.csproj",
-        "packagesPath": "C:\\Users\\j.schneider\\.nuget\\packages\\",
-        "outputPath": "C:\\Projekte\\1Lieferschein\\1Lieferschein-PoC\\1Lieferschein\\obj\\",
+        "projectPath": "C:\\Users\\e.anselm\\source\\repos\\1Lieferschein\\1Lieferschein\\1Lieferschein.csproj",
+        "packagesPath": "C:\\Users\\e.anselm\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\e.anselm\\source\\repos\\1Lieferschein\\1Lieferschein\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\j.schneider\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\e.anselm\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -63,7 +61,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
