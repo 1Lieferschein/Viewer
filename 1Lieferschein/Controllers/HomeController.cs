@@ -1,4 +1,6 @@
-﻿using _1Lieferschein.Models;
+﻿using _1Lieferschein.Controllers.Utils;
+using _1Lieferschein.Models;
+using _1Lieferschein.Models.DeliveryNotes;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -11,6 +13,7 @@ using System.Net.Mime;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 
 namespace _1Lieferschein.Controllers
 {
@@ -29,7 +32,7 @@ namespace _1Lieferschein.Controllers
         }
 
         [HttpPost]
-        public async Task<FormFile> UploadFile(IFormFile fileUpload)
+        public async Task<ActionResult> UploadFile(IFormFile fileUpload)
         {
             String contentType = fileUpload.ContentType;
             if (!string.IsNullOrEmpty(contentType))
@@ -38,13 +41,18 @@ namespace _1Lieferschein.Controllers
                 {
                     using (var ms = new MemoryStream())
                     {
-                        await fileUpload.OpenReadStream().CopyToAsync(ms);
-
-                        XmlDocument doc = new XmlDocument();
-                        doc.Load(ms);
+                        try
+                        {
+                            DespatchAdvice despatchAdvice = Common.Deserialize<DespatchAdvice>(await Common.ReadAsStringAsync(fileUpload));
+                            ViewBag.Message = "XML erfolgreich hochgeladen.";
+                        }
+                        catch (XmlException xmlException)
+                        {
+                            ViewBag.Message = "Fehler: " + xmlException.Message + ", inner-exception: " + xmlException?.InnerException?.Message + ", strack-trace: " + xmlException.StackTrace;
+                        }
+                        var view = View(); 
+                        return view;
                     }
-                    //todo Uploadmodel constructor
-                    return null; 
                 }
                 else
                 {

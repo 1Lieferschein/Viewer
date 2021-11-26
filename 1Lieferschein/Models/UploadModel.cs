@@ -11,8 +11,14 @@ namespace _1Lieferschein.Models
 {
     public class UploadModel
     {
-        public string FilePath { get; set; }
+        public String FilePath { get; set; }
 
         public IFormFile UploadFile { get; set; }
+
+        public UploadModel(String FilePath, FormFile UploadFile)
+        {
+            this.FilePath = FilePath;
+            this.UploadFile = UploadFile; 
+        }
     }
 }
