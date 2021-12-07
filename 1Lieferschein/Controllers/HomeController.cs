@@ -45,13 +45,13 @@ namespace _1Lieferschein.Controllers
                         {
                             DespatchAdvice despatchAdvice = Common.Deserialize<DespatchAdvice>(await Common.ReadAsStringAsync(fileUpload));
                             ViewBag.Message = "XML erfolgreich hochgeladen.";
+                            return View(despatchAdvice);
                         }
                         catch (XmlException xmlException)
                         {
                             ViewBag.Message = "Fehler: " + xmlException.Message + ", inner-exception: " + xmlException?.InnerException?.Message + ", strack-trace: " + xmlException.StackTrace;
+                            return View();
                         }
-                        var view = View(); 
-                        return view;
                     }
                 }
                 else
