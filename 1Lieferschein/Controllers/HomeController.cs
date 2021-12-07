@@ -1,19 +1,25 @@
+<<<<<<< HEAD
 ﻿using _1Lieferschein.Controllers.Utils;
 using _1Lieferschein.Models;
 using _1Lieferschein.Models.DeliveryNotes;
 using Microsoft.AspNetCore.Http;
+=======
+﻿using _1Lieferschein.Models;
+>>>>>>> 332d876eae3c29a0ecfd6d016fd27d0627302b31
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using System.Net.Mime;
 using System.Threading.Tasks;
+<<<<<<< HEAD
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
+=======
+>>>>>>> 332d876eae3c29a0ecfd6d016fd27d0627302b31
 
 namespace _1Lieferschein.Controllers
 {
@@ -31,6 +37,7 @@ namespace _1Lieferschein.Controllers
             return View();
         }
 
+<<<<<<< HEAD
         [HttpPost]
         public async Task<ActionResult> UploadFile(IFormFile fileUpload)
         {
@@ -74,6 +81,8 @@ namespace _1Lieferschein.Controllers
             }
         }
 
+=======
+>>>>>>> 332d876eae3c29a0ecfd6d016fd27d0627302b31
         public IActionResult Privacy()
         {
             return View();

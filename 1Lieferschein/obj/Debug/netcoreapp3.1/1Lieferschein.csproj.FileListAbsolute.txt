@@ -36,6 +36,7 @@ C:\Users\e.anselm\source\repos\1Lieferschein\1Lieferschein\obj\Debug\netcoreapp3
 C:\Users\e.anselm\source\repos\1Lieferschein\1Lieferschein\obj\Debug\netcoreapp3.1\1Lieferschein.pdb
 C:\Users\e.anselm\source\repos\1Lieferschein\1Lieferschein\obj\Debug\netcoreapp3.1\1Lieferschein.genruntimeconfig.cache
 C:\Users\e.anselm\source\repos\1Lieferschein\1Lieferschein\obj\Debug\netcoreapp3.1\1Lieferschein.csproj.CopyComplete
+<<<<<<< HEAD
 C:\Projekte\1Lieferschein\1Lieferschein-PoC\1Lieferschein\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Projekte\1Lieferschein\1Lieferschein-PoC\1Lieferschein\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Projekte\1Lieferschein\1Lieferschein-PoC\1Lieferschein\bin\Debug\netcoreapp3.1\1Lieferschein.exe
@@ -148,3 +149,5 @@ C:\Users\e.anselm\source\repos\1Lieferschein\1Lieferschein\bin\Debug\netcoreapp3
 C:\Users\e.anselm\source\repos\1Lieferschein\1Lieferschein\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\e.anselm\source\repos\1Lieferschein\1Lieferschein\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\e.anselm\source\repos\1Lieferschein\1Lieferschein\obj\Debug\netcoreapp3.1\Razor\Views\Home\UploadFile.cshtml.g.cs
+=======
+>>>>>>> 332d876eae3c29a0ecfd6d016fd27d0627302b31
