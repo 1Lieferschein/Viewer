@@ -1,4 +1,6 @@
-﻿using _1Lieferschein.Models;
+using _1Lieferschein.Controllers.Utils;
+using _1Lieferschein.Models;
+using _1Lieferschein.Models.DeliveryNotes;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -7,9 +9,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net.Mime;
 using System.Threading.Tasks;
 using System.Xml;
-using System.Xml.Linq;
 
 namespace _1Lieferschein.Controllers
 {
@@ -28,28 +30,37 @@ namespace _1Lieferschein.Controllers
         }
 
         [HttpPost]
-        public async Task Create(IFormFile fileUpload)
+        public async Task<ActionResult> UploadFile(IFormFile fileUpload)
         {
-            XmlReaderSettings settings = new XmlReaderSettings(); settings.Async = true;
-
-            //byte[] buffer = new byte[fileUpload.Length];
-            //var result = ConvertToByte(fileUpload);
-
-            using (var ms = new MemoryStream())
+            String contentType = fileUpload.ContentType;
+            if (!string.IsNullOrEmpty(contentType))
             {
-                fileUpload.OpenReadStream().CopyTo(ms);
-
-                if (ms.Position > 0)
+                if (contentType.Equals(MediaTypeNames.Text.Xml))
                 {
-                    ms.Position = 0;
+                    using (var ms = new MemoryStream())
+                    {
+                        try
+                        {
+                            DespatchAdvice despatchAdvice = Common.Deserialize<DespatchAdvice>(await Common.ReadAsStringAsync(fileUpload));
+                            ViewBag.Message = "XML erfolgreich hochgeladen.";
+                            return View(despatchAdvice);
+                        }
+                        catch (XmlException xmlException)
+                        {
+                            ViewBag.Message = "Fehler: " + xmlException.Message + ", inner-exception: " + xmlException?.InnerException?.Message + ", strack-trace: " + xmlException.StackTrace;
+                            return View();
+                        }
+                    }
                 }
-
-                // sr.ReadToEnd();
-                XmlDocument doc = new XmlDocument();
-                doc.Load(ms);
-
+                else
+                {
+                    return null; 
+                }
             }
-
+            else
+            {
+                return null; 
+            }
         }
 
         private byte[] ConvertToByte(IFormFile file)
