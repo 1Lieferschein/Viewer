@@ -2,7 +2,32 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+
+@model UploadModel
+
+<form asp-action="UploadFile" enctype="multipart/form-data" method="post">
+    <h1>XML-Datei einfügen</h1>
+    <input type="file" name="fileUpload" required />
+    <input type="submit" />
+</form>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+
+
+<!--<div class="text-center">
+    <!--<h1>XML-Datei einfügen<!--</h1>-->
+<!--@*<div ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
+        <p>Drag one or more files to this Drop Zone ...</p>
+    </div>*@
+
+    @*<input type="file" name="FileUpload" required/>*@
+
+</div>-->
+
+
+
