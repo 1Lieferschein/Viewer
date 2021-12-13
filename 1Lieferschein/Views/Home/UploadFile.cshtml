@@ -1,0 +1,120 @@
+﻿@model _1Lieferschein.Models.DeliveryNotes.DespatchAdvice
+
+@{
+    ViewData["Title"] = "UploadFile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1>UploadFile</h1>
+
+<div>
+    <h4>UploadModel</h4>
+    <hr />
+    <h5>Despatch supplier party</h5>
+    <dl class="row">
+        <dt class="col-sm-2">
+            Party legal entity
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PartyLegalEntity.RegistrationName)
+        </dd>
+        <dt class="col-sm-2">
+            postal address
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.StreetName)
+            @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.AdditionalStreetName)
+            @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.PostalZone)
+            @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.CityName)
+            @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.Country.IdentificationCode)
+        </dd>
+    </dl>
+
+    <h5>Delivery customer party</h5>
+    <dl class="row">
+        <dt class="col-sm-2">
+            registration name
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PartyLegalEntity.RegistrationName)
+        </dd>
+        <dt class="col-sm-2">
+            company id
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PartyLegalEntity.CompanyID)
+        </dd>
+        <dt class="col-sm-2">
+            postal address
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.StreetName)
+            @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.AdditionalStreetName)
+            @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.PostalZone)
+            @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.CityName)
+            @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.Country.IdentificationCode)
+        </dd>
+        <dt class="col-sm-2">
+            contact
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.Contact.Name)
+            @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.Contact.Telephone)
+            @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.Contact.ElectronicMail)
+        </dd>
+    </dl>
+
+    <h5>Shipment</h5>
+    <dl class="row">
+        <dt class="col-sm-2">
+            delivery address
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.Address.StreetName)
+            @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.Address.AdditionalStreetName)
+            @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.Address.PostalZone)
+            @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.Address.CityName)
+            @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.Address.Country.IdentificationCode)
+        </dd>
+        <dt class="col-sm-2">
+            actual delivery date
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Shipment.Delivery.ActualDeliveryDate.Date)
+        </dd>
+    </dl>
+
+    <h5>Despatch lines</h5>
+    @foreach (var despatchLine in Model.DespatchLine)
+    {
+        <dl class="row">
+
+            <dt class="col-sm-2">
+                id
+            </dt>
+            <dd class="col-sm-10">
+                @despatchLine.ID
+            </dd>
+            <dt class="col-sm-2">
+                note
+            </dt>
+            <dd class="col-sm-10">
+                @despatchLine.Note
+            </dd>
+            <dt class="col-sm-2">
+                delivery quantity
+            </dt>
+            <dd class="col-sm-10">
+                @despatchLine.DeliveryQuantity.unitCode - @despatchLine.DeliveryQuantity.Value
+            </dd>
+        </dl>
+        <hr />
+    }
+    </div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>
+
+
