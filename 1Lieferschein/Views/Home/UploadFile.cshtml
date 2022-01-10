@@ -6,21 +6,21 @@
 }
 
 
-<h1>UploadFile</h1>
+<h1>Lieferschein</h1>
 
 <div>
-    <h4>UploadModel</h4>
+    <h4> </h4>
     <hr />
-    <h5>Despatch supplier party</h5>
+    <h5>Anschrift des Lieferanten</h5>
     <dl class="row">
         <dt class="col-sm-2">
-            Party legal entity
+            Firmenname
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PartyLegalEntity.RegistrationName)
         </dd>
         <dt class="col-sm-2">
-            postal address
+            Adresse
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.StreetName)
@@ -31,22 +31,22 @@
         </dd>
     </dl>
 
-    <h5>Delivery customer party</h5>
+    <h5>Anschrift des Kunden</h5>
     <dl class="row">
         <dt class="col-sm-2">
-            registration name
+            Firmenname
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PartyLegalEntity.RegistrationName)
         </dd>
         <dt class="col-sm-2">
-            company id
+            Kundennummer
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PartyLegalEntity.CompanyID)
         </dd>
         <dt class="col-sm-2">
-            postal address
+            Adresse
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.StreetName)
@@ -56,7 +56,7 @@
             @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.Country.IdentificationCode)
         </dd>
         <dt class="col-sm-2">
-            contact
+            Kontakt
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.Contact.Name)
@@ -65,10 +65,10 @@
         </dd>
     </dl>
 
-    <h5>Shipment</h5>
+    <h5>Lieferung</h5>
     <dl class="row">
         <dt class="col-sm-2">
-            delivery address
+            Lieferadresse
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.Address.StreetName)
@@ -78,32 +78,32 @@
             @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.Address.Country.IdentificationCode)
         </dd>
         <dt class="col-sm-2">
-            actual delivery date
+            Liefertermin
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Shipment.Delivery.ActualDeliveryDate.Date)
         </dd>
     </dl>
 
-    <h5>Despatch lines</h5>
+    <h5>Versandartikel</h5>
     @foreach (var despatchLine in Model.DespatchLine)
     {
         <dl class="row">
 
             <dt class="col-sm-2">
-                id
+                Artikelnummer
             </dt>
             <dd class="col-sm-10">
                 @despatchLine.ID
             </dd>
             <dt class="col-sm-2">
-                note
+                Produkt
             </dt>
             <dd class="col-sm-10">
                 @despatchLine.Note
             </dd>
             <dt class="col-sm-2">
-                delivery quantity
+                Menge
             </dt>
             <dd class="col-sm-10">
                 @despatchLine.DeliveryQuantity.unitCode - @despatchLine.DeliveryQuantity.Value
@@ -113,8 +113,8 @@
     }
     </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
+    @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>*@
 </div>
 
 

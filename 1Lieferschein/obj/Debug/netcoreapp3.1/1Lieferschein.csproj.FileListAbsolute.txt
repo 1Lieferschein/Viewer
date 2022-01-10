@@ -201,8 +201,6 @@ C:\Projekte\1Lieferschein-PoC\1Lieferschein\obj\Debug\netcoreapp3.1\1Lieferschei
 C:\Projekte\1Lieferschein-PoC\1Lieferschein\obj\Debug\netcoreapp3.1\1Lieferschein.RazorAssemblyInfo.cache
 C:\Projekte\1Lieferschein-PoC\1Lieferschein\obj\Debug\netcoreapp3.1\1Lieferschein.RazorAssemblyInfo.cs
 C:\Projekte\1Lieferschein-PoC\1Lieferschein\obj\Debug\netcoreapp3.1\staticwebassets\1Lieferschein.StaticWebAssets.Manifest.cache
-C:\Projekte\1Lieferschein-PoC\1Lieferschein\obj\Debug\netcoreapp3.1\staticwebassets\1Lieferschein.StaticWebAssets.xml
-C:\Projekte\1Lieferschein-PoC\1Lieferschein\obj\Debug\netcoreapp3.1\scopedcss\bundle\1Lieferschein.styles.css
 C:\Projekte\1Lieferschein-PoC\1Lieferschein\obj\Debug\netcoreapp3.1\1Lieferschein.TagHelpers.input.cache
 C:\Projekte\1Lieferschein-PoC\1Lieferschein\obj\Debug\netcoreapp3.1\1Lieferschein.TagHelpers.output.cache
 C:\Projekte\1Lieferschein-PoC\1Lieferschein\obj\Debug\netcoreapp3.1\1Lieferschein.RazorCoreGenerate.cache
