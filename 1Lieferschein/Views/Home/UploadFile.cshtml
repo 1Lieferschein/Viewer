@@ -11,7 +11,7 @@
 <div>
     <h4> </h4>
     <hr />
-    <h5>Anschrift des Lieferanten</h5>
+    <h5>Anschrift Lieferant</h5>
     <dl class="row">
         <dt class="col-sm-2">
             Firmenname
@@ -31,7 +31,7 @@
         </dd>
     </dl>
 
-    <h5>Anschrift des Kunden</h5>
+    <h5>Anschrift Empfänger</h5>
     <dl class="row">
         <dt class="col-sm-2">
             Firmenname
@@ -78,7 +78,7 @@
             @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.Address.Country.IdentificationCode)
         </dd>
         <dt class="col-sm-2">
-            Liefertermin
+            Lieferdatum
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Shipment.Delivery.ActualDeliveryDate.Date)
@@ -97,13 +97,13 @@
                 @despatchLine.ID
             </dd>
             <dt class="col-sm-2">
-                Produkt
+                Bezeichnung
             </dt>
             <dd class="col-sm-10">
                 @despatchLine.Note
             </dd>
             <dt class="col-sm-2">
-                Menge
+                Liefermenge
             </dt>
             <dd class="col-sm-10">
                 @despatchLine.DeliveryQuantity.unitCode - @despatchLine.DeliveryQuantity.Value
