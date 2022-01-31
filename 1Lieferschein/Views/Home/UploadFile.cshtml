@@ -1,4 +1,4 @@
-﻿@model _1Lieferschein.Models.DeliveryNotes.DespatchAdvice
+﻿@model _1Lieferschein.Models.DeliveryNotes.DeliveryNoteUbl
 
 @{
     ViewData["Title"] = "UploadFile";
@@ -17,17 +17,17 @@
             Firmenname
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PartyLegalEntity.RegistrationName)
+            @Html.DisplayFor(model => model.DespatchAdvice1.DespatchSupplierParty.Party.PartyLegalEntity.RegistrationName)
         </dd>
         <dt class="col-sm-2">
             Adresse
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.StreetName)
-            @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.AdditionalStreetName)
-            @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.PostalZone)
-            @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.CityName)
-            @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.Country.IdentificationCode)
+            @Html.DisplayFor(model => model.DespatchAdvice1.DespatchSupplierParty.Party.PostalAddress.StreetName)
+            @Html.DisplayFor(model => model.DespatchAdvice1.DespatchSupplierParty.Party.PostalAddress.AdditionalStreetName)
+            @Html.DisplayFor(model => model.DespatchAdvice1.DespatchSupplierParty.Party.PostalAddress.PostalZone)
+            @Html.DisplayFor(model => model.DespatchAdvice1.DespatchSupplierParty.Party.PostalAddress.CityName)
+            @Html.DisplayFor(model => model.DespatchAdvice1.DespatchSupplierParty.Party.PostalAddress.Country.IdentificationCode)
         </dd>
     </dl>
 
@@ -37,31 +37,31 @@
             Firmenname
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PartyLegalEntity.RegistrationName)
+            @Html.DisplayFor(model => model.DespatchAdvice1.DeliveryCustomerParty.Party.PartyLegalEntity.RegistrationName)
         </dd>
         <dt class="col-sm-2">
             Kundennummer
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PartyLegalEntity.CompanyID)
+            @Html.DisplayFor(model => model.DespatchAdvice1.DeliveryCustomerParty.Party.PartyLegalEntity.CompanyID)
         </dd>
         <dt class="col-sm-2">
             Adresse
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.StreetName)
-            @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.AdditionalStreetName)
-            @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.PostalZone)
-            @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.CityName)
-            @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.Country.IdentificationCode)
+            @Html.DisplayFor(model => model.DespatchAdvice1.DeliveryCustomerParty.Party.PostalAddress.StreetName)
+            @Html.DisplayFor(model => model.DespatchAdvice1.DeliveryCustomerParty.Party.PostalAddress.AdditionalStreetName)
+            @Html.DisplayFor(model => model.DespatchAdvice1.DeliveryCustomerParty.Party.PostalAddress.PostalZone)
+            @Html.DisplayFor(model => model.DespatchAdvice1.DeliveryCustomerParty.Party.PostalAddress.CityName)
+            @Html.DisplayFor(model => model.DespatchAdvice1.DeliveryCustomerParty.Party.PostalAddress.Country.IdentificationCode)
         </dd>
         <dt class="col-sm-2">
             Kontakt
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.Contact.Name)
-            @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.Contact.Telephone)
-            @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.Contact.ElectronicMail)
+            @Html.DisplayFor(model => model.DespatchAdvice1.DeliveryCustomerParty.Party.Contact.Name)
+            @Html.DisplayFor(model => model.DespatchAdvice1.DeliveryCustomerParty.Party.Contact.Telephone)
+            @Html.DisplayFor(model => model.DespatchAdvice1.DeliveryCustomerParty.Party.Contact.ElectronicMail)
         </dd>
     </dl>
 
@@ -71,22 +71,22 @@
             Lieferadresse
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.Address.StreetName)
-            @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.Address.AdditionalStreetName)
-            @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.Address.PostalZone)
-            @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.Address.CityName)
-            @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.Address.Country.IdentificationCode)
+            @Html.DisplayFor(model => model.DespatchAdvice1.Shipment.Delivery.DeliveryAddress.Address.StreetName)
+            @Html.DisplayFor(model => model.DespatchAdvice1.Shipment.Delivery.DeliveryAddress.Address.AdditionalStreetName)
+            @Html.DisplayFor(model => model.DespatchAdvice1.Shipment.Delivery.DeliveryAddress.Address.PostalZone)
+            @Html.DisplayFor(model => model.DespatchAdvice1.Shipment.Delivery.DeliveryAddress.Address.CityName)
+            @Html.DisplayFor(model => model.DespatchAdvice1.Shipment.Delivery.DeliveryAddress.Address.Country.IdentificationCode)
         </dd>
         <dt class="col-sm-2">
             Lieferdatum
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Shipment.Delivery.ActualDeliveryDate.Date)
+            @Html.DisplayFor(model => model.DespatchAdvice1.Shipment.Delivery.ActualDeliveryDate.Date)
         </dd>
     </dl>
 
     <h5>Versandartikel</h5>
-    @foreach (var despatchLine in Model.DespatchLine)
+    @foreach (var despatchLine in Model.DespatchAdvice1.DespatchLine)
     {
         <dl class="row">
 

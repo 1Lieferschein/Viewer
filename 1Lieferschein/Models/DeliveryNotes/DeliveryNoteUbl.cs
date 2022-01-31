@@ -7,9 +7,9 @@ namespace _1Lieferschein.Models.DeliveryNotes
 {
     public class DeliveryNoteUbl
     {
-        public DespatchAdvice DespatchAdvice { get; set; }
+        public DespatchAdvice DespatchAdvice1 { get; set; }
         
-        // public DespatchAdvice DespatchAdvice2 { get; set; }
+         public DespatchAdvice DespatchAdvice2 { get; set; }
     }
 
 

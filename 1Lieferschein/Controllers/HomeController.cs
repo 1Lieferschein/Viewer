@@ -33,39 +33,90 @@ namespace _1Lieferschein.Controllers
         public async Task<ActionResult> UploadFile(IFormFile[] fileUpload)
         {
 
-            IFormFile upload = fileUpload[0];
+            // IFormFile upload = fileUpload[0];
+            DeliveryNoteUbl returnModel = new DeliveryNoteUbl();
 
-
-            String contentType = upload.ContentType;
-            if (!string.IsNullOrEmpty(contentType))
+            for (int i = 0; i < fileUpload.Length; i++)
             {
-                if (contentType.Equals(MediaTypeNames.Text.Xml))
+                IFormFile uploadFile = fileUpload[i];
+
+                String contentType = uploadFile.ContentType;
+                bool ISValidDoc = false;
+                if (!string.IsNullOrEmpty(contentType) && contentType.Equals(MediaTypeNames.Text.Xml))
                 {
-                    using (var ms = new MemoryStream())
+                    ISValidDoc = true;
+                }
+
+                using (var ms = new MemoryStream())
+                {
+                    try
                     {
-                        try
+                        DespatchAdvice despatchAdvice = Common.Deserialize<DespatchAdvice>(await Common.ReadAsStringAsync(uploadFile));
+                        ViewBag.Message = "XML erfolgreich hochgeladen.";
+
+
+
+                        switch (i)
                         {
-                            DespatchAdvice despatchAdvice = Common.Deserialize<DespatchAdvice>(await Common.ReadAsStringAsync(upload));
-                            ViewBag.Message = "XML erfolgreich hochgeladen.";
-                            return View(despatchAdvice);
+                            case 0:
+                                returnModel.DespatchAdvice1 = despatchAdvice;
+                                break;
+                            case 1:
+                                returnModel.DespatchAdvice2 = despatchAdvice;
+                                break;
                         }
-                        catch (XmlException xmlException)
-                        {
-                            ViewBag.Message = "Fehler: " + xmlException.Message + ", inner-exception: " + xmlException?.InnerException?.Message + ", strack-trace: " + xmlException.StackTrace;
-                            return View();
-                        }
+
+
+
                     }
-                }
-                else
-                {
-                    return null; 
-                }
+                    catch (XmlException xmlException)
+                    {
+                        ViewBag.Message = "Fehler: " + xmlException.Message + ", inner-exception: " + xmlException?.InnerException?.Message + ", strack-trace: " + xmlException.StackTrace;
+                        return View();
+                    }
+
+
+                }                
+
             }
-            else
-            {
-                return null; 
-            }
+            return View(returnModel);
         }
+
+
+            //String contentType = upload.ContentType;
+            //if (!string.IsNullOrEmpty(contentType))
+            //{
+            //    if (contentType.Equals(MediaTypeNames.Text.Xml))
+            //    {
+            //        using (var ms = new MemoryStream())
+            //        {
+            //            try
+            //            {
+            //                DespatchAdvice despatchAdvice = Common.Deserialize<DespatchAdvice>(await Common.ReadAsStringAsync(upload));
+            //                ViewBag.Message = "XML erfolgreich hochgeladen.";
+            //                DeliveryNoteUbl returnModel = new DeliveryNoteUbl();
+            //                returnModel.DespatchAdvice1 = despatchAdvice;
+
+
+            //                return View(returnModel);
+            //            }
+            //            catch (XmlException xmlException)
+            //            {
+            //                ViewBag.Message = "Fehler: " + xmlException.Message + ", inner-exception: " + xmlException?.InnerException?.Message + ", strack-trace: " + xmlException.StackTrace;
+            //                return View();
+            //            }
+            //        }
+            //    }
+            //    else
+            //    {
+            //        return null; 
+            //    }
+            //}
+            //else
+            //{
+            //    return null; 
+            //}
+        
 
         private byte[] ConvertToByte(IFormFile file)
         {
