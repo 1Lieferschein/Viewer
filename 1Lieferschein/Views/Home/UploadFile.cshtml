@@ -106,10 +106,29 @@
                 Liefermenge
             </dt>
             <dd class="col-sm-10">
-                @despatchLine.DeliveryQuantity.unitCode - @despatchLine.DeliveryQuantity.Value
-            </dd>
-        </dl>
-        <hr />
+
+                @switch(@despatchLine.DeliveredQuantity.unitCode)
+                {
+                    case "MMK":
+
+                        // mm2 -> cm2 -> dm2 -> m2 (Fakror 100)
+
+                        var divFaktor = 100 * 100 * 100;
+                        var formatedValue = float.Parse(@despatchLine.DeliveredQuantity.Value) / divFaktor;
+
+                        <span>@formatedValue quaremeter</span>
+                            
+                            break;
+                    }
+
+
+
+                    @*@despatchLine.DeliveredQuantity.unitCode - @despatchLine.DeliveredQuantity.Value*@
+                </dd>
+    
+            </dl>
+    
+            <hr />
     }
     </div>
 <div>

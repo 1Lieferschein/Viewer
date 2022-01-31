@@ -8,6 +8,8 @@ namespace _1Lieferschein.Models.DeliveryNotes
     public class DeliveryNoteUbl
     {
         public DespatchAdvice DespatchAdvice { get; set; }
+        
+        // public DespatchAdvice DespatchAdvice2 { get; set; }
     }
 
 
@@ -959,7 +961,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public DeliveryQuantity DeliveryQuantity
+        public DeliveryQuantity DeliveredQuantity
         {
             get
             {

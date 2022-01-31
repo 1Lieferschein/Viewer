@@ -30,9 +30,13 @@ namespace _1Lieferschein.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> UploadFile(IFormFile fileUpload)
+        public async Task<ActionResult> UploadFile(IFormFile[] fileUpload)
         {
-            String contentType = fileUpload.ContentType;
+
+            IFormFile upload = fileUpload[0];
+
+
+            String contentType = upload.ContentType;
             if (!string.IsNullOrEmpty(contentType))
             {
                 if (contentType.Equals(MediaTypeNames.Text.Xml))
@@ -41,7 +45,7 @@ namespace _1Lieferschein.Controllers
                     {
                         try
                         {
-                            DespatchAdvice despatchAdvice = Common.Deserialize<DespatchAdvice>(await Common.ReadAsStringAsync(fileUpload));
+                            DespatchAdvice despatchAdvice = Common.Deserialize<DespatchAdvice>(await Common.ReadAsStringAsync(upload));
                             ViewBag.Message = "XML erfolgreich hochgeladen.";
                             return View(despatchAdvice);
                         }

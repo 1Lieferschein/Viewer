@@ -31,7 +31,7 @@ namespace _1Lieferschein.Controllers.Utils
                 XmlSerializer ser = new XmlSerializer(typeof(T));
 
                 using (StringReader sr = new StringReader(input))
-                {
+                {       
                     return (T)ser.Deserialize(sr);
                 }
             }
