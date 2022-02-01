@@ -205,7 +205,6 @@ C:\Projekte\1Lieferschein-PoC\1Lieferschein\obj\Debug\netcoreapp3.1\1Lieferschei
 C:\Projekte\1Lieferschein-PoC\1Lieferschein\obj\Debug\netcoreapp3.1\1Lieferschein.TagHelpers.output.cache
 C:\Projekte\1Lieferschein-PoC\1Lieferschein\obj\Debug\netcoreapp3.1\1Lieferschein.RazorCoreGenerate.cache
 C:\Projekte\1Lieferschein-PoC\1Lieferschein\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
-C:\Projekte\1Lieferschein-PoC\1Lieferschein\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Projekte\1Lieferschein-PoC\1Lieferschein\obj\Debug\netcoreapp3.1\Razor\Views\Home\UploadFile.cshtml.g.cs
 C:\Projekte\1Lieferschein-PoC\1Lieferschein\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Projekte\1Lieferschein-PoC\1Lieferschein\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs

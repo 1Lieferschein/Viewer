@@ -32,7 +32,6 @@ namespace _1Lieferschein.Controllers
         [HttpPost]
         public async Task<ActionResult> UploadFile(IFormFile[] fileUpload)
         {
-
             // IFormFile upload = fileUpload[0];
             DeliveryNoteUbl returnModel = new DeliveryNoteUbl();
 
@@ -41,10 +40,16 @@ namespace _1Lieferschein.Controllers
                 IFormFile uploadFile = fileUpload[i];
 
                 String contentType = uploadFile.ContentType;
-                bool ISValidDoc = false;
+                bool IsValidDoc = false;
                 if (!string.IsNullOrEmpty(contentType) && contentType.Equals(MediaTypeNames.Text.Xml))
                 {
-                    ISValidDoc = true;
+                    IsValidDoc = true;
+                }
+
+                if (IsValidDoc == false)
+                {
+                    ViewBag.Message = "Fehler: Ungültiges Dokument";
+                    return View();
                 }
 
                 using (var ms = new MemoryStream())
@@ -53,8 +58,6 @@ namespace _1Lieferschein.Controllers
                     {
                         DespatchAdvice despatchAdvice = Common.Deserialize<DespatchAdvice>(await Common.ReadAsStringAsync(uploadFile));
                         ViewBag.Message = "XML erfolgreich hochgeladen.";
-
-
 
                         switch (i)
                         {
@@ -65,58 +68,17 @@ namespace _1Lieferschein.Controllers
                                 returnModel.DespatchAdvice2 = despatchAdvice;
                                 break;
                         }
-
-
-
                     }
                     catch (XmlException xmlException)
                     {
                         ViewBag.Message = "Fehler: " + xmlException.Message + ", inner-exception: " + xmlException?.InnerException?.Message + ", strack-trace: " + xmlException.StackTrace;
                         return View();
                     }
-
-
-                }                
+                }
 
             }
             return View(returnModel);
-        }
-
-
-            //String contentType = upload.ContentType;
-            //if (!string.IsNullOrEmpty(contentType))
-            //{
-            //    if (contentType.Equals(MediaTypeNames.Text.Xml))
-            //    {
-            //        using (var ms = new MemoryStream())
-            //        {
-            //            try
-            //            {
-            //                DespatchAdvice despatchAdvice = Common.Deserialize<DespatchAdvice>(await Common.ReadAsStringAsync(upload));
-            //                ViewBag.Message = "XML erfolgreich hochgeladen.";
-            //                DeliveryNoteUbl returnModel = new DeliveryNoteUbl();
-            //                returnModel.DespatchAdvice1 = despatchAdvice;
-
-
-            //                return View(returnModel);
-            //            }
-            //            catch (XmlException xmlException)
-            //            {
-            //                ViewBag.Message = "Fehler: " + xmlException.Message + ", inner-exception: " + xmlException?.InnerException?.Message + ", strack-trace: " + xmlException.StackTrace;
-            //                return View();
-            //            }
-            //        }
-            //    }
-            //    else
-            //    {
-            //        return null; 
-            //    }
-            //}
-            //else
-            //{
-            //    return null; 
-            //}
-        
+        }        
 
         private byte[] ConvertToByte(IFormFile file)
         {
