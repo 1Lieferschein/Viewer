@@ -29,7 +29,12 @@ namespace _1Lieferschein.Controllers
             return View();
         }
 
-        [HttpPost]
+        public IActionResult Results() 
+        {
+            return View();
+        }
+
+        [HttpPost("Results")]
         public async Task<ActionResult> UploadFile(IFormFile[] fileUpload)
         {
             // IFormFile upload = fileUpload[0];
@@ -49,7 +54,10 @@ namespace _1Lieferschein.Controllers
                 if (IsValidDoc == false)
                 {
                     ViewBag.Message = "Fehler: Ungültiges Dokument";
-                    return View();
+                    return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+                    // return (ActionResult)Error();
+
+
                 }
 
                 using (var ms = new MemoryStream())
@@ -77,7 +85,9 @@ namespace _1Lieferschein.Controllers
                 }
 
             }
-            return View(returnModel);
+            // return View(returnModel);
+
+            return View("Results", returnModel);
         }        
 
         private byte[] ConvertToByte(IFormFile file)

@@ -1,0 +1,253 @@
+﻿@model _1Lieferschein.Models.DeliveryNotes.DeliveryNoteUbl
+
+@{
+    ViewData["Title"] = "Ergebnis";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1>Lieferschein</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col col-lg-6">
+            <h5>Anschrift Lieferant</h5>
+            <dl class="row">
+                <dt class="col-sm-4">
+                    Firmenname
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.DespatchAdvice1.DespatchSupplierParty.Party.PartyLegalEntity.RegistrationName)
+                </dd>
+                <dt class="col-sm-4">
+                    Adresse
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.DespatchAdvice1.DespatchSupplierParty.Party.PostalAddress.StreetName)
+                    @Html.DisplayFor(model => model.DespatchAdvice1.DespatchSupplierParty.Party.PostalAddress.AdditionalStreetName)
+                    @Html.DisplayFor(model => model.DespatchAdvice1.DespatchSupplierParty.Party.PostalAddress.PostalZone)
+                    @Html.DisplayFor(model => model.DespatchAdvice1.DespatchSupplierParty.Party.PostalAddress.CityName)
+                    @Html.DisplayFor(model => model.DespatchAdvice1.DespatchSupplierParty.Party.PostalAddress.Country.IdentificationCode)
+                </dd>
+            </dl>
+
+            <h5>Anschrift Empfänger</h5>
+            <dl class="row">
+                <dt class="col-sm-4">
+                    Firmenname
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.DespatchAdvice1.DeliveryCustomerParty.Party.PartyLegalEntity.RegistrationName)
+                </dd>
+                <dt class="col-sm-4">
+                    Kundennummer
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.DespatchAdvice1.DeliveryCustomerParty.Party.PartyLegalEntity.CompanyID)
+                </dd>
+                <dt class="col-sm-4">
+                    Adresse
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.DespatchAdvice1.DeliveryCustomerParty.Party.PostalAddress.StreetName)
+                    @Html.DisplayFor(model => model.DespatchAdvice1.DeliveryCustomerParty.Party.PostalAddress.AdditionalStreetName)
+                    @Html.DisplayFor(model => model.DespatchAdvice1.DeliveryCustomerParty.Party.PostalAddress.PostalZone)
+                    @Html.DisplayFor(model => model.DespatchAdvice1.DeliveryCustomerParty.Party.PostalAddress.CityName)
+                    @Html.DisplayFor(model => model.DespatchAdvice1.DeliveryCustomerParty.Party.PostalAddress.Country.IdentificationCode)
+                </dd>
+                <dt class="col-sm-4">
+                    Kontakt
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.DespatchAdvice1.DeliveryCustomerParty.Party.Contact.Name)
+                    @Html.DisplayFor(model => model.DespatchAdvice1.DeliveryCustomerParty.Party.Contact.Telephone)
+                    @Html.DisplayFor(model => model.DespatchAdvice1.DeliveryCustomerParty.Party.Contact.ElectronicMail)
+                </dd>
+            </dl>
+
+            <h5>Lieferung</h5>
+            <dl class="row">
+                <dt class="col-sm-4">
+                    Lieferadresse
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.DespatchAdvice1.Shipment.Delivery.DeliveryAddress.Address.StreetName)
+                    @Html.DisplayFor(model => model.DespatchAdvice1.Shipment.Delivery.DeliveryAddress.Address.AdditionalStreetName)
+                    @Html.DisplayFor(model => model.DespatchAdvice1.Shipment.Delivery.DeliveryAddress.Address.PostalZone)
+                    @Html.DisplayFor(model => model.DespatchAdvice1.Shipment.Delivery.DeliveryAddress.Address.CityName)
+                    @Html.DisplayFor(model => model.DespatchAdvice1.Shipment.Delivery.DeliveryAddress.Address.Country.IdentificationCode)
+                </dd>
+                <dt class="col-sm-4">
+                    Lieferdatum
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.DespatchAdvice1.Shipment.Delivery.ActualDeliveryDate.Date)
+                </dd>
+            </dl>
+
+            <h5>Versandartikel</h5>
+            @foreach (var despatchLine in Model.DespatchAdvice1.DespatchLine)
+            {
+                <dl class="row">
+                    <dt class="col-sm-4">
+                        Artikelnummer
+                    </dt>
+                    <dd class="col-sm-8">
+                        @despatchLine.ID
+                    </dd>
+                    <dt class="col-sm-4">
+                        Bezeichnung
+                    </dt>
+                    <dd class="col-sm-8">
+                        @despatchLine.Note
+                    </dd>
+                    <dt class="col-sm-4">
+                        Liefermenge
+                    </dt>
+                    <dd class="col-sm-8">
+                        @switch (@despatchLine.DeliveredQuantity.unitCode)
+                        {
+                            case "MMK":
+                                // mm2 -> cm2 -> dm2 -> m2 (Faktor 100)
+                                var mmkFaktor = 100 * 100 * 100;
+                                var formatedValue1 = float.Parse(@despatchLine.DeliveredQuantity.Value) / mmkFaktor;
+                                <span>@formatedValue1 m<sup>2</sup></span>
+                                break;
+                            case "MMT":
+                                // mm -> cm -> dm -> m (Faktor 10)
+                                var mmtFaktor = 10 * 10 * 10;
+                                var formatedValue2 = float.Parse(despatchLine.DeliveredQuantity.Value) / mmtFaktor;
+                                <span>@formatedValue2 m</span>
+                                break;
+                        }
+                    </dd>
+                </dl>
+            }
+        </div>
+
+        @if (Model.DespatchAdvice2 != null)
+        {
+            <h4></h4>
+            <div class="col col-lg-6 border-left">
+                <h5>Anschrift Lieferant</h5>
+                <dl class="row">
+                    <dt class="col-sm-4">
+                        Firmenname
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.DespatchAdvice2.DespatchSupplierParty.Party.PartyLegalEntity.RegistrationName)
+                    </dd>
+                    <dt class="col-sm-4">
+                        Adresse
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.DespatchAdvice2.DespatchSupplierParty.Party.PostalAddress.StreetName)
+                        @Html.DisplayFor(model => model.DespatchAdvice2.DespatchSupplierParty.Party.PostalAddress.AdditionalStreetName)
+                        @Html.DisplayFor(model => model.DespatchAdvice2.DespatchSupplierParty.Party.PostalAddress.PostalZone)
+                        @Html.DisplayFor(model => model.DespatchAdvice2.DespatchSupplierParty.Party.PostalAddress.CityName)
+                        @Html.DisplayFor(model => model.DespatchAdvice2.DespatchSupplierParty.Party.PostalAddress.Country.IdentificationCode)
+                    </dd>
+                </dl>
+
+                <h5>Anschrift Empfänger</h5>
+                <dl class="row">
+                    <dt class="col-sm-4">
+                        Firmenname
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.DespatchAdvice2.DeliveryCustomerParty.Party.PartyLegalEntity.RegistrationName)
+                    </dd>
+                    <dt class="col-sm-4">
+                        Kundennummer
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.DespatchAdvice2.DeliveryCustomerParty.Party.PartyLegalEntity.CompanyID)
+                    </dd>
+                    <dt class="col-sm-4">
+                        Adresse
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.DespatchAdvice2.DeliveryCustomerParty.Party.PostalAddress.StreetName)
+                        @Html.DisplayFor(model => model.DespatchAdvice2.DeliveryCustomerParty.Party.PostalAddress.AdditionalStreetName)
+                        @Html.DisplayFor(model => model.DespatchAdvice2.DeliveryCustomerParty.Party.PostalAddress.PostalZone)
+                        @Html.DisplayFor(model => model.DespatchAdvice2.DeliveryCustomerParty.Party.PostalAddress.CityName)
+                        @Html.DisplayFor(model => model.DespatchAdvice2.DeliveryCustomerParty.Party.PostalAddress.Country.IdentificationCode)
+                    </dd>
+                    <dt class="col-sm-4">
+                        Kontakt
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.DespatchAdvice2.DeliveryCustomerParty.Party.Contact.Name)
+                        @Html.DisplayFor(model => model.DespatchAdvice2.DeliveryCustomerParty.Party.Contact.Telephone)
+                        @Html.DisplayFor(model => model.DespatchAdvice2.DeliveryCustomerParty.Party.Contact.ElectronicMail)
+                    </dd>
+                </dl>
+
+                <h5>Lieferung</h5>
+                <dl class="row">
+                    <dt class="col-sm-4">
+                        Lieferadresse
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.DespatchAdvice2.Shipment.Delivery.DeliveryAddress.Address.StreetName)
+                        @Html.DisplayFor(model => model.DespatchAdvice2.Shipment.Delivery.DeliveryAddress.Address.AdditionalStreetName)
+                        @Html.DisplayFor(model => model.DespatchAdvice2.Shipment.Delivery.DeliveryAddress.Address.PostalZone)
+                        @Html.DisplayFor(model => model.DespatchAdvice2.Shipment.Delivery.DeliveryAddress.Address.CityName)
+                        @Html.DisplayFor(model => model.DespatchAdvice2.Shipment.Delivery.DeliveryAddress.Address.Country.IdentificationCode)
+                    </dd>
+                    <dt class="col-sm-4">
+                        Lieferdatum
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.DespatchAdvice2.Shipment.Delivery.ActualDeliveryDate.Date)
+                    </dd>
+                </dl>
+
+                <h5>Versandartikel</h5>
+                @foreach (var despatchLine in Model.DespatchAdvice2.DespatchLine)
+                {
+                    <dl class="row">
+                        <dt class="col-sm-4">
+                            Artikelnummer
+                        </dt>
+                        <dd class="col-sm-8">
+                            @despatchLine.ID
+                        </dd>
+                        <dt class="col-sm-4">
+                            Bezeichnung
+                        </dt>
+                        <dd class="col-sm-8">
+                            @despatchLine.Note
+                        </dd>
+                        <dt class="col-sm-4">
+                            Liefermenge
+                        </dt>
+                        <dd class="col-sm-8">
+                            @switch (@despatchLine.DeliveredQuantity.unitCode)
+                            {
+                                case "MMK":
+                                    // mm2 -> cm2 -> dm2 -> m2 (Faktor 100)
+                                    var mmkFaktor = 100 * 100 * 100;
+                                    var formatedValue1 = float.Parse(@despatchLine.DeliveredQuantity.Value) / mmkFaktor;
+                                    <span>@formatedValue1 m<sup>2</sup></span>
+                                    break;
+                                case "MMT":
+                                    // mm -> cm -> dm -> m (Faktor 10)
+                                    var mmtFaktor = 10 * 10 * 10;
+                                    var formatedValue2 = float.Parse(despatchLine.DeliveredQuantity.Value) / mmtFaktor;
+                                    <span>@formatedValue2 m</span>
+                                    break;
+                            }
+                        </dd>
+                    </dl>
+                }
+            </div>
+        }
+    </div>
+</div>
+
+
+<!--<div>-->
+@*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>*@
+<!--</div>-->

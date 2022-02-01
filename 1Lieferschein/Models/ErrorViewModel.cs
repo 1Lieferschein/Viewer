@@ -9,3 +9,4 @@ namespace _1Lieferschein.Models
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
     }
 }
+    
