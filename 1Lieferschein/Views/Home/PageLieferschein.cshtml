@@ -103,17 +103,71 @@
         <dd class="col-sm-8">
             @switch (@despatchLine.DeliveredQuantity.unitCode)
             {
-                case "MMK":
-                    // mm2 -> cm2 -> dm2 -> m2 (Faktor 100)
-                    var mmkFaktor = 100 * 100 * 100;
-                    var formatedValue1 = float.Parse(@despatchLine.DeliveredQuantity.Value) / mmkFaktor;
-                    <span>@formatedValue1 m<sup>2</sup></span>
-                    break;
                 case "MMT":
                     // mm -> cm -> dm -> m (Faktor 10)
-                    var mmtFaktor = 10 * 10 * 10;
-                    var formatedValue2 = float.Parse(despatchLine.DeliveredQuantity.Value) / mmtFaktor;
-                    <span>@formatedValue2 m</span>
+                    var mmtFactor = 10 * 10 * 10;
+                    var mmtFormated = float.Parse(@despatchLine.DeliveredQuantity.Value) / mmtFactor;
+                    <span>@mmtFormated m</span>
+                    break;
+                case "MMK":
+                    // mm2 -> cm2 -> dm2 -> m2 (Faktor 100)
+                    var mmkFactor = 100 * 100 * 100;
+                    var mmkFormated = float.Parse(@despatchLine.DeliveredQuantity.Value) / mmkFactor;
+                    <span>@mmkFormated m<sup>2</sup></span>
+                    break;
+                case "MMQ":
+                    // mm3 -> cm3 -> dm3 -> m3 (Faktor 1000)
+                    var mmqFactor = 1000 * 1000 * 1000;
+                    var mmqFormated = float.Parse(@despatchLine.DeliveredQuantity.Value) / mmqFactor;
+                    <span>@mmqFormated m<sup>3</sup></span>
+                    break;
+                case "CMT":
+                    // cm -> dm -> m (Faktor 10)
+                    var cmtFactor = 10 * 10;
+                    var cmtFormated = float.Parse(@despatchLine.DeliveredQuantity.Value) / cmtFactor;
+                    <span>@cmtFormated m</span>
+                    break;
+                case "CMK":
+                    // cm2 -> dm2 -> m2 (Faktor 100)
+                    var cmkFactor = 100 * 100;
+                    var cmkFormated = float.Parse(@despatchLine.DeliveredQuantity.Value) / cmkFactor;
+                    <span>@cmkFormated m<sup>2</sup></span>
+                    break;
+                case "CMQ":
+                    // cm3 -> dm3 -> m3 (Faktor 100)
+                    var cmqFactor = 1000 * 1000;
+                    var cmqFormated = float.Parse(@despatchLine.DeliveredQuantity.Value) / cmqFactor;
+                    <span>@cmqFormated m<sup>3</sup></span>
+                    break;
+                case "DMT":
+                    // dm -> m (Faktor 10)
+                    var dmtFactor = 10 * 10;
+                    var dmtFormated = float.Parse(@despatchLine.DeliveredQuantity.Value) / dmtFactor;
+                    <span>@dmtFormated m</span>
+                    break;
+                case "DMK":
+                    // dm2 -> m2 (Faktor 100)
+                    var dmkFactor = 100 * 100;
+                    var dmkFormated = float.Parse(@despatchLine.DeliveredQuantity.Value) / dmkFactor;
+                    <span>@dmkFormated m<sup>2</sup></span>
+                    break;
+                case "DMQ":
+                    // dm3 -> m3 (Faktor 1000)
+                    var dmqFactor = 1000 * 1000;
+                    var dmqFormated = float.Parse(@despatchLine.DeliveredQuantity.Value) / dmqFactor;
+                    <span>@dmqFormated m<sup>3</sup></span>
+                    break;
+                case "MTR":
+                    // m
+                    <span>@despatchLine.DeliveredQuantity.Value m</span>
+                    break;
+                case "MTK":
+                    // m2
+                    <span>@despatchLine.DeliveredQuantity.Value m<sup>2</sup></span>
+                    break;
+                case "MTQ":
+                    // m3
+                    <span>@despatchLine.DeliveredQuantity.Value m<sup>3</sup></span>
                     break;
             }
         </dd>
