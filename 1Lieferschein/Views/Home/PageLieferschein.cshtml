@@ -6,101 +6,141 @@
 
 @model _1Lieferschein.Models.DeliveryNotes.DespatchAdvice
 
-
-<h5>Anschrift Lieferant</h5>
-<dl class="row">
-    <dt class="col-sm-4">
-        Firmenname
+<h5>Bestellübersicht</h5> @*OrderReference*@
+<dl class="row border-bottom">
+    <dt class="col-sm-3">
+        Liefernummer
     </dt>
-    <dd class="col-sm-8">
-        @*@Html.DisplayFor(model => model.DespatchSupplierParty.Party.PartyLegalEntity.RegistrationName)*@
+    <dd class="col-sm-9">
+        @Html.DisplayFor(model => model.Shipment.ID)
     </dd>
-    <dt class="col-sm-4">
+    <dt class="col-sm-3">
+        Versanddatum
+    </dt>
+    <dd class="col-sm-9">
+        @Html.DisplayFor(model => model.IssueDate)
+    </dd>
+    <dt class="col-sm-3">
+        Bestellnummer
+    </dt>
+    <dd class="col-sm-9">
+        @Html.DisplayFor(model => model.ID)
+    </dd>
+    <dt class="col-sm-3">
+        Kundenreferenz
+    </dt>
+    <dd class="col-sm-9">
+        @Html.DisplayFor(model => model.OrderReference.ID)
+        @Html.DisplayFor(model => model.OrderReference.CustomerReference)
+    </dd>
+</dl>
+
+<h5>Versanddienstleister</h5> @*DespatchSupplierParty*@
+<dl class="row border-bottom">
+    <dt class="col-sm-3">
         Adresse
     </dt>
-    <dd class="col-sm-8">
-        @*@Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.StreetName)
-        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.AdditionalStreetName)*@
+    <dd class="col-sm-9">
+        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.AddressLine) <br />
         @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.PostalZone)
-        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.CityName)
+        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.CityName) <br />
         @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.Country.IdentificationCode)
     </dd>
 </dl>
 
-<h5>Anschrift Empfänger</h5>
-<dl class="row">
-    <dt class="col-sm-4">
-        Firmenname
-    </dt>
-    <dd class="col-sm-8">
-        @*@Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PartyLegalEntity.RegistrationName)*@
-    </dd>
-    <dt class="col-sm-4">
-        Kundennummer
-    </dt>
-    <dd class="col-sm-8">
-        @*@Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PartyLegalEntity.CompanyID)*@
-    </dd>
-    <dt class="col-sm-4">
+<h5>Käufer</h5> @*BuyerCustomerParty*@
+<dl class="row border-bottom">
+    <dt class="col-sm-3">
         Adresse
     </dt>
-    <dd class="col-sm-8">
-        @*@Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.StreetName)
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.AdditionalStreetName)*@
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.PostalZone)
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.CityName)
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.Country.IdentificationCode)
+    <dd class="col-sm-9">
+        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.PostalAddress.AddressLine) <br />
+        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.PostalAddress.PostalZone)
+        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.PostalAddress.CityName) <br />
+        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.PostalAddress.Country.IdentificationCode)
     </dd>
-    <dt class="col-sm-4">
+    <dt class="col-sm-3">
         Kontakt
     </dt>
-    <dd class="col-sm-8">
-        @*@Html.DisplayFor(model => model.DeliveryCustomerParty.Party.Contact.Name)
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.Contact.Telephone)
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.Contact.ElectronicMail)*@
+    <dd class="col-sm-9">
+        @Html.DisplayFor(model => model.BuyerCustomerParty.AccountingContact.Name) <br />
+        @Html.DisplayFor(model => model.BuyerCustomerParty.AccountingContact.Telephone) <br />
+        @Html.DisplayFor(model => model.BuyerCustomerParty.AccountingContact.ElectronicMail)
     </dd>
 </dl>
 
-<h5>Lieferung</h5>
-<dl class="row">
-    <dt class="col-sm-4">
-        Lieferadresse
+<h5>Verkäufer</h5> @*SellerSupplierParty*@
+<dl class="row border-bottom">
+    <dt class="col-sm-3">
+        Adresse
     </dt>
-    <dd class="col-sm-8">
-        @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.AddressLine)
-        @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.AddressLine)
-        @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.PostalZone)
-        @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.CityName)
-        @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.Country.IdentificationCode)
+    <dd class="col-sm-9">
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.AddressLine) <br />
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.PostalZone)
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.CityName) <br />
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.Country.IdentificationCode)
     </dd>
-    <dt class="col-sm-4">
+    <dt class="col-sm-3">
+        Kontakt
+    </dt>
+    <dd class="col-sm-9">
+        @Html.DisplayFor(model => model.SellerSupplierParty.DespatchContact.Name) <br />
+        @Html.DisplayFor(model => model.SellerSupplierParty.DespatchContact.Telephone) <br />
+        @Html.DisplayFor(model => model.SellerSupplierParty.DespatchContact.ElectronicMail) <br />
+        <br />
+        @Html.DisplayFor(model => model.SellerSupplierParty.AccountingContact.Name) <br />
+        @Html.DisplayFor(model => model.SellerSupplierParty.AccountingContact.Telephone) <br />
+        @Html.DisplayFor(model => model.SellerSupplierParty.AccountingContact.ElectronicMail)
+    </dd>
+</dl>
+
+<h5>Lieferung</h5> @*DeliveryCustomerParty*@
+<dl class="row border-bottom">
+    <dt class="col-sm-3">
         Lieferdatum
     </dt>
-    <dd class="col-sm-8">
+    <dd class="col-sm-9">
         @Html.DisplayFor(model => model.Shipment.Delivery.ActualDeliveryDate.Date)
     </dd>
+    <dt class="col-sm-3">
+        Lieferdresse
+    </dt>
+    <dd class="col-sm-9">
+        @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.AddressLine) <br />
+        @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.PostalZone)
+        @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.CityName)<br />
+        @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.Country.IdentificationCode)
+    </dd>
+    @*<dt class="col-sm-3">
+            Ansprechpartner
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.DeliveryCustomerParty.DeliveryContact.Name) <br />
+            @Html.DisplayFor(model => model.DeliveryCustomerParty.DeliveryContact.Telephone) <br />
+            @Html.DisplayFor(model => model.DeliveryCustomerParty.DeliveryContact.ElectronicMail) <br />
+        </dd>*@
 </dl>
 
 <h5>Versandartikel</h5>
 @foreach (var despatchLine in Model.DespatchLine)
 {
     <dl class="row">
-        <dt class="col-sm-4">
+        <dt class="col-sm-3">
             Artikelnummer
         </dt>
-        <dd class="col-sm-8">
+        <dd class="col-sm-9">
             @despatchLine.Item.SellersItemIdentification.ID
         </dd>
-        <dt class="col-sm-4">
+        <dt class="col-sm-3">
             Bezeichnung
         </dt>
-        <dd class="col-sm-8">
+        <dd class="col-sm-9">
             @despatchLine.Item.Name
         </dd>
-        <dt class="col-sm-4">
+        <dt class="col-sm-3">
             Liefermenge
         </dt>
-        <dd class="col-sm-8">
+        <dd class="col-sm-9">
             @switch (@despatchLine.DeliveredQuantity.unitCode)
             {
                 case "MMT":
