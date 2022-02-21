@@ -2,6 +2,11 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    var despatchCount = Model.DespatchSupplierParty.Party.PostalAddress.AddressLine.Count();
+    var deliverCount = Model.DeliveryCustomerParty.Party.PostalAddress.AddressLine.Count();
+    var buyerCount = Model.BuyerCustomerParty.Party.PostalAddress.AddressLine.Count();
+    var sellerCount = Model.SellerSupplierParty.Party.PostalAddress.AddressLine.Count();
+    var shipCount = Model.Shipment.Delivery.DeliveryAddress.AddressLine.Count();
 }
 
 @model _1Lieferschein.Models.DeliveryNotes.DespatchAdvice
@@ -41,10 +46,37 @@
         Adresse
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.AddressLine) <br />
+        @for (int i = 0; i < despatchCount; i++)
+        {
+            @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.AddressLine[i].Line) <br />
+        }
         @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.PostalZone)
         @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.CityName) <br />
         @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.Country.IdentificationCode)
+    </dd>
+</dl>
+
+<h5>Empfänger der Lieferung</h5> @*DeliveryCustomerParty*@
+<dl class="row border-bottom">
+    <dt class="col-sm-3">
+        Adresse
+    </dt>
+    <dd class="col-sm-9">
+        @for (int i = 0; i < deliverCount; i++)
+        {
+            @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.AddressLine[i].Line) <br />
+        }
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.PostalZone)
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.CityName) <br />
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.Country.IdentificationCode)
+    </dd>
+    <dt class="col-sm-3">
+        Kontakt
+    </dt>
+    <dd class="col-sm-9">
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.DeliveryContact.Name) <br />
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.DeliveryContact.Telephone) <br />
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.DeliveryContact.ElectronicMail) <br />
     </dd>
 </dl>
 
@@ -54,7 +86,10 @@
         Adresse
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.PostalAddress.AddressLine) <br />
+        @for (int i = 0; i < buyerCount; i++)
+        {
+            @Html.DisplayFor(model => model.BuyerCustomerParty.Party.PostalAddress.AddressLine[i].Line) <br />
+        }
         @Html.DisplayFor(model => model.BuyerCustomerParty.Party.PostalAddress.PostalZone)
         @Html.DisplayFor(model => model.BuyerCustomerParty.Party.PostalAddress.CityName) <br />
         @Html.DisplayFor(model => model.BuyerCustomerParty.Party.PostalAddress.Country.IdentificationCode)
@@ -75,7 +110,10 @@
         Adresse
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.AddressLine) <br />
+        @for (int i = 0; i < sellerCount; i++)
+        {
+            @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.AddressLine[i].Line) <br />
+        }
         @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.PostalZone)
         @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.CityName) <br />
         @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.Country.IdentificationCode)
@@ -94,7 +132,7 @@
     </dd>
 </dl>
 
-<h5>Lieferung</h5> @*DeliveryCustomerParty*@
+<h5>Lieferung</h5> @*Shipment*@
 <dl class="row border-bottom">
     <dt class="col-sm-3">
         Lieferdatum
@@ -106,19 +144,14 @@
         Lieferdresse
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.AddressLine) <br />
+        @for (int i = 0; i < shipCount; i++)
+        {
+            @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.AddressLine[i].Line) <br />            
+        }
         @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.PostalZone)
         @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.CityName)<br />
         @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.Country.IdentificationCode)
     </dd>
-    @*<dt class="col-sm-3">
-            Ansprechpartner
-        </dt>
-        <dd class="col-sm-9">
-            @Html.DisplayFor(model => model.DeliveryCustomerParty.DeliveryContact.Name) <br />
-            @Html.DisplayFor(model => model.DeliveryCustomerParty.DeliveryContact.Telephone) <br />
-            @Html.DisplayFor(model => model.DeliveryCustomerParty.DeliveryContact.ElectronicMail) <br />
-        </dd>*@
 </dl>
 
 <h5>Versandartikel</h5>
@@ -209,6 +242,10 @@
                     // m3
                     <span>@despatchLine.DeliveredQuantity.Value m<sup>3</sup></span>
                     break;
+                case null:
+                    <span>@despatchLine.DeliveredQuantity.Value St.</span>
+                    break;
+
             }
         </dd>
     </dl>
