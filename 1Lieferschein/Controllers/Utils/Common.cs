@@ -32,7 +32,7 @@ namespace _1Lieferschein.Controllers.Utils
 
                 using (StringReader sr = new StringReader(input))
                 {       
-                    return (T)ser.Deserialize(sr);
+                    return (T)ser.Deserialize(sr);  
                 }
             }
             catch (InvalidOperationException invalidOperationException)

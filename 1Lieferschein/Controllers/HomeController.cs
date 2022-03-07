@@ -38,7 +38,7 @@ namespace _1Lieferschein.Controllers
         public async Task<ActionResult> UploadFile(IFormFile[] fileUpload)
         {
             // IFormFile upload = fileUpload[0];
-            DeliveryNoteUbl2 returnModel = new DeliveryNoteUbl2();
+            DeliveryNoteUbl3 returnModel = new DeliveryNoteUbl3();
 
             for (int i = 0; i < fileUpload.Length; i++)
             {
