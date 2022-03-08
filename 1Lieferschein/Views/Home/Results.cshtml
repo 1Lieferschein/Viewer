@@ -3,16 +3,14 @@
 @{
     ViewData["Title"] = "Ergebnis";
     Layout = "~/Views/Shared/_Layout.cshtml";
-}
 
-<h1>Lieferschein</h1>
-
-@{ 
     var count = 0;
     if (Model.DespatchAdvice2 == null) { count = 1; } else { count = 2; }
 }
 
-<div class="container">
+<h1>Lieferschein</h1>
+
+<div class="container"style="padding: 0%; ">
     <div class="row">
         @if (count == 2)
         {

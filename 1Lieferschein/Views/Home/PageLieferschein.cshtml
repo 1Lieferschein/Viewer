@@ -26,10 +26,15 @@
         @Html.DisplayFor(model => model.IssueDate)
     </dd>
     <dt class="col-sm-3">
-        Kundenreferenz
+        Kundennummer
     </dt>
     <dd class="col-sm-9">
         @Html.DisplayFor(model => model.OrderReference.ID)
+    </dd>
+    <dt class="col-sm-3">
+        Kundenreferenz
+    </dt>
+    <dd class="col-sm-9">
         @Html.DisplayFor(model => model.OrderReference.CustomerReference)
     </dd>
 </dl>
@@ -37,7 +42,7 @@
 <h5>Versanddienstleister</h5> @*DespatchSupplierParty*@
 <dl class="row border-bottom">
     <dt class="col-sm-3">
-        Adresse
+        Anschrift
     </dt>
     <dd class="col-sm-9">
         @for (int i = 0; i < despatchCount; i++)
@@ -53,7 +58,7 @@
 <h5>Empfänger der Lieferung</h5> @*DeliveryCustomerParty*@
 <dl class="row border-bottom">
     <dt class="col-sm-3">
-        Adresse
+        Anschrift
     </dt>
     <dd class="col-sm-9">
         @for (int i = 0; i < deliverCount; i++)
@@ -65,7 +70,7 @@
         @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.Country.IdentificationCode)
     </dd>
     <dt class="col-sm-3">
-        Kontakt
+        Ansprechpartner Lieferung
     </dt>
     <dd class="col-sm-9">
         @Html.DisplayFor(model => model.DeliveryCustomerParty.DeliveryContact.Name) <br />
@@ -77,7 +82,7 @@
 <h5>Käufer</h5> @*BuyerCustomerParty*@
 <dl class="row border-bottom">
     <dt class="col-sm-3">
-        Adresse
+        Anschrift
     </dt>
     <dd class="col-sm-9">
         @for (int i = 0; i < buyerCount; i++)
@@ -89,19 +94,27 @@
         @Html.DisplayFor(model => model.BuyerCustomerParty.Party.PostalAddress.Country.IdentificationCode)
     </dd>
     <dt class="col-sm-3">
-        Kontakt
+        Ansprechpartner Buchhaltung
     </dt>
     <dd class="col-sm-9">
         @Html.DisplayFor(model => model.BuyerCustomerParty.AccountingContact.Name) <br />
         @Html.DisplayFor(model => model.BuyerCustomerParty.AccountingContact.Telephone) <br />
         @Html.DisplayFor(model => model.BuyerCustomerParty.AccountingContact.ElectronicMail)
     </dd>
+    <dt class="col-sm-3">
+        Ansprechpartner Einkauf
+    </dt>
+    <dd class="col-sm-9">
+        @Html.DisplayFor(model => model.BuyerCustomerParty.BuyerContact.Name) <br />
+        @Html.DisplayFor(model => model.BuyerCustomerParty.BuyerContact.Telephone) <br />
+        @Html.DisplayFor(model => model.BuyerCustomerParty.BuyerContact.ElectronicMail)
+    </dd>
 </dl>
 
 <h5>Verkäufer</h5> @*SellerSupplierParty*@
 <dl class="row border-bottom">
     <dt class="col-sm-3">
-        Adresse
+        Anschrift
     </dt>
     <dd class="col-sm-9">
         @for (int i = 0; i < sellerCount; i++)
@@ -110,16 +123,21 @@
         }
         @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.PostalZone)
         @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.CityName) <br />
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.Region) <br />
         @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.Country.IdentificationCode)
     </dd>
     <dt class="col-sm-3">
-        Kontakt
+        Ansprechpartner
     </dt>
     <dd class="col-sm-9">
         @Html.DisplayFor(model => model.SellerSupplierParty.SellerContact.Name) <br />
         @Html.DisplayFor(model => model.SellerSupplierParty.SellerContact.Telephone) <br />
         @Html.DisplayFor(model => model.SellerSupplierParty.SellerContact.ElectronicMail) <br />
-        <br />
+    </dd>
+    <dt class="col-sm-3">
+        Ansprechpartner Buchhaltung
+    </dt>
+    <dd class="col-sm-9">
         @Html.DisplayFor(model => model.SellerSupplierParty.AccountingContact.Name) <br />
         @Html.DisplayFor(model => model.SellerSupplierParty.AccountingContact.Telephone) <br />
         @Html.DisplayFor(model => model.SellerSupplierParty.AccountingContact.ElectronicMail)
