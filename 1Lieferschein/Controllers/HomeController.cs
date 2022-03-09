@@ -56,8 +56,6 @@ namespace _1Lieferschein.Controllers
                     ViewBag.Message = "Fehler: Ungültiges Dokument";
                     return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
                     // return (ActionResult)Error();
-
-
                 }
 
                 using (var ms = new MemoryStream())

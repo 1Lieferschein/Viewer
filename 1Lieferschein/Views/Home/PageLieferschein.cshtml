@@ -7,7 +7,15 @@
     var buyerCount = Model.BuyerCustomerParty.Party.PostalAddress.AddressLine.Count();
     var sellerCount = Model.SellerSupplierParty.Party.PostalAddress.AddressLine.Count();
     var shipCount = Model.Shipment.Delivery.DeliveryAddress.AddressLine.Count();
-}
+
+
+    DateTime date1 = (Model.IssueDate);
+    string parsedDate1 = date1.ToString("dd.MM.yyyy");
+
+    DateTime date2 = (Model.Shipment.Delivery.ActualDeliveryDate);
+    string parsedDate2 = date2.ToString("dd.MM.yyyy");
+
+   }
 
 @model _1Lieferschein.Models.DeliveryNotes.DespatchAdvice
 
@@ -23,7 +31,8 @@
         Versanddatum
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.IssueDate)
+        @*@Html.DisplayFor(model => model.IssueDate)*@
+        @parsedDate1
     </dd>
     <dt class="col-sm-3">
         Kundennummer
@@ -150,7 +159,8 @@
         Lieferdatum
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.Shipment.Delivery.ActualDeliveryDate)
+        @*@Html.DisplayFor(model => model.Shipment.Delivery.ActualDeliveryDate)*@
+        @parsedDate2
     </dd>
     <dt class="col-sm-3">
         Lieferdresse
