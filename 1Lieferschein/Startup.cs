@@ -51,6 +51,14 @@ namespace _1Lieferschein
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
+                 name: "Results",
+                 pattern: "{controller=Home}/{action=Results}");
+
+
+
+
             });
         }
     }

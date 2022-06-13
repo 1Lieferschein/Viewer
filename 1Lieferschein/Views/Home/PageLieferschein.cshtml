@@ -1,0 +1,280 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    var despatchCount = Model.DespatchSupplierParty.Party.PostalAddress.AddressLine.Count();
+    var deliverCount = Model.DeliveryCustomerParty.Party.PostalAddress.AddressLine.Count();
+    var buyerCount = Model.BuyerCustomerParty.Party.PostalAddress.AddressLine.Count();
+    var sellerCount = Model.SellerSupplierParty.Party.PostalAddress.AddressLine.Count();
+    var shipCount = Model.Shipment.Delivery.DeliveryAddress.AddressLine.Count();
+
+
+    DateTime date1 = (Model.IssueDate);
+    string parsedDate1 = date1.ToString("dd.MM.yyyy");
+
+    DateTime date2 = (Model.Shipment.Delivery.ActualDeliveryDate);
+    string parsedDate2 = date2.ToString("dd.MM.yyyy");
+
+   }
+
+@model _1Lieferschein.Models.DeliveryNotes.DespatchAdvice
+
+<h5>Bestellübersicht</h5> @*OrderReference*@
+<dl class="row border-bottom">
+    <dt class="col-sm-3">
+        Liefernummer
+    </dt>
+    <dd class="col-sm-9">
+        @Html.DisplayFor(model => model.Shipment.ID)
+    </dd>
+    <dt class="col-sm-3">
+        Versanddatum
+    </dt>
+    <dd class="col-sm-9">
+        @*@Html.DisplayFor(model => model.IssueDate)*@
+        @parsedDate1
+    </dd>
+    <dt class="col-sm-3">
+        Kundennummer
+    </dt>
+    <dd class="col-sm-9">
+        @Html.DisplayFor(model => model.OrderReference.ID)
+    </dd>
+    <dt class="col-sm-3">
+        Kundenreferenz
+    </dt>
+    <dd class="col-sm-9">
+        @Html.DisplayFor(model => model.OrderReference.CustomerReference)
+    </dd>
+</dl>
+
+<h5>Versanddienstleister</h5> @*DespatchSupplierParty*@
+<dl class="row border-bottom">
+    <dt class="col-sm-3">
+        Anschrift
+    </dt>
+    <dd class="col-sm-9">
+        @for (int i = 0; i < despatchCount; i++)
+        {
+            @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.AddressLine[i].Line) <br />
+        }
+        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.PostalZone)
+        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.CityName) <br />
+        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.Country.IdentificationCode)
+    </dd>
+</dl>
+
+<h5>Empfänger der Lieferung</h5> @*DeliveryCustomerParty*@
+<dl class="row border-bottom">
+    <dt class="col-sm-3">
+        Anschrift
+    </dt>
+    <dd class="col-sm-9">
+        @for (int i = 0; i < deliverCount; i++)
+        {
+            @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.AddressLine[i].Line) <br />
+        }
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.PostalZone)
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.CityName) <br />
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.Country.IdentificationCode)
+    </dd>
+    <dt class="col-sm-3">
+        Ansprechpartner Lieferung
+    </dt>
+    <dd class="col-sm-9">
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.DeliveryContact.Name) <br />
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.DeliveryContact.Telephone) <br />
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.DeliveryContact.ElectronicMail) <br />
+    </dd>
+</dl>
+
+<h5>Käufer</h5> @*BuyerCustomerParty*@
+<dl class="row border-bottom">
+    <dt class="col-sm-3">
+        Anschrift
+    </dt>
+    <dd class="col-sm-9">
+        @for (int i = 0; i < buyerCount; i++)
+        {
+            @Html.DisplayFor(model => model.BuyerCustomerParty.Party.PostalAddress.AddressLine[i].Line) <br />
+        }
+        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.PostalAddress.PostalZone)
+        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.PostalAddress.CityName) <br />
+        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.PostalAddress.Country.IdentificationCode)
+    </dd>
+    <dt class="col-sm-3">
+        Ansprechpartner Buchhaltung
+    </dt>
+    <dd class="col-sm-9">
+        @Html.DisplayFor(model => model.BuyerCustomerParty.AccountingContact.Name) <br />
+        @Html.DisplayFor(model => model.BuyerCustomerParty.AccountingContact.Telephone) <br />
+        @Html.DisplayFor(model => model.BuyerCustomerParty.AccountingContact.ElectronicMail)
+    </dd>
+    <dt class="col-sm-3">
+        Ansprechpartner Einkauf
+    </dt>
+    <dd class="col-sm-9">
+        @Html.DisplayFor(model => model.BuyerCustomerParty.BuyerContact.Name) <br />
+        @Html.DisplayFor(model => model.BuyerCustomerParty.BuyerContact.Telephone) <br />
+        @Html.DisplayFor(model => model.BuyerCustomerParty.BuyerContact.ElectronicMail)
+    </dd>
+</dl>
+
+<h5>Verkäufer</h5> @*SellerSupplierParty*@
+<dl class="row border-bottom">
+    <dt class="col-sm-3">
+        Anschrift
+    </dt>
+    <dd class="col-sm-9">
+        @for (int i = 0; i < sellerCount; i++)
+        {
+            @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.AddressLine[i].Line) <br />
+        }
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.PostalZone)
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.CityName) <br />
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.Region) <br />
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.Country.IdentificationCode)
+    </dd>
+    <dt class="col-sm-3">
+        Ansprechpartner
+    </dt>
+    <dd class="col-sm-9">
+        @Html.DisplayFor(model => model.SellerSupplierParty.SellerContact.Name) <br />
+        @Html.DisplayFor(model => model.SellerSupplierParty.SellerContact.Telephone) <br />
+        @Html.DisplayFor(model => model.SellerSupplierParty.SellerContact.ElectronicMail) <br />
+    </dd>
+    <dt class="col-sm-3">
+        Ansprechpartner Buchhaltung
+    </dt>
+    <dd class="col-sm-9">
+        @Html.DisplayFor(model => model.SellerSupplierParty.AccountingContact.Name) <br />
+        @Html.DisplayFor(model => model.SellerSupplierParty.AccountingContact.Telephone) <br />
+        @Html.DisplayFor(model => model.SellerSupplierParty.AccountingContact.ElectronicMail)
+    </dd>
+</dl>
+
+<h5>Lieferung</h5> @*Shipment*@
+<dl class="row border-bottom">
+    <dt class="col-sm-3">
+        Lieferdatum
+    </dt>
+    <dd class="col-sm-9">
+        @*@Html.DisplayFor(model => model.Shipment.Delivery.ActualDeliveryDate)*@
+        @parsedDate2
+    </dd>
+    <dt class="col-sm-3">
+        Lieferdresse
+    </dt>
+    <dd class="col-sm-9">
+        @for (int i = 0; i < shipCount; i++)
+        {
+            @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.AddressLine[i].Line) <br />            
+        }
+        @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.PostalZone)
+        @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.CityName)<br />
+        @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.Country.IdentificationCode)
+    </dd>
+</dl>
+
+<h5>Versandartikel</h5>
+@foreach (var despatchLine in Model.DespatchLine)
+{
+    <dl class="row">
+        <dt class="col-sm-3">
+            Lfd. Nr.
+        </dt>
+        <dd class="col-sm-9">
+            @despatchLine.ID
+        </dd>
+        <dt class="col-sm-3">
+            Artikelnummer
+        </dt>
+        <dd class="col-sm-9">
+            @despatchLine.Item.SellersItemIdentification.ID
+        </dd>
+        <dt class="col-sm-3">
+            Bezeichnung
+        </dt>
+        <dd class="col-sm-9">
+            @despatchLine.Item.Name
+        </dd>
+        <dt class="col-sm-3">
+            Liefermenge
+        </dt>
+        <dd class="col-sm-9">
+            @switch (@despatchLine.DeliveredQuantity.unitCode)
+            {
+                case "MMT":
+                    // mm -> cm -> dm -> m (Faktor 10)
+                    var mmtFactor = 10 * 10 * 10;
+                    var mmtFormated = float.Parse(@despatchLine.DeliveredQuantity.Value) / mmtFactor;
+                    <span>@mmtFormated m</span>
+                    break;
+                case "MMK":
+                    // mm2 -> cm2 -> dm2 -> m2 (Faktor 100)
+                    var mmkFactor = 100 * 100 * 100;
+                    var mmkFormated = float.Parse(@despatchLine.DeliveredQuantity.Value) / mmkFactor;
+                    <span>@mmkFormated m<sup>2</sup></span>
+                    break;
+                case "MMQ":
+                    // mm3 -> cm3 -> dm3 -> m3 (Faktor 1000)
+                    var mmqFactor = 1000 * 1000 * 1000;
+                    var mmqFormated = float.Parse(@despatchLine.DeliveredQuantity.Value) / mmqFactor;
+                    <span>@mmqFormated m<sup>3</sup></span>
+                    break;
+                case "CMT":
+                    // cm -> dm -> m (Faktor 10)
+                    var cmtFactor = 10 * 10;
+                    var cmtFormated = float.Parse(@despatchLine.DeliveredQuantity.Value) / cmtFactor;
+                    <span>@cmtFormated m</span>
+                    break;
+                case "CMK":
+                    // cm2 -> dm2 -> m2 (Faktor 100)
+                    var cmkFactor = 100 * 100;
+                    var cmkFormated = float.Parse(@despatchLine.DeliveredQuantity.Value) / cmkFactor;
+                    <span>@cmkFormated m<sup>2</sup></span>
+                    break;
+                case "CMQ":
+                    // cm3 -> dm3 -> m3 (Faktor 100)
+                    var cmqFactor = 1000 * 1000;
+                    var cmqFormated = float.Parse(@despatchLine.DeliveredQuantity.Value) / cmqFactor;
+                    <span>@cmqFormated m<sup>3</sup></span>
+                    break;
+                case "DMT":
+                    // dm -> m (Faktor 10)
+                    var dmtFactor = 10 * 10;
+                    var dmtFormated = float.Parse(@despatchLine.DeliveredQuantity.Value) / dmtFactor;
+                    <span>@dmtFormated m</span>
+                    break;
+                case "DMK":
+                    // dm2 -> m2 (Faktor 100)
+                    var dmkFactor = 100 * 100;
+                    var dmkFormated = float.Parse(@despatchLine.DeliveredQuantity.Value) / dmkFactor;
+                    <span>@dmkFormated m<sup>2</sup></span>
+                    break;
+                case "DMQ":
+                    // dm3 -> m3 (Faktor 1000)
+                    var dmqFactor = 1000 * 1000;
+                    var dmqFormated = float.Parse(@despatchLine.DeliveredQuantity.Value) / dmqFactor;
+                    <span>@dmqFormated m<sup>3</sup></span>
+                    break;
+                case "MTR":
+                    // m
+                    <span>@despatchLine.DeliveredQuantity.Value m</span>
+                    break;
+                case "MTK":
+                    // m2
+                    <span>@despatchLine.DeliveredQuantity.Value m<sup>2</sup></span>
+                    break;
+                case "MTQ":
+                    // m3
+                    <span>@despatchLine.DeliveredQuantity.Value m<sup>3</sup></span>
+                    break;
+                case null:
+                    <span>@despatchLine.DeliveredQuantity.Value St.</span>
+                    break;
+
+            }
+        </dd>
+    </dl>
+}
