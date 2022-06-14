@@ -270,6 +270,30 @@
                     // m3
                     <span>@despatchLine.DeliveredQuantity.Value m<sup>3</sup></span>
                     break;
+                case "KGM":
+                    // Kilogramm
+                    <span>@despatchLine.DeliveredQuantity.Value kg</span>
+                    break;
+                case "TNE":
+                    // Tonnen
+                    <span>@despatchLine.DeliveredQuantity.Value t</span>
+                    break;
+                case "LTR":
+                    // Liter
+                    <span>@despatchLine.DeliveredQuantity.Value l</span>
+                    break;
+                case "LM":
+                    // Laufmeter
+                    <span>@despatchLine.DeliveredQuantity.Value lfm</span>
+                    break;
+                case "PK":
+                    // Pakete
+                    <span>@despatchLine.DeliveredQuantity.Value Paket</span>
+                    break;
+                case "D97":
+                    // Palette
+                    <span>@despatchLine.DeliveredQuantity.Value Palette</span>
+                    break;
                 case null:
                     <span>@despatchLine.DeliveredQuantity.Value St.</span>
                     break;
