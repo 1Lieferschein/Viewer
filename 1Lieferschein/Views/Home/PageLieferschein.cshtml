@@ -64,7 +64,7 @@
     </dd>
 </dl>
 
-<h5>Empfänger der Lieferung</h5> @*DeliveryCustomerParty*@
+<h5>Empfänger</h5> @*DeliveryCustomerParty*@
 <dl class="row border-bottom">
     <dt class="col-sm-3">
         Anschrift
@@ -79,7 +79,7 @@
         @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.Country.IdentificationCode)
     </dd>
     <dt class="col-sm-3">
-        Ansprechpartner Lieferung
+        Ansprechpartner
     </dt>
     <dd class="col-sm-9">
         @Html.DisplayFor(model => model.DeliveryCustomerParty.DeliveryContact.Name) <br />
@@ -176,7 +176,7 @@
     </dd>
 </dl>
 
-<h5>Versandartikel</h5>
+<h5>Versandware</h5>
 @foreach (var despatchLine in Model.DespatchLine)
 {
     <dl class="row">
