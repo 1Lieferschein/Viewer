@@ -9,5 +9,4 @@
 
 ## License
 
-This project is licensed under the terms of the MIT license.
-[MIT](LICENSE.md)
+This project is licensed under the terms of the [MIT](LICENSE.md) license.
