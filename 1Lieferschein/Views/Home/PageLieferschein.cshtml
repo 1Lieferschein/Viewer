@@ -48,7 +48,40 @@
     </dd>
 </dl>
 
-<h5>Versanddienstleister</h5> @*DespatchSupplierParty*@
+<h5>Verkäufer</h5> @*SellerSupplierParty*@
+<dl class="row border-bottom">
+    <dt class="col-sm-3">
+        Anschrift
+    </dt>
+    <dd class="col-sm-9">
+        @for (int i = 0; i < sellerCount; i++)
+        {
+            @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.AddressLine[i].Line) <br />
+        }
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.PostalZone)
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.CityName) <br />
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.Region) <br />
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.Country.IdentificationCode)
+    </dd>
+    <dt class="col-sm-3">
+        Ansprechpartner
+    </dt>
+    <dd class="col-sm-9">
+        @Html.DisplayFor(model => model.SellerSupplierParty.SellerContact.Name) <br />
+        @Html.DisplayFor(model => model.SellerSupplierParty.SellerContact.Telephone) <br />
+        @Html.DisplayFor(model => model.SellerSupplierParty.SellerContact.ElectronicMail) <br />
+    </dd>
+    <dt class="col-sm-3">
+        Ansprechpartner Buchhaltung
+    </dt>
+    <dd class="col-sm-9">
+        @Html.DisplayFor(model => model.SellerSupplierParty.AccountingContact.Name) <br />
+        @Html.DisplayFor(model => model.SellerSupplierParty.AccountingContact.Telephone) <br />
+        @Html.DisplayFor(model => model.SellerSupplierParty.AccountingContact.ElectronicMail)
+    </dd>
+</dl>
+
+<h5>Lieferant</h5> @*DespatchSupplierParty*@
 <dl class="row border-bottom">
     <dt class="col-sm-3">
         Anschrift
@@ -120,38 +153,6 @@
     </dd>
 </dl>
 
-<h5>Verkäufer</h5> @*SellerSupplierParty*@
-<dl class="row border-bottom">
-    <dt class="col-sm-3">
-        Anschrift
-    </dt>
-    <dd class="col-sm-9">
-        @for (int i = 0; i < sellerCount; i++)
-        {
-            @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.AddressLine[i].Line) <br />
-        }
-        @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.PostalZone)
-        @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.CityName) <br />
-        @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.Region) <br />
-        @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.Country.IdentificationCode)
-    </dd>
-    <dt class="col-sm-3">
-        Ansprechpartner
-    </dt>
-    <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.SellerSupplierParty.SellerContact.Name) <br />
-        @Html.DisplayFor(model => model.SellerSupplierParty.SellerContact.Telephone) <br />
-        @Html.DisplayFor(model => model.SellerSupplierParty.SellerContact.ElectronicMail) <br />
-    </dd>
-    <dt class="col-sm-3">
-        Ansprechpartner Buchhaltung
-    </dt>
-    <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.SellerSupplierParty.AccountingContact.Name) <br />
-        @Html.DisplayFor(model => model.SellerSupplierParty.AccountingContact.Telephone) <br />
-        @Html.DisplayFor(model => model.SellerSupplierParty.AccountingContact.ElectronicMail)
-    </dd>
-</dl>
 
 <h5>Lieferung</h5> @*Shipment*@
 <dl class="row border-bottom">
@@ -176,7 +177,7 @@
     </dd>
 </dl>
 
-<h5>Versandware</h5>
+<h5>Lieferpositionen</h5>
 @foreach (var despatchLine in Model.DespatchLine)
 {
     <dl class="row">
@@ -187,10 +188,22 @@
             @despatchLine.ID
         </dd>
         <dt class="col-sm-3">
-            Artikelnummer
+            Artikelnummer Verkäufer
         </dt>
         <dd class="col-sm-9">
             @despatchLine.Item.SellersItemIdentification.ID
+        </dd>
+        <dt class="col-sm-3">
+            Artikelnummer Hersteller
+        </dt>
+        <dd class="col-sm-9">
+            @despatchLine.Item.ManufacturersItemIdentification.ID
+        </dd>
+        <dt class="col-sm-3">
+            Artikelnummer Kunde
+        </dt>
+        <dd class="col-sm-9">
+            @despatchLine.Item.BuyersItemIdentification.ID
         </dd>
         <dt class="col-sm-3">
             Bezeichnung
