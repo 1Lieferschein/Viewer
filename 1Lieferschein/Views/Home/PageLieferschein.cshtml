@@ -22,13 +22,25 @@
 <h5>Bestellübersicht</h5> @*OrderReference*@
 <dl class="row border-bottom">
     <dt class="col-sm-3">
-        Liefernummer
+        Sendungsnummer
     </dt>
     <dd class="col-sm-9">
         @Html.DisplayFor(model => model.Shipment.ID)
     </dd>
     <dt class="col-sm-3">
-        Versanddatum
+        Lieferscheinnummer
+    </dt>
+    <dd class="col-sm-9">
+        
+    </dd>
+    <dt class="col-sm-3">
+        Erstell ID
+    </dt>
+    <dd class="col-sm-9">
+        @Html.DisplayFor(model => model.ID)
+    </dd>
+    <dt class="col-sm-3">
+        Erstelldatum
     </dt>
     <dd class="col-sm-9">
         @*@Html.DisplayFor(model => model.IssueDate)*@
@@ -157,7 +169,7 @@
 <h5>Lieferung</h5> @*Shipment*@
 <dl class="row border-bottom">
     <dt class="col-sm-3">
-        Lieferdatum
+        geplante Lieferung
     </dt>
     <dd class="col-sm-9">
         @*@Html.DisplayFor(model => model.Shipment.Delivery.ActualDeliveryDate)*@
@@ -175,6 +187,12 @@
         @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.CityName)<br />
         @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.Country.IdentificationCode)
     </dd>
+    <dt class="col-sm-3">
+        Geolocation
+    </dt>
+    <dd class="col-sm-9">
+        
+    </dd>
 </dl>
 
 <h5>Lieferpositionen</h5>
@@ -188,19 +206,25 @@
             @despatchLine.ID
         </dd>
         <dt class="col-sm-3">
-            Artikelnummer Verkäufer
+            Kundenbestellitem
         </dt>
         <dd class="col-sm-9">
-            @despatchLine.Item.SellersItemIdentification.ID
+            @despatchLine.OrderLineReference.LineID
         </dd>
         <dt class="col-sm-3">
-            Artikelnummer Hersteller
+            Herstellernummer 
         </dt>
         <dd class="col-sm-9">
             @despatchLine.Item.ManufacturersItemIdentification.ID
         </dd>
         <dt class="col-sm-3">
-            Artikelnummer Kunde
+            Verkäufer Artikelnummer
+        </dt>
+        <dd class="col-sm-9">
+            @despatchLine.Item.SellersItemIdentification.ID
+        </dd>
+        <dt class="col-sm-3">
+            Kunden Artikelnummer 
         </dt>
         <dd class="col-sm-9">
             @despatchLine.Item.BuyersItemIdentification.ID
@@ -312,6 +336,21 @@
                     break;
 
             }
+        </dd>
+        <dt class="col-sm-3">
+            Artikelreferenz
+        </dt>
+        <dd class="col-sm-9">
+            @despatchLine.Item.ItemSpecificationDocumentReference.ID <br/>
+            <a href="@despatchLine.Item.ItemSpecificationDocumentReference.Attachment.ExternalReference.URI">
+                @despatchLine.Item.ItemSpecificationDocumentReference.Attachment.ExternalReference.URI
+            </a> 
+        </dd>
+        <dt class="col-sm-3">
+            Gefahrenstoff
+        </dt>
+        <dd class="col-sm-9">
+            true or false
         </dd>
     </dl>
 }

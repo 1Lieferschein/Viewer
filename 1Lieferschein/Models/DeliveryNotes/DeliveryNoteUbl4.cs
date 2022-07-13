@@ -2136,11 +2136,11 @@
     public partial class DespatchLineOrderLineReference
     {
 
-        private byte lineIDField;
+        private string lineIDField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public byte LineID
+        public string LineID
         {
             get
             {
