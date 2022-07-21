@@ -6,3 +6,7 @@
 - Edit -> Paste Special -> Paste XML as Classes
 - change variables
 - update path in HomeController.cs & Results.cshtml
+
+## License
+
+This project is licensed under the terms of the [MIT](LICENSE.md) license.
