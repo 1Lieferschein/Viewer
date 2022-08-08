@@ -26,18 +26,20 @@
     <dd class="col-sm-9">
         @Html.DisplayFor(model => model.Shipment.ID)
     </dd>
+
     <dt class="col-sm-3">
         Lieferscheinnummer
     </dt>
-    <dd class="col-sm-9">
-        
+    <dd class="col-sm-9">        
     </dd>
+
     <dt class="col-sm-3">
         Erstell ID
     </dt>
     <dd class="col-sm-9">
         @Html.DisplayFor(model => model.ID)
     </dd>
+
     <dt class="col-sm-3">
         Erstelldatum
     </dt>
@@ -45,6 +47,7 @@
         @*@Html.DisplayFor(model => model.IssueDate)*@
         @parsedDate1
     </dd>
+
     <dt class="col-sm-3">
         geplante Lieferung
     </dt>
@@ -52,12 +55,14 @@
         @*@Html.DisplayFor(model => model.Shipment.Delivery.ActualDeliveryDate)*@
         @parsedDate2
     </dd>
+
     <dt class="col-sm-3">
         Kundennummer
     </dt>
     <dd class="col-sm-9">
         @Html.DisplayFor(model => model.OrderReference.ID)
     </dd>
+
     <dt class="col-sm-3">
         Kundenreferenz
     </dt>
@@ -82,6 +87,7 @@
         @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.Region)
         
     </dd>
+
     <dt class="col-sm-3">
         Ansprechpartner
     </dt>
@@ -90,6 +96,7 @@
         @Html.DisplayFor(model => model.SellerSupplierParty.SellerContact.Telephone) <br />
         @Html.DisplayFor(model => model.SellerSupplierParty.SellerContact.ElectronicMail) <br />
     </dd>
+
     <dt class="col-sm-3">
         Ansprechpartner Buchhaltung
     </dt>
@@ -130,6 +137,7 @@
         @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.PostalZone)
         @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.CityName)
     </dd>
+
     <dt class="col-sm-3">
         Ansprechpartner
     </dt>
@@ -154,6 +162,7 @@
         @Html.DisplayFor(model => model.BuyerCustomerParty.Party.PostalAddress.PostalZone)
         @Html.DisplayFor(model => model.BuyerCustomerParty.Party.PostalAddress.CityName)
     </dd>
+
     <dt class="col-sm-3">
         Ansprechpartner Buchhaltung
     </dt>
@@ -162,6 +171,7 @@
         @Html.DisplayFor(model => model.BuyerCustomerParty.AccountingContact.Telephone) <br />
         @Html.DisplayFor(model => model.BuyerCustomerParty.AccountingContact.ElectronicMail)
     </dd>
+
     <dt class="col-sm-3">
         Ansprechpartner Einkauf
     </dt>
@@ -182,6 +192,7 @@
         @*@Html.DisplayFor(model => model.Shipment.Delivery.ActualDeliveryDate)*@
         @parsedDate2
     </dd>
+
     <dt class="col-sm-3">
         Lieferdresse
     </dt>
@@ -194,11 +205,11 @@
         @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.PostalZone)
         @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.CityName)
     </dd>
+
     <dt class="col-sm-3">
         Geolocation
     </dt>
-    <dd class="col-sm-9">
-        
+    <dd class="col-sm-9">        
     </dd>
 </dl>
 
@@ -212,36 +223,42 @@
         <dd class="col-sm-9">
             @despatchLine.ID
         </dd>
+
         <dt class="col-sm-3">
             Kundenbestellitem
         </dt>
         <dd class="col-sm-9">
             @despatchLine.OrderLineReference.LineID
         </dd>
+
         <dt class="col-sm-3">
             Herstellernummer 
         </dt>
         <dd class="col-sm-9">
             @despatchLine.Item.ManufacturersItemIdentification.ID
         </dd>
+
         <dt class="col-sm-3">
             Verkäufer Artikelnummer
         </dt>
         <dd class="col-sm-9">
             @despatchLine.Item.SellersItemIdentification.ID
         </dd>
+
         <dt class="col-sm-3">
             Kunden Artikelnummer 
         </dt>
         <dd class="col-sm-9">
             @despatchLine.Item.BuyersItemIdentification.ID
         </dd>
+
         <dt class="col-sm-3">
             Bezeichnung
         </dt>
         <dd class="col-sm-9">
             @despatchLine.Item.Name
         </dd>
+
         <dt class="col-sm-3">
             Liefermenge
         </dt>
@@ -344,6 +361,7 @@
 
             }
         </dd>
+
         <dt class="col-sm-3">
             Artikelreferenz
         </dt>
@@ -353,6 +371,7 @@
                 @despatchLine.Item.ItemSpecificationDocumentReference.Attachment.ExternalReference.URI
             </a> 
         </dd>
+
         <dt class="col-sm-3">
             Gefahrgut
         </dt>
