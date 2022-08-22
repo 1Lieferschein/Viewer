@@ -20,6 +20,7 @@
 
 <h5>Übersicht</h5> @*OrderReference*@
 <dl class="row border-bottom">
+
     <dt class="col-sm-3">
         Sendungsnummer
     </dt>
@@ -41,7 +42,7 @@
     </dd>
 
     <dt class="col-sm-3">
-        Erstelldatum
+        Ausstelldatum 
     </dt>
     <dd class="col-sm-9">
         @*@Html.DisplayFor(model => model.IssueDate)*@
@@ -57,26 +58,25 @@
     </dd>
 
     <dt class="col-sm-3">
-        Belegnummer extern
-    </dt>
-    <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.OrderReference.ID) <br/>
-        @Html.DisplayFor(model => model.OrderReference.CustomerReference)
-    </dd>
-
-    @*<dt class="col-sm-3">
-        Kundennummer
+        Bestellnummer des Käufers
     </dt>
     <dd class="col-sm-9">
         @Html.DisplayFor(model => model.OrderReference.ID)
     </dd>
 
     <dt class="col-sm-3">
-        Kundenreferenz
+        Bestellnummer des Verkäufers
+    </dt>
+    <dd class="col-sm-9">
+         @Html.DisplayFor(model => model.OrderReference.SalesOrderID)
+    </dd>        
+
+    <dt class="col-sm-3">
+        Bauvorhaben
     </dt>
     <dd class="col-sm-9">
         @Html.DisplayFor(model => model.OrderReference.CustomerReference)
-    </dd>*@
+    </dd>
 </dl>
 
 <h5>Verkäufer</h5> @*SellerSupplierParty*@
@@ -122,7 +122,7 @@
         Debitor
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.PartyName)
+        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.PartyName.Name)
     </dd>
 
     <dt class="col-sm-3">
@@ -203,13 +203,13 @@
 
 <h5>Lieferung</h5> @*Shipment*@
 <dl class="row border-bottom">
-    <dt class="col-sm-3">
+
+    @*<dt class="col-sm-3">
         geplante Lieferung
     </dt>
     <dd class="col-sm-9">
-        @*@Html.DisplayFor(model => model.Shipment.Delivery.ActualDeliveryDate)*@
         @ActualDeliveryDate
-    </dd>
+    </dd>*@
 
     <dt class="col-sm-3">
         Lieferdresse
