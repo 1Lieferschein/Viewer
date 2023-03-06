@@ -51,7 +51,7 @@ namespace _1Lieferschein.Controllers
             {
                 IFormFile uploadFile = fileUpload;
 
-                //check how if the uploaded file is a xml
+                //check if the uploaded file is a xml
                 String contentType = uploadFile.ContentType;
                 bool IsValidDoc = false;
                 if (!string.IsNullOrEmpty(contentType) && contentType.Equals(MediaTypeNames.Text.Xml))
@@ -63,51 +63,34 @@ namespace _1Lieferschein.Controllers
                 {
                     ViewBag.Message = "Fehler: Ungültiges Dokument";
                     return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-                }
-                
+                }                
                 
                 using (var ms = new MemoryStream())
                 {
                     try
-                    {                       
-
+                    {
                         var serializer = new XmlSerializer(typeof(DespatchAdvice));
                         var despatchAdvice = serializer.Deserialize(fileUpload.OpenReadStream());
 
-
-
-
                         doc.LoadXml((string)despatchAdvice);
-
-                        //doc.LoadXml("<?xml version=\"1.0\" encoding=\"UTF - 8\"?> \n" +
-                        //    "<DespatchAdvice xmlns = \"urn:oasis:names:specification:ubl:schema:xsd:DespatchAdvice-2\" xmlns: cac = \"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\" xmlns: cbc = \"urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2\" xmlns: cec = \"urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2\" xmlns: csc = \"urn:oasis:names:specification:ubl:schema:xsd:CommonSignatureComponents-2\"> \n" +
-                        //    "   <cac:OrderReference> \n" +
-                        //    "       <cbc:ID> 1528 </cbc:ID> \n" +
-                        //    "       <cbc:SalesOrderID> 4500274495 </cbc:SalesOrderID> \n" +
-                        //    "       <cbc:CustomerReference> Demo_Baustelle_1 </cbc:CustomerReference> \n" +
-                        //    "   </cac:OrderReference> \n" +
-                        //    "</DespatchAdvice>"
-                        //    );
 
 
                         //doc.LoadXml("<book genre='novel' ISBN='1-861001-57-5'>" +
                         //  "<title>Pride And Prejudice</title>" +
                         //  "</book>");
 
-                        XmlNode root = doc.FirstChild;
+
+                        //XmlNode root = doc.FirstChild;
+                        //Console.WriteLine(doc.FirstChild);
 
 
 
-
+                        //Alter Code
                         //DespatchAdvice despatchAdvice = Common.Deserialize<DespatchAdvice>(await Common.ReadAsStringAsync(uploadFile));
                         //ViewBag.Message = "XML erfolgreich hochgeladen.";
 
-
                         //var despatch = new DespatchAdvice();
                         //XmlDocument j = despatch;
-
-
-                        //doc = despatchAdvice;
 
                         //switch (i)
                         //{

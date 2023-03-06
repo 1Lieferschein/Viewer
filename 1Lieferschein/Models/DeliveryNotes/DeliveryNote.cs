@@ -20,7 +20,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
 
 
-       
+
 
 
         //static List<string> xmlnodes = new List<string>();
@@ -46,7 +46,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
         //    }
 
         //}
-
+        
     }
 
 }
