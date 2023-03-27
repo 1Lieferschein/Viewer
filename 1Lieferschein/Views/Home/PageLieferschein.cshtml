@@ -1,7 +1,7 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@*@{
+@{
     var despatchCount = Model.DespatchSupplierParty.Party.PostalAddress.AddressLine.Count();
     var deliverCount = Model.DeliveryCustomerParty.Party.PostalAddress.AddressLine.Count();
     var buyerCount = Model.BuyerCustomerParty.Party.PostalAddress.AddressLine.Count();
@@ -16,10 +16,10 @@
 
    }
 
-@model _1Lieferschein.Models.DeliveryNotes.DespatchAdvice*@
+@model _1Lieferschein.Models.DeliveryNotes.DespatchAdvice
 
 @*OrderReference*@
-@*<h5>Übersicht</h5> 
+<h5>Übersicht</h5> 
 <dl class="row border-bottom">
 
     <dt class="col-sm-3">
@@ -76,10 +76,10 @@
     <dd class="col-sm-9">
         @Html.DisplayFor(model => model.OrderReference.CustomerReference)
     </dd>
-</dl>*@
+</dl>
 
 @*SellerSupplierParty*@
-@*<h5>Verkäufer</h5> 
+<h5>Verkäufer</h5> 
 <dl class="row border-bottom">
     <dt class="col-sm-3">
         Anschrift
@@ -113,10 +113,10 @@
         @Html.DisplayFor(model => model.SellerSupplierParty.AccountingContact.Telephone) <br />
         @Html.DisplayFor(model => model.SellerSupplierParty.AccountingContact.ElectronicMail)
     </dd>
-</dl>*@
+</dl>
 
 @*BuyerCustomerParty*@
-@*<h5>Käufer</h5> 
+<h5>Käufer</h5> 
 <dl class="row border-bottom">
     <dt class="col-sm-3">
         Debitor
@@ -155,10 +155,10 @@
         @Html.DisplayFor(model => model.BuyerCustomerParty.BuyerContact.Telephone) <br />
         @Html.DisplayFor(model => model.BuyerCustomerParty.BuyerContact.ElectronicMail)
     </dd>
-</dl>*@
+</dl>
 
 @*DeliveryCustomerParty*@
-@*<h5>Empfänger</h5> 
+<h5>Empfänger</h5> 
 <dl class="row border-bottom">
     <dt class="col-sm-3">
         Anschrift
@@ -181,10 +181,10 @@
         @Html.DisplayFor(model => model.DeliveryCustomerParty.DeliveryContact.Telephone) <br />
         @Html.DisplayFor(model => model.DeliveryCustomerParty.DeliveryContact.ElectronicMail) <br />
     </dd>
-</dl>*@
+</dl>
 
 @*DespatchSupplierParty*@
-@*<h5>Lieferant</h5> 
+<h5>Lieferant</h5> 
 <dl class="row border-bottom">
     <dt class="col-sm-3">
         Anschrift
@@ -198,10 +198,10 @@
         @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.PostalZone)
         @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.CityName) 
     </dd>
-</dl>*@
+</dl>
 
 @*Shipment*@
-@*<h5>Lieferung</h5> 
+<h5>Lieferung</h5> 
 <dl class="row border-bottom">
 
     <dt class="col-sm-3">
@@ -222,10 +222,10 @@
     </dt>
     <dd class="col-sm-9">        
     </dd>
-</dl>*@
+</dl>
 
 @*DespatchLine*@
-@*<h5>Lieferpositionen</h5> 
+<h5>Lieferpositionen</h5> 
 @foreach (var despatchLine in Model.DespatchLine)
 {
     <dl class="row">
@@ -392,4 +392,4 @@
         </dd>        
 
     </dl>
-}*@
+}
