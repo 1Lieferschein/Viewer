@@ -167,7 +167,7 @@ namespace _1Lieferschein.Controllers
             return View();
         }
 
-       
+
 
 
         [HttpPost("Results")]
@@ -185,13 +185,20 @@ namespace _1Lieferschein.Controllers
                 IFormFile uploadFile = fileUpload[i];
 
                 String contentType = uploadFile.ContentType;
-                bool IsValidDoc = false;
-                if (!string.IsNullOrEmpty(contentType) && contentType.Equals(MediaTypeNames.Text.Xml))
-                {
-                    IsValidDoc = true;
-                }
+                // RR: redundant?
+                //bool IsValidDoc = false;
+                //if (!string.IsNullOrEmpty(contentType) && contentType.Equals(MediaTypeNames.Text.Xml))
+                //{
+                //    IsValidDoc = true;
+                //}
 
-                if (IsValidDoc == false)
+                //if (IsValidDoc == false)
+                //{
+                //    ViewBag.Message = "Fehler: Ungültiges Dokument";
+                //    return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+                //}
+
+                if (string.IsNullOrEmpty(contentType) && contentType.Equals(MediaTypeNames.Text.Xml))
                 {
                     ViewBag.Message = "Fehler: Ungültiges Dokument";
                     return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
@@ -201,6 +208,21 @@ namespace _1Lieferschein.Controllers
                 {
                     try
                     {
+                        // initialisiere deserializer
+                        XmlSerializer ser = new XmlSerializer(typeof(DespatchAdvice));
+
+                        // füge Event für Behandlung unbekannter Objekte hinzu
+                        ser.UnknownElement += new XmlElementEventHandler(Serializer_UnknownElement);
+
+                        // A FileStream is necessary to read the XML document.
+                        //string path = @"C:\Users\Roentgen\Desktop\Rösch\Viewer\Samples\Sample2.xml";
+                        string path = @"C:\Projekte\1Lieferschein\Sample1.xml";
+                        FileStream fs = new FileStream(path, FileMode.Open);
+                        DespatchAdvice des = (DespatchAdvice)ser.Deserialize(fs);
+                        fs.Close();
+
+                        // readAsStringAsync --> Serialisiert den HTTP-Inhalt in eine Zeichenfolge als asynchroner Vorgang                       
+
                         DespatchAdvice despatchAdvice = Common.Deserialize<DespatchAdvice>(await Common.ReadAsStringAsync(uploadFile));
                         ViewBag.Message = "XML erfolgreich hochgeladen.";
 
@@ -226,6 +248,15 @@ namespace _1Lieferschein.Controllers
             return View("Results", returnModel);
         }
 
+        private void Serializer_UnknownElement(object sender, XmlElementEventArgs e)
+        {
+            // JS: Hier müssten die Daten an die Stringliste des Despatchadvices drangehängt werden
+            Console.WriteLine("Unknown Element");
+            Console.WriteLine("\t" + e.Element.Name + " " + e.Element.InnerXml);
+            Console.WriteLine("\t LineNumber: " + e.LineNumber);
+            Console.WriteLine("\t LinePosition: " + e.LinePosition);
+        }
+
         private byte[] ConvertToByte(IFormFile file)
         {
             using (var memoryStream = new MemoryStream())
@@ -246,5 +277,4 @@ namespace _1Lieferschein.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
-
 }
