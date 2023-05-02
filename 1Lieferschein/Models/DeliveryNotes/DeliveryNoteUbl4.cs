@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Xml.Serialization;
@@ -14,7 +15,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
     }
 
-
+   
 
 
     // NOTE: Generated code may require at least .NET Framework 4.5 or .NET Core/Standard 2.0.
@@ -51,6 +52,11 @@ namespace _1Lieferschein.Models.DeliveryNotes
         private Shipment shipmentField;
 
         private DespatchLine[] despatchLineField;
+
+        public List<String> unknownInformation
+        {
+            get; set;
+        }
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
