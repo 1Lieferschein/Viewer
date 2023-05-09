@@ -19,6 +19,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using System.Xml.Schema;
 using System.Collections;
+using System.Runtime.CompilerServices;
 
 namespace _1Lieferschein.Controllers
 {
@@ -47,10 +48,7 @@ namespace _1Lieferschein.Controllers
         [HttpPost("Results")]
         public async Task<ActionResult> UploadFile(IFormFile[] fileUpload)
         {
-
-            // IFormFile upload = fileUpload[0];
             DeliveryNoteUbl4 returnModel = new DeliveryNoteUbl4();
-            //DeliveryNote returnModel = new DeliveryNote();
 
             unknownInformation = new List<String>();
 
@@ -114,11 +112,7 @@ namespace _1Lieferschein.Controllers
 
         private void Serializer_UnknownElement(object sender, XmlElementEventArgs e)
         {
-            unknownInformation.Add("Unknown Element");
-            unknownInformation.Add(e.Element.Name + " " + e.Element.InnerXml);
-            unknownInformation.Add("LineNumber: " + e.LineNumber);
-            unknownInformation.Add("LinePosition: " + e.LinePosition);
-            unknownInformation.Add(""); // blank line; improve reading convenience
+            unknownInformation.Add("In Zeile Nr. " + e.LineNumber + ": " + e.Element.Name + " " + e.Element.InnerXml);
         }
 
         private byte[] ConvertToByte(IFormFile file)

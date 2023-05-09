@@ -228,7 +228,7 @@
 <h5>Lieferpositionen</h5> 
 @foreach (var despatchLine in Model.DespatchLine)
 {
-    <dl class="row">
+    <dl class="row border-bottom">
         <dt class="col-sm-3">
             LieferpositionNr.
         </dt>
@@ -392,4 +392,16 @@
         </dd>        
 
     </dl>
+}
+
+@*Unknown Elements*@
+<h5>Vom Standard abweichende Informationen</h5>
+<p>Im Folgenden werden Elemente aufgelistet, die im 1Lieferschein enthalten sind, jedoch nicht dem Standard entsprechen:</p>
+@foreach (var unknonwElem in Model.unknownInformation)
+{
+  <dl>        
+    <dd>
+        @unknonwElem<br>
+    </dd>
+</dl>  
 }

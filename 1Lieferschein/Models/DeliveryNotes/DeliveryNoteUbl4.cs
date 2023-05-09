@@ -12,11 +12,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
         public DespatchAdvice DespatchAdvice1 { get; set; }
 
         public DespatchAdvice DespatchAdvice2 { get; set; }
-
     }
-
-   
-
 
     // NOTE: Generated code may require at least .NET Framework 4.5 or .NET Core/Standard 2.0.
     /// <remarks/>
