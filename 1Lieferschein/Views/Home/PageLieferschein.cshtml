@@ -2,24 +2,22 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    var despatchCount = Model.DespatchSupplierParty.Party.PostalAddress.AddressLine.Count();
-    var deliverCount = Model.DeliveryCustomerParty.Party.PostalAddress.AddressLine.Count();
-    var buyerCount = Model.BuyerCustomerParty.Party.PostalAddress.AddressLine.Count();
-    var sellerCount = Model.SellerSupplierParty.Party.PostalAddress.AddressLine.Count();
-    var shipCount = Model.Shipment.Delivery.DeliveryAddress.AddressLine.Count();
+    int? despatchCount = Model?.DespatchSupplierParty?.Party?.PostalAddress?.AddressLine?.Count();
+    int? deliverCount = Model?.DeliveryCustomerParty?.Party?.PostalAddress?.AddressLine?.Count();
+    int? buyerCount = Model?.BuyerCustomerParty?.Party?.PostalAddress?.AddressLine?.Count();
+    int? sellerCount = Model?.SellerSupplierParty?.Party?.PostalAddress?.AddressLine?.Count();
+    int? shipCount = Model?.Shipment?.Delivery?.DeliveryAddress?.AddressLine?.Count();
 
     DateTime date1 = (Model.IssueDate);
     string IssueDate = date1.ToString("dd.MM.yyyy");
 
-    DateTime date2 = (Model.Shipment.Delivery.ActualDeliveryDate);
-    string ActualDeliveryDate = date2.ToString("dd.MM.yyyy");
-
-   }
+    DateTime? date2 = Model.Shipment?.Delivery?.ActualDeliveryDate;
+    string ActualDeliveryDate = date2 != null ? date2?.ToString("dd.MM.yyyy") : "Not set";
+}
 
 @model _1Lieferschein.Models.DeliveryNotes.DespatchAdvice
-
 @*OrderReference*@
-<h5>Übersicht</h5> 
+<h5>Übersicht</h5>
 <dl class="row border-bottom">
 
     <dt class="col-sm-3">
@@ -32,7 +30,7 @@
     <dt class="col-sm-3">
         Lieferscheinnummer
     </dt>
-    <dd class="col-sm-9">        
+    <dd class="col-sm-9">
     </dd>
 
     <dt class="col-sm-3">
@@ -43,9 +41,9 @@
     </dd>
 
     <dt class="col-sm-3">
-        Ausstelldatum 
+        Ausstelldatum
     </dt>
-    <dd class="col-sm-9">        
+    <dd class="col-sm-9">
         @IssueDate
     </dd>
 
@@ -67,8 +65,8 @@
         Bestellnummer des Verkäufers
     </dt>
     <dd class="col-sm-9">
-         @Html.DisplayFor(model => model.OrderReference.SalesOrderID)
-    </dd>        
+        @Html.DisplayFor(model => model.OrderReference.SalesOrderID)
+    </dd>
 
     <dt class="col-sm-3">
         Bauvorhaben
@@ -79,7 +77,7 @@
 </dl>
 
 @*SellerSupplierParty*@
-<h5>Verkäufer</h5> 
+<h5>Verkäufer</h5>
 <dl class="row border-bottom">
     <dt class="col-sm-3">
         Anschrift
@@ -93,7 +91,7 @@
         @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.PostalZone)
         @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.CityName) <br />
         @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.Region)
-        
+
     </dd>
 
     <dt class="col-sm-3">
@@ -116,7 +114,7 @@
 </dl>
 
 @*BuyerCustomerParty*@
-<h5>Käufer</h5> 
+<h5>Käufer</h5>
 <dl class="row border-bottom">
     <dt class="col-sm-3">
         Debitor
@@ -158,7 +156,7 @@
 </dl>
 
 @*DeliveryCustomerParty*@
-<h5>Empfänger</h5> 
+<h5>Empfänger</h5>
 <dl class="row border-bottom">
     <dt class="col-sm-3">
         Anschrift
@@ -184,7 +182,7 @@
 </dl>
 
 @*DespatchSupplierParty*@
-<h5>Lieferant</h5> 
+<h5>Lieferant</h5>
 <dl class="row border-bottom">
     <dt class="col-sm-3">
         Anschrift
@@ -193,15 +191,15 @@
         @for (int i = 0; i < despatchCount; i++)
         {
             @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.AddressLine[i].Line) <br />
-        }        
+        }
         @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.Country.IdentificationCode)
         @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.PostalZone)
-        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.CityName) 
+        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.CityName)
     </dd>
 </dl>
 
 @*Shipment*@
-<h5>Lieferung</h5> 
+<h5>Lieferung</h5>
 <dl class="row border-bottom">
 
     <dt class="col-sm-3">
@@ -210,7 +208,7 @@
     <dd class="col-sm-9">
         @for (int i = 0; i < shipCount; i++)
         {
-            @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.AddressLine[i].Line) <br />            
+            @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.AddressLine[i].Line) <br />
         }
         @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.Country.IdentificationCode)
         @Html.DisplayFor(model => model.Shipment.Delivery.DeliveryAddress.PostalZone)
@@ -220,12 +218,12 @@
     <dt class="col-sm-3">
         Geolocation
     </dt>
-    <dd class="col-sm-9">        
+    <dd class="col-sm-9">
     </dd>
 </dl>
 
 @*DespatchLine*@
-<h5>Lieferpositionen</h5> 
+<h5>Lieferpositionen</h5>
 @foreach (var despatchLine in Model.DespatchLine)
 {
     <dl class="row border-bottom">
@@ -233,42 +231,42 @@
             LieferpositionNr.
         </dt>
         <dd class="col-sm-9">
-            @despatchLine.ID
+            @despatchLine.ID?
         </dd>
 
         <dt class="col-sm-3">
-            Kundenbestellitem
+            Kundenbestellitem?
         </dt>
         <dd class="col-sm-9">
-            @despatchLine.OrderLineReference.LineID
+            @despatchLine.OrderLineReference?.LineID?
         </dd>
 
         <dt class="col-sm-3">
-            Herstellernummer 
+            Herstellernummer
         </dt>
         <dd class="col-sm-9">
-            @despatchLine.Item.ManufacturersItemIdentification.ID
+            @despatchLine.Item.ManufacturersItemIdentification?.ID?
         </dd>
 
         <dt class="col-sm-3">
             Verkäufer Artikelnummer
         </dt>
         <dd class="col-sm-9">
-            @despatchLine.Item.SellersItemIdentification.ID
+            @despatchLine.Item.SellersItemIdentification?.ID?
         </dd>
 
         <dt class="col-sm-3">
-            Kunden Artikelnummer 
+            Kunden Artikelnummer
         </dt>
         <dd class="col-sm-9">
-            @despatchLine.Item.BuyersItemIdentification.ID
+            @despatchLine.Item.BuyersItemIdentification?.ID?
         </dd>
 
         <dt class="col-sm-3">
             Bezeichnung
         </dt>
         <dd class="col-sm-9">
-            @despatchLine.Item.Name
+            @despatchLine.Item.Name?
         </dd>
 
         <dt class="col-sm-3">
@@ -378,18 +376,18 @@
             Artikelreferenz
         </dt>
         <dd class="col-sm-9">
-            @despatchLine.Item.ItemSpecificationDocumentReference.ID <br/>
+            @despatchLine.Item.ItemSpecificationDocumentReference.ID <br />
             <a href="@despatchLine.Item.ItemSpecificationDocumentReference.Attachment.ExternalReference.URI">
                 @despatchLine.Item.ItemSpecificationDocumentReference.Attachment.ExternalReference.URI
-            </a> 
+            </a>
         </dd>
-        
+
         <dt class="col-sm-3">
             Gefahrgut
         </dt>
         <dd class="col-sm-9">
-            
-        </dd>        
+
+        </dd>
 
     </dl>
 }
@@ -399,9 +397,9 @@
 <p>Im Folgenden werden Elemente aufgelistet, die im 1Lieferschein enthalten sind, jedoch nicht dem Standard entsprechen:</p>
 @foreach (var unknonwElem in Model.unknownInformation)
 {
-  <dl>        
-    <dd>
-        @unknonwElem<br>
-    </dd>
-</dl>  
+    <dl>
+        <dd>
+            @unknonwElem<br>
+        </dd>
+    </dl>
 }
