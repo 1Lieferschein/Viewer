@@ -48,7 +48,8 @@ namespace _1Lieferschein.Controllers
         [HttpPost("Results")]
         public async Task<ActionResult> UploadFile(IFormFile[] fileUpload)
         {
-            DeliveryNoteUbl4 returnModel = new DeliveryNoteUbl4();
+            //DeliveryNoteUbl4 returnModel = new DeliveryNoteUbl4();
+            DA01 returnModel = new DA01();
 
             unknownInformation = new List<String>();
 
