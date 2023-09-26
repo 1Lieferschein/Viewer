@@ -112,11 +112,12 @@
     <dd class="col-sm-9">
         @Html.DisplayFor(model => model.Signature.SignatoryParty.Contact.ID)<br />
         @Html.DisplayFor(model => model.Signature.SignatoryParty.Contact.Name)<br />
-        @Html.DisplayFor(model => model.Signature.SignatoryParty.Contact.Telephone)<br />
-        @Html.DisplayFor(model => model.Signature.SignatoryParty.Contact.Telefax)<br />
-        @Html.DisplayFor(model => model.Signature.SignatoryParty.Contact.ElectronicMail)<br />
+        Tel.: @Html.DisplayFor(model => model.Signature.SignatoryParty.Contact.Telephone)<br />
+        Fax: @Html.DisplayFor(model => model.Signature.SignatoryParty.Contact.Telefax)<br />
+        E-Mail: @Html.DisplayFor(model => model.Signature.SignatoryParty.Contact.ElectronicMail)<br />
         @Html.DisplayFor(model => model.Signature.SignatoryParty.Contact.Note)<br />
-        @Html.DisplayFor(model => model.Signature.SignatoryParty.Contact.OtherCommunication.Channel)<br />
+        Andere Kommunikationsmöglichkeiten: <br />
+        @Html.DisplayFor(model => model.Signature.SignatoryParty.Contact.OtherCommunication.Channel)<br /> 
         @Html.DisplayFor(model => model.Signature.SignatoryParty.Contact.OtherCommunication.Value)<br />
     </dd>
 
@@ -124,19 +125,19 @@
         Person
     </dt>
     <dd class="col-sm-9">
+        @Html.DisplayFor(model => model.Signature.SignatoryParty.Person.Title)
         @Html.DisplayFor(model => model.Signature.SignatoryParty.Person.FirstName)
-        @Html.DisplayFor(model => model.Signature.SignatoryParty.Person.FamilyName)
-        @Html.DisplayFor(model => model.Signature.SignatoryParty.Person.Title)<br />
+        @Html.DisplayFor(model => model.Signature.SignatoryParty.Person.FamilyName)<br />        
         @Html.DisplayFor(model => model.Signature.SignatoryParty.Person.JobTitle)<br />
         @Html.DisplayFor(model => model.Signature.SignatoryParty.Person.NationalityID)<br />
+        @Html.DisplayFor(model => model.Signature.SignatoryParty.Person.GenderCode)<br />
+        <br />
 
-        @*Kontaktdaten zur Person*@
+        Kontaktdaten der Person:<br />
         @Html.DisplayFor(model => model.Signature.SignatoryParty.Person.Contact.Name)<br />
-        @Html.DisplayFor(model => model.Signature.SignatoryParty.Person.Contact.Telephone)<br />
-        @Html.DisplayFor(model => model.Signature.SignatoryParty.Person.Contact.ElectronicMail)<br />
-        @Html.DisplayFor(model => model.Signature.SignatoryParty.Person.Contact.Note)<br />
-
-        @Html.DisplayFor(model => model.Signature.SignatoryParty.Person.GenderCode)
+        Tel.: @Html.DisplayFor(model => model.Signature.SignatoryParty.Person.Contact.Telephone)<br />
+        E-Mail: @Html.DisplayFor(model => model.Signature.SignatoryParty.Person.Contact.ElectronicMail)<br />
+        @Html.DisplayFor(model => model.Signature.SignatoryParty.Person.Contact.Note)<br />        
     </dd>
 
 </dl>
@@ -150,7 +151,7 @@
         Name (inkl. Firmierung)
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.SellerSupplierParty.PartyLegalEntity.RegistrationName)
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.PartyLegalEntity.RegistrationName)
     </dd>
 
     <dt class="col-sm-3">
@@ -178,76 +179,79 @@
         Adresse
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.SellerSupplierParty.PostalAddress.StreetName)
-        @Html.DisplayFor(model => model.SellerSupplierParty.PostalAddress.BuildingNumber)<br />
-        @Html.DisplayFor(model => model.SellerSupplierParty.PostalAddress.PostalZone)
-        @Html.DisplayFor(model => model.SellerSupplierParty.PostalAddress.CityName)<br />
-        @Html.DisplayFor(model => model.SellerSupplierParty.PostalAddress.CountrySubentityCode)
-        @Html.DisplayFor(model => model.SellerSupplierParty.PostalAddress.CountrySubentity)<br />
-        @Html.DisplayFor(model => model.SellerSupplierParty.PostalAddress.TimezoneOffset)<br />
-        @Html.DisplayFor(model => model.SellerSupplierParty.PostalAddress.Country.IdentificationCode)
-        @Html.DisplayFor(model => model.SellerSupplierParty.PostalAddress.Country.Name)<br />
-        @Html.DisplayFor(model => model.SellerSupplierParty.PostalAddress.LocationCoordinate)
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.StreetName)
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.BuildingNumber)<br />
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.PostalZone)
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.CityName)<br />
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.CountrySubentityCode)
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.CountrySubentity)<br />
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.TimezoneOffset)<br />
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.Country.IdentificationCode)
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.Country.Name)<br />
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.PostalAddress.LocationCoordinate)
     </dd>
 
     <dt class="col-sm-3">
         Website
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.SellerSupplierParty.WebsiteURI)
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.WebsiteURI)
     </dd>
 
     <dt class="col-sm-3">
         Identifikator
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.SellerSupplierParty.PartyIdentification.ID)
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.PartyIdentification.ID)
     </dd>
 
     <dt class="col-sm-3">
         Sprache
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.SellerSupplierParty.Language)
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.Language)
     </dd>
 
     <dt class="col-sm-3">
         Kontakt
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.SellerSupplierParty.Contact.ID)<br />
-        @Html.DisplayFor(model => model.SellerSupplierParty.Contact.Name)<br />
-        @Html.DisplayFor(model => model.SellerSupplierParty.Contact.Telephone)<br />
-        @Html.DisplayFor(model => model.SellerSupplierParty.Contact.Telefax)<br />
-        @Html.DisplayFor(model => model.SellerSupplierParty.Contact.ElectronicMail)<br />
-        @Html.DisplayFor(model => model.SellerSupplierParty.Contact.Note)<br />
-        @Html.DisplayFor(model => model.SellerSupplierParty.Contact.OtherCommunication.Channel)<br />
-        @Html.DisplayFor(model => model.SellerSupplierParty.Contact.OtherCommunication.Value)<br />
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.Contact.ID)<br />
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.Contact.Name)<br />
+        Tel.: @Html.DisplayFor(model => model.SellerSupplierParty.Party.Contact.Telephone)<br />
+        Fax: @Html.DisplayFor(model => model.SellerSupplierParty.Party.Contact.Telefax)<br />
+        E-Mail: @Html.DisplayFor(model => model.SellerSupplierParty.Party.Contact.ElectronicMail)<br />
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.Contact.Note)<br />
+        Andere Kommuniktinsmöglichhkeiten: <br />
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.Contact.OtherCommunication.Channel)<br />
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.Contact.OtherCommunication.Value)<br />
     </dd>
 
     <dt class="col-sm-3">
         Person
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.SellerSupplierParty.Person.FirstName)
-        @Html.DisplayFor(model => model.SellerSupplierParty.Person.FamilyName)
-        @Html.DisplayFor(model => model.SellerSupplierParty.Person.Title)<br />
-        @Html.DisplayFor(model => model.SellerSupplierParty.Person.JobTitle)<br />
-        @Html.DisplayFor(model => model.SellerSupplierParty.Person.NationalityID)<br />
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.Person.Title)
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.Person.FirstName)
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.Person.FamilyName)<br />
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.Person.JobTitle)<br />
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.Person.NationalityID)<br />
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.Person.GenderCode)<br />
+        <br />
 
-        @*Kontaktdaten zur Person fehlen*@
-        @Html.DisplayFor(model => model.SellerSupplierParty.Person.Contact.Name)<br />
-        @Html.DisplayFor(model => model.SellerSupplierParty.Person.Contact.Telephone)<br />
-        @Html.DisplayFor(model => model.SellerSupplierParty.Person.Contact.ElectronicMail)<br />
-        @Html.DisplayFor(model => model.SellerSupplierParty.Person.Contact.Note)<br />
+        Kontaktdaten der Person:<br />
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.Person.Contact.Name)<br />
+        Tel.: @Html.DisplayFor(model => model.SellerSupplierParty.Party.Person.Contact.Telephone)<br />
+        E-Mail: @Html.DisplayFor(model => model.SellerSupplierParty.Party.Person.Contact.ElectronicMail)<br />
+        @Html.DisplayFor(model => model.SellerSupplierParty.Party.Person.Contact.Note)<br />
 
-        @Html.DisplayFor(model => model.SellerSupplierParty.Person.GenderCode)
+       
     </dd>
 
 </dl>
 
 
-@*DespatchSupplierParty*@
+@*DespatchSupplierParty.Party*@
 <h5>Versender</h5>
 <dl class="row border-bottom">
 
@@ -255,7 +259,7 @@
         Name (inkl. Firmierung)
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.DespatchSupplierParty.PartyLegalEntity.RegistrationName)
+        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PartyLegalEntity.RegistrationName)
     </dd>
 
     <dt class="col-sm-3">
@@ -297,76 +301,79 @@
         Adresse
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.DespatchSupplierParty.PostalAddress.StreetName)
-        @Html.DisplayFor(model => model.DespatchSupplierParty.PostalAddress.BuildingNumber)<br />
-        @Html.DisplayFor(model => model.DespatchSupplierParty.PostalAddress.PostalZone)
-        @Html.DisplayFor(model => model.DespatchSupplierParty.PostalAddress.CityName)<br />
-        @Html.DisplayFor(model => model.DespatchSupplierParty.PostalAddress.CountrySubentityCode)
-        @Html.DisplayFor(model => model.DespatchSupplierParty.PostalAddress.CountrySubentity)<br />
-        @Html.DisplayFor(model => model.DespatchSupplierParty.PostalAddress.TimezoneOffset)<br />
-        @Html.DisplayFor(model => model.DespatchSupplierParty.PostalAddress.Country.IdentificationCode)
-        @Html.DisplayFor(model => model.DespatchSupplierParty.PostalAddress.Country.Name)<br />
-        @Html.DisplayFor(model => model.DespatchSupplierParty.PostalAddress.LocationCoordinate)
+        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.StreetName)
+        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.BuildingNumber)<br />
+        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.PostalZone)
+        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.CityName)<br />
+        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.CountrySubentityCode)
+        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.CountrySubentity)<br />
+        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.TimezoneOffset)<br />
+        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.Country.IdentificationCode)
+        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.Country.Name)<br />
+        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PostalAddress.LocationCoordinate)
     </dd>
 
     <dt class="col-sm-3">
         Website
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.DespatchSupplierParty.WebsiteURI)
+        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.WebsiteURI)
     </dd>
 
     <dt class="col-sm-3">
         Identifikator
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.DespatchSupplierParty.PartyIdentification.ID)
+        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PartyIdentification.ID)
     </dd>
 
     <dt class="col-sm-3">
         Sprache
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.DespatchSupplierParty.Language)
+        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.Language)
     </dd>
 
     <dt class="col-sm-3">
         Kontakt
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.DespatchSupplierParty.Contact.ID)<br />
-        @Html.DisplayFor(model => model.DespatchSupplierParty.Contact.Name)<br />
-        @Html.DisplayFor(model => model.DespatchSupplierParty.Contact.Telephone)<br />
-        @Html.DisplayFor(model => model.DespatchSupplierParty.Contact.Telefax)<br />
-        @Html.DisplayFor(model => model.DespatchSupplierParty.Contact.ElectronicMail)<br />
-        @Html.DisplayFor(model => model.DespatchSupplierParty.Contact.Note)<br />
-        @Html.DisplayFor(model => model.DespatchSupplierParty.Contact.OtherCommunication.Channel)<br />
-        @Html.DisplayFor(model => model.DespatchSupplierParty.Contact.OtherCommunication.Value)<br />
+        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.Contact.ID)<br />
+        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.Contact.Name)<br />
+        Tel.: @Html.DisplayFor(model => model.DespatchSupplierParty.Party.Contact.Telephone)<br />
+        Fax: @Html.DisplayFor(model => model.DespatchSupplierParty.Party.Contact.Telefax)<br />
+        E-Mail: @Html.DisplayFor(model => model.DespatchSupplierParty.Party.Contact.ElectronicMail)<br />
+        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.Contact.Note)<br />
+        Andere Kommunikationsmöglichkeiten:<br />
+        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.Contact.OtherCommunication.Channel)<br />
+        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.Contact.OtherCommunication.Value)<br />
     </dd>
 
     <dt class="col-sm-3">
         Person
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.DespatchSupplierParty.Person.FirstName)
-        @Html.DisplayFor(model => model.DespatchSupplierParty.Person.FamilyName)
-        @Html.DisplayFor(model => model.DespatchSupplierParty.Person.Title)<br />
-        @Html.DisplayFor(model => model.DespatchSupplierParty.Person.JobTitle)<br />
-        @Html.DisplayFor(model => model.DespatchSupplierParty.Person.NationalityID)<br />
+        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.Person.Title)
+        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.Person.FirstName)
+        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.Person.FamilyName)<br />
+        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.Person.JobTitle)<br />
+        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.Person.NationalityID)<br />
+        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.Person.GenderCode)<br />
+        <br />
 
-        @*Kontaktdaten zur Person fehlen*@
-        @Html.DisplayFor(model => model.DespatchSupplierParty.Person.Contact.Name)<br />
-        @Html.DisplayFor(model => model.DespatchSupplierParty.Person.Contact.Telephone)<br />
-        @Html.DisplayFor(model => model.DespatchSupplierParty.Person.Contact.ElectronicMail)<br />
-        @Html.DisplayFor(model => model.DespatchSupplierParty.Person.Contact.Note)<br />
+        Kontaktdaten der Person: <br />
+        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.Person.Contact.Name)<br />
+        Tel.: @Html.DisplayFor(model => model.DespatchSupplierParty.Party.Person.Contact.Telephone)<br />
+        E-Mail: @Html.DisplayFor(model => model.DespatchSupplierParty.Party.Person.Contact.ElectronicMail)<br />
+        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.Person.Contact.Note)<br />
 
-        @Html.DisplayFor(model => model.DespatchSupplierParty.Person.GenderCode)
+        
     </dd>
 
 </dl>
 
 
-@*BuyerCustomerParty*@
+@*BuyerCustomerParty.Party*@
 <h5>Käufer</h5> 
 <dl class="row border-bottom">
 
@@ -374,7 +381,7 @@
         Name (inkl. Firmierung)
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.BuyerCustomerParty.PartyLegalEntity.RegistrationName)
+        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.PartyLegalEntity.RegistrationName)
     </dd>
 
     <dt class="col-sm-3">
@@ -402,76 +409,78 @@
         Adresse
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.BuyerCustomerParty.PostalAddress.StreetName)
-        @Html.DisplayFor(model => model.BuyerCustomerParty.PostalAddress.BuildingNumber)<br />
-        @Html.DisplayFor(model => model.BuyerCustomerParty.PostalAddress.PostalZone)
-        @Html.DisplayFor(model => model.BuyerCustomerParty.PostalAddress.CityName)<br />
-        @Html.DisplayFor(model => model.BuyerCustomerParty.PostalAddress.CountrySubentityCode)
-        @Html.DisplayFor(model => model.BuyerCustomerParty.PostalAddress.CountrySubentity)<br />
-        @Html.DisplayFor(model => model.BuyerCustomerParty.PostalAddress.TimezoneOffset)<br />
-        @Html.DisplayFor(model => model.BuyerCustomerParty.PostalAddress.Country.IdentificationCode)
-        @Html.DisplayFor(model => model.BuyerCustomerParty.PostalAddress.Country.Name)<br />
-        @Html.DisplayFor(model => model.BuyerCustomerParty.PostalAddress.LocationCoordinate)
+        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.PostalAddress.StreetName)
+        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.PostalAddress.BuildingNumber)<br />
+        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.PostalAddress.PostalZone)
+        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.PostalAddress.CityName)<br />
+        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.PostalAddress.CountrySubentityCode)
+        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.PostalAddress.CountrySubentity)<br />
+        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.PostalAddress.TimezoneOffset)<br />
+        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.PostalAddress.Country.IdentificationCode)
+        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.PostalAddress.Country.Name)<br />
+        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.PostalAddress.LocationCoordinate)
     </dd>
 
     <dt class="col-sm-3">
         Website
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.BuyerCustomerParty.WebsiteURI)
+        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.WebsiteURI)
     </dd>
 
     <dt class="col-sm-3">
         Identifikator
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.BuyerCustomerParty.PartyIdentification.ID)
+        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.PartyIdentification.ID)
     </dd>
 
     <dt class="col-sm-3">
         Sprache
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.BuyerCustomerParty.Language)
+        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.Language)
     </dd>
 
     <dt class="col-sm-3">
         Kontakt
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.BuyerCustomerParty.Contact.ID)<br />
-        @Html.DisplayFor(model => model.BuyerCustomerParty.Contact.Name)<br />
-        @Html.DisplayFor(model => model.BuyerCustomerParty.Contact.Telephone)<br />
-        @Html.DisplayFor(model => model.BuyerCustomerParty.Contact.Telefax)<br />
-        @Html.DisplayFor(model => model.BuyerCustomerParty.Contact.ElectronicMail)<br />
-        @Html.DisplayFor(model => model.BuyerCustomerParty.Contact.Note)<br />
-        @Html.DisplayFor(model => model.BuyerCustomerParty.Contact.OtherCommunication.Channel)<br />
-        @Html.DisplayFor(model => model.BuyerCustomerParty.Contact.OtherCommunication.Value)<br />
+        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.Contact.ID)<br />
+        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.Contact.Name)<br />
+        Tel.: @Html.DisplayFor(model => model.BuyerCustomerParty.Party.Contact.Telephone)<br />
+        Fax: @Html.DisplayFor(model => model.BuyerCustomerParty.Party.Contact.Telefax)<br />
+        E-Mail: @Html.DisplayFor(model => model.BuyerCustomerParty.Party.Contact.ElectronicMail)<br />
+        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.Contact.Note)<br />
+        Andere Kommunikationsmöglichkeiten:<br />
+        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.Contact.OtherCommunication.Channel)<br />
+        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.Contact.OtherCommunication.Value)<br />
     </dd>
 
     <dt class="col-sm-3">
         Person
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.BuyerCustomerParty.Person.FirstName)
-        @Html.DisplayFor(model => model.BuyerCustomerParty.Person.FamilyName)
-        @Html.DisplayFor(model => model.BuyerCustomerParty.Person.Title)<br />
-        @Html.DisplayFor(model => model.BuyerCustomerParty.Person.JobTitle)<br />
-        @Html.DisplayFor(model => model.BuyerCustomerParty.Person.NationalityID)<br />
+        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.Person.Title)
+        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.Person.FirstName)
+        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.Person.FamilyName)<br />
+        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.Person.JobTitle)<br />
+        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.Person.NationalityID)<br />
+        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.Person.GenderCode)<br />
+        <br />
 
-        @*Kontaktdaten zur Person fehlen*@
-        @Html.DisplayFor(model => model.BuyerCustomerParty.Person.Contact.Name)<br />
-        @Html.DisplayFor(model => model.BuyerCustomerParty.Person.Contact.Telephone)<br />
-        @Html.DisplayFor(model => model.BuyerCustomerParty.Person.Contact.ElectronicMail)<br />
-        @Html.DisplayFor(model => model.BuyerCustomerParty.Person.Contact.Note)<br />
+        Kontaktdaten der Person:<br />
+        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.Person.Contact.Name)<br />
+        Tel.: @Html.DisplayFor(model => model.BuyerCustomerParty.Party.Person.Contact.Telephone)<br />
+        E-Mail: @Html.DisplayFor(model => model.BuyerCustomerParty.Party.Person.Contact.ElectronicMail)<br />
+        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.Person.Contact.Note)<br />
 
-        @Html.DisplayFor(model => model.BuyerCustomerParty.Person.GenderCode)
     </dd>
 
 </dl>
 
 
-@*DeliveryCustomerParty*@
+@*DeliveryCustomerParty.Party*@
 <h5>Empfänger</h5> 
 <dl class="row border-bottom">
     
@@ -479,7 +488,7 @@
         Name (inkl. Firmierung)
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.PartyLegalEntity.RegistrationName)
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PartyLegalEntity.RegistrationName)
     </dd>
 
     <dt class="col-sm-3">
@@ -514,70 +523,72 @@
         Adresse
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.PostalAddress.StreetName)
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.PostalAddress.BuildingNumber)<br />
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.PostalAddress.PostalZone)
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.PostalAddress.CityName)<br />
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.PostalAddress.CountrySubentityCode)
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.PostalAddress.CountrySubentity)<br />
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.PostalAddress.TimezoneOffset)<br />
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.PostalAddress.Country.IdentificationCode)
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.PostalAddress.Country.Name)<br />
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.PostalAddress.LocationCoordinate)
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.StreetName)
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.BuildingNumber)<br />
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.PostalZone)
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.CityName)<br />
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.CountrySubentityCode)
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.CountrySubentity)<br />
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.TimezoneOffset)<br />
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.Country.IdentificationCode)
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.Country.Name)<br />
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PostalAddress.LocationCoordinate)
     </dd>
 
     <dt class="col-sm-3">
         Website
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.WebsiteURI)
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.WebsiteURI)
     </dd>
 
     <dt class="col-sm-3">
         Identifikator
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.PartyIdentification.ID)
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PartyIdentification.ID)
     </dd>
 
     <dt class="col-sm-3">
         Sprache
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.Language)
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.Language)
     </dd>
 
     <dt class="col-sm-3">
         Kontakt
     </dt>
     <dd class="col-sm-9">
-        @*@Html.DisplayFor(model => model.DeliveryCustomerParty.Contact.ID)<br />*@
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.Contact.Name)<br />
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.Contact.Telephone)<br />
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.Contact.Telefax)<br />
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.Contact.ElectronicMail)<br />
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.Contact.Note)<br />
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.Contact.OtherCommunication.Channel)<br />
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.Contact.OtherCommunication.Value)<br />
+        @*@Html.DisplayFor(model => model.DeliveryCustomerParty.Party.Contact.ID)<br />*@
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.Contact.Name)<br />
+        Tel.: @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.Contact.Telephone)<br />
+        Fax: @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.Contact.Telefax)<br />
+        E-Mail: @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.Contact.ElectronicMail)<br />
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.Contact.Note)<br />
+        Andere Kommunikationsmöglichkeiten:<br />
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.Contact.OtherCommunication.Channel)<br />
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.Contact.OtherCommunication.Value)<br />
     </dd>
 
     <dt class="col-sm-3">
         Person
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.Person.FirstName)
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.Person.FamilyName)
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.Person.Title)<br />
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.Person.JobTitle)<br />
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.Person.NationalityID)<br />
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.Person.Title)
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.Person.FirstName)
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.Person.FamilyName)<br />
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.Person.JobTitle)<br />
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.Person.NationalityID)<br />
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.Person.GenderCode)<br />
+        <br />
 
-        @*Kontaktdaten zur Person fehlen*@
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.Person.Contact.Name)<br />
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.Person.Contact.Telephone)<br />
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.Person.Contact.ElectronicMail)<br />
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.Person.Contact.Note)<br />
+        Kontaktdaten der Person:<br />
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.Person.Contact.Name)<br />
+        Tel.: @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.Person.Contact.Telephone)<br />
+        E-Mail: @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.Person.Contact.ElectronicMail)<br />
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.Person.Contact.Note)<br />
 
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.Person.GenderCode)
     </dd>
 
 </dl>
@@ -587,11 +598,11 @@
 <h5>Empfangsstelle</h5>
 <dl class="row border-bottom">
 
-    @*<dt class="col-sm-3">
+    <dt class="col-sm-3">
         Name (inkl. Firmierung)
     </dt>
     <dd class="col-sm-9">
-        
+        @Html.DisplayFor(model => model.Shipment.Consignment.ConsigneeParty.PartyLegalEntity.RegistrationName)
     </dd>
 
     <dt class="col-sm-3">
@@ -628,76 +639,77 @@
         Adresse
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.PostalAddress.StreetName)
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.PostalAddress.BuildingNumber)<br />
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.PostalAddress.PostalZone)
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.PostalAddress.CityName)<br />
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.PostalAddress.CountrySubentityCode)
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.PostalAddress.CountrySubentity)<br />
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.PostalAddress.TimezoneOffset)<br />
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.PostalAddress.Country.IdentificationCode)
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.PostalAddress.Country.Name)<br />
-        @Html.displayfor(model => model.shipment.consignment.carrierparty.postaladdress.locationcoordinate)
+        @Html.DisplayFor(model => model.Shipment.Consignment.ConsigneeParty.PostalAddress.StreetName)
+        @Html.DisplayFor(model => model.Shipment.Consignment.ConsigneeParty.PostalAddress.BuildingNumber)<br />
+        @Html.DisplayFor(model => model.Shipment.Consignment.ConsigneeParty.PostalAddress.PostalZone)
+        @Html.DisplayFor(model => model.Shipment.Consignment.ConsigneeParty.PostalAddress.CityName)<br />
+        @Html.DisplayFor(model => model.Shipment.Consignment.ConsigneeParty.PostalAddress.CountrySubentityCode)
+        @Html.DisplayFor(model => model.Shipment.Consignment.ConsigneeParty.PostalAddress.CountrySubentity)<br />
+        @Html.DisplayFor(model => model.Shipment.Consignment.ConsigneeParty.PostalAddress.TimezoneOffset)<br />
+        @Html.DisplayFor(model => model.Shipment.Consignment.ConsigneeParty.PostalAddress.Country.IdentificationCode)
+        @Html.DisplayFor(model => model.Shipment.Consignment.ConsigneeParty.PostalAddress.Country.Name)<br />
+        @Html.DisplayFor(model => model.Shipment.Consignment.ConsigneeParty.PostalAddress.LocationCoordinate)
     </dd>
 
     <dt class="col-sm-3">
         Website
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.WebsiteURI)
+        @Html.DisplayFor(model => model.Shipment.Consignment.ConsigneeParty.WebsiteURI)
     </dd>
 
     <dt class="col-sm-3">
         Identifikator
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.PartyIdentification.ID)
+        @Html.DisplayFor(model => model.Shipment.Consignment.ConsigneeParty.PartyIdentification.ID)
     </dd>
 
     <dt class="col-sm-3">
         Sprache
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Language)
+        @Html.DisplayFor(model => model.Shipment.Consignment.ConsigneeParty.Language)
     </dd>
 
     <dt class="col-sm-3">
         Kontakt
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Contact.ID)<br />
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Contact.Name)<br />
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Contact.Telephone)<br />
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Contact.Telefax)<br />
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Contact.ElectronicMail)<br />
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Contact.Note)<br />
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Contact.OtherCommunication.Channel)<br />
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Contact.OtherCommunication.Value)<br />
+        @Html.DisplayFor(model => model.Shipment.Consignment.ConsigneeParty.Contact.ID)<br />
+        @Html.DisplayFor(model => model.Shipment.Consignment.ConsigneeParty.Contact.Name)<br />
+        Tel.: @Html.DisplayFor(model => model.Shipment.Consignment.ConsigneeParty.Contact.Telephone)<br />
+        Fax: @Html.DisplayFor(model => model.Shipment.Consignment.ConsigneeParty.Contact.Telefax)<br />
+        E-Mail: @Html.DisplayFor(model => model.Shipment.Consignment.ConsigneeParty.Contact.ElectronicMail)<br />
+        @Html.DisplayFor(model => model.Shipment.Consignment.ConsigneeParty.Contact.Note)<br />
+        Andere Kommunikationsmöglichkeiten:<br />
+        @Html.DisplayFor(model => model.Shipment.Consignment.ConsigneeParty.Contact.OtherCommunication.Channel)<br />
+        @Html.DisplayFor(model => model.Shipment.Consignment.ConsigneeParty.Contact.OtherCommunication.Value)<br />
     </dd>
 
     <dt class="col-sm-3">
         Person
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Person.FirstName)
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Person.FamilyName)
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Person.Title)<br />
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Person.JobTitle)<br />
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Person.NationalityID)<br />
+        @Html.DisplayFor(model => model.Shipment.Consignment.ConsigneeParty.Person.Title)
+        @Html.DisplayFor(model => model.Shipment.Consignment.ConsigneeParty.Person.FirstName)
+        @Html.DisplayFor(model => model.Shipment.Consignment.ConsigneeParty.Person.FamilyName)<br />
+        @Html.DisplayFor(model => model.Shipment.Consignment.ConsigneeParty.Person.JobTitle)<br />
+        @Html.DisplayFor(model => model.Shipment.Consignment.ConsigneeParty.Person.NationalityID)<br />
+        @Html.DisplayFor(model => model.Shipment.Consignment.ConsigneeParty.Person.GenderCode)<br />
+        <br />
 
-        Kontaktdaten zur Person fehlen
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Person.Contact.Name)<br />
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Person.Contact.Telephone)<br />
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Person.Contact.ElectronicMail)<br />
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Person.Contact.Note)<br />
-
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Person.GenderCode)
-    </dd>*@
+        Kontaktdaten der Person:<br />
+        @Html.DisplayFor(model => model.Shipment.Consignment.ConsigneeParty.Person.Contact.Name)<br />
+        Tel.:@Html.DisplayFor(model => model.Shipment.Consignment.ConsigneeParty.Person.Contact.Telephone)<br />
+        E-Mail: @Html.DisplayFor(model => model.Shipment.Consignment.ConsigneeParty.Person.Contact.ElectronicMail)<br />
+        @Html.DisplayFor(model => model.Shipment.Consignment.ConsigneeParty.Person.Contact.Note)<br />
+    </dd>
 
 </dl>
 
 
-@*Shipment.Consignment.CarrierParty*@
+@*Shipmentstage.CarrierParty*@
 <h5>Transportuer</h5>
 <dl class="row border-bottom">
 
@@ -705,7 +717,7 @@
         Name (inkl. Firmierung)
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.PartyLegalEntity.RegistrationName)
+        @Html.DisplayFor(model => model.Shipment.ShipmentStage.CarrierParty.PartyLegalEntity.RegistrationName)
     </dd>
 
     <dt class="col-sm-3">
@@ -740,121 +752,126 @@
         Adresse
     </dt>
     <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.PostalAddress.StreetName)
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.PostalAddress.BuildingNumber)<br />
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.PostalAddress.PostalZone)
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.PostalAddress.CityName)<br />
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.PostalAddress.CountrySubentityCode)
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.PostalAddress.CountrySubentity)<br />
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.PostalAddress.TimezoneOffset)<br />
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.PostalAddress.Country.IdentificationCode)
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.PostalAddress.Country.Name)<br />
-        @*@Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.PostalAddress.LocationCoordinate)*@
+        @Html.DisplayFor(model => model.Shipment.ShipmentStage.CarrierParty.PostalAddress.StreetName)
+        @Html.DisplayFor(model => model.Shipment.ShipmentStage.CarrierParty.PostalAddress.BuildingNumber)<br />
+        @Html.DisplayFor(model => model.Shipment.ShipmentStage.CarrierParty.PostalAddress.PostalZone)
+        @Html.DisplayFor(model => model.Shipment.ShipmentStage.CarrierParty.PostalAddress.CityName)<br />
+        @Html.DisplayFor(model => model.Shipment.ShipmentStage.CarrierParty.PostalAddress.CountrySubentityCode)
+        @Html.DisplayFor(model => model.Shipment.ShipmentStage.CarrierParty.PostalAddress.CountrySubentity)<br />
+        @Html.DisplayFor(model => model.Shipment.ShipmentStage.CarrierParty.PostalAddress.TimezoneOffset)<br />
+        @Html.DisplayFor(model => model.Shipment.ShipmentStage.CarrierParty.PostalAddress.Country.IdentificationCode)
+        @Html.DisplayFor(model => model.Shipment.ShipmentStage.CarrierParty.PostalAddress.Country.Name)<br />
+        @Html.DisplayFor(model => model.Shipment.ShipmentStage.CarrierParty.PostalAddress.LocationCoordinate)
     </dd>
 
     <dt class="col-sm-3">
         Website
     </dt>
     <dd class="col-sm-9">
-        @*@Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.WebsiteURI)*@
+        @Html.DisplayFor(model => model.Shipment.ShipmentStage.CarrierParty.WebsiteURI)
     </dd>
 
     <dt class="col-sm-3">
         Identifikator
     </dt>
     <dd class="col-sm-9">
-        @*@Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.PartyIdentification.ID)*@
+        @Html.DisplayFor(model => model.Shipment.ShipmentStage.CarrierParty.PartyIdentification.ID)
     </dd>
 
     <dt class="col-sm-3">
         Sprache
     </dt>
     <dd class="col-sm-9">
-        @*@Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Language)*@
+        @Html.DisplayFor(model => model.Shipment.ShipmentStage.CarrierParty.Language)
     </dd>
 
     <dt class="col-sm-3">
         Kontakt
     </dt>
     <dd class="col-sm-9">
-        @*@Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Contact.ID)<br />
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Contact.Name)<br />
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Contact.Telephone)<br />
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Contact.Telefax)<br />
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Contact.ElectronicMail)<br />
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Contact.Note)<br />
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Contact.OtherCommunication.Channel)<br />
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Contact.OtherCommunication.Value)<br />*@
+        @Html.DisplayFor(model => model.Shipment.ShipmentStage.CarrierParty.Contact.ID)<br />
+        @Html.DisplayFor(model => model.Shipment.ShipmentStage.CarrierParty.Contact.Name)<br />
+        Tel.: @Html.DisplayFor(model => model.Shipment.ShipmentStage.CarrierParty.Contact.Telephone)<br />
+        Fax: @Html.DisplayFor(model => model.Shipment.ShipmentStage.CarrierParty.Contact.Telefax)<br />
+        E-Mail: @Html.DisplayFor(model => model.Shipment.ShipmentStage.CarrierParty.Contact.ElectronicMail)<br />
+        @Html.DisplayFor(model => model.Shipment.ShipmentStage.CarrierParty.Contact.Note)<br />
+        Andere Kommunikationsmöglichkeiten:<br />
+        @Html.DisplayFor(model => model.Shipment.ShipmentStage.CarrierParty.Contact.OtherCommunication.Channel)<br />
+        @Html.DisplayFor(model => model.Shipment.ShipmentStage.CarrierParty.Contact.OtherCommunication.Value)<br />
     </dd>
 
     <dt class="col-sm-3">
         Person
     </dt>
     <dd class="col-sm-9">
-        @*@Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Person.FirstName)
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Person.FamilyName)
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Person.Title)<br />
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Person.JobTitle)<br />
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Person.NationalityID)<br />*@
+        @Html.DisplayFor(model => model.Shipment.ShipmentStage.CarrierParty.Person.Title)
+        @Html.DisplayFor(model => model.Shipment.ShipmentStage.CarrierParty.Person.FirstName)
+        @Html.DisplayFor(model => model.Shipment.ShipmentStage.CarrierParty.Person.FamilyName)<br />
+        @Html.DisplayFor(model => model.Shipment.ShipmentStage.CarrierParty.Person.JobTitle)<br />
+        @Html.DisplayFor(model => model.Shipment.ShipmentStage.CarrierParty.Person.NationalityID)<br />
+        @Html.DisplayFor(model => model.Shipment.ShipmentStage.CarrierParty.Person.GenderCode)<br />
+        <br />
 
-        @*Kontaktdaten zur Person fehlen*@
-        @*@Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Person.Contact.Name)<br />
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Person.Contact.Telephone)<br />
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Person.Contact.ElectronicMail)<br />
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Person.Contact.Note)<br />
+        Kontaktdaten der Person:<br />
+        @Html.DisplayFor(model => model.Shipment.ShipmentStage.CarrierParty.Person.Contact.Name)<br />
+        Tel.: @Html.DisplayFor(model => model.Shipment.ShipmentStage.CarrierParty.Person.Contact.Telephone)<br />
+        E-Mail: @Html.DisplayFor(model => model.Shipment.ShipmentStage.CarrierParty.Person.Contact.ElectronicMail)<br />
+        @Html.DisplayFor(model => model.Shipment.ShipmentStage.CarrierParty.Person.Contact.Note)<br />
 
-        @Html.DisplayFor(model => model.Shipment.Consignment.CarrierParty.Person.GenderCode)*@
     </dd>
 
 </dl>
 
 
-@*DespatchLine aktuell ITEM*@
+@*DespatchLine*@
 <h5>Lieferpositionen</h5>
-<dl class="row border-bottom">
-    <dt class="col-sm-3">
-        Lieferposition Nr.
-    </dt>
-    <dd class="col-sm-9">
-        @*@despatchLine.ID*@
-    </dd>
+@foreach (var despatchLine in Model.DespatchLine)
+{
+    <dl class="row border-bottom">
+        <dt class="col-sm-3">
+            Lieferposition Nr.
+        </dt>
+        <dd class="col-sm-9">
+            @despatchLine.OrderLineReference.LineID
+        </dd>
 
-    <dt class="col-sm-3">
-        Anzahl Menge
-    </dt>
-    <dd class="col-sm-9">
-        @*@despatchLine.OrderLineReference.LineID*@
-    </dd>
+        <dt class="col-sm-3">
+            Anzahl Menge
+        </dt>
+        <dd class="col-sm-9">
+            @despatchLine.DeliveredQuantity
+        </dd>
 
-    <dt class="col-sm-3">
-        Einheit
-    </dt>
-    <dd class="col-sm-9">
-        @*@despatchLine.Item.ManufacturersItemIdentification.ID*@
-    </dd>
+        <dt class="col-sm-3">
+            Einheit
+        </dt>
+        <dd class="col-sm-9">
+            @despatchLine.Item.PackQuantity
+        </dd>
 
-    <dt class="col-sm-3">
-        Nummer
-    </dt>
-    <dd class="col-sm-9">
-        @*@despatchLine.Item.SellersItemIdentification.ID*@
-    </dd>
+        <dt class="col-sm-3">
+            Nummer
+        </dt>
+        <dd class="col-sm-9">
+            @despatchLine.Item.SellersItemIdentification.ID
+        </dd>
 
-    <dt class="col-sm-3">
-        Bezeichnung
-    </dt>
-    <dd class="col-sm-9">
-        @*@despatchLine.Item.Name*@
-    </dd>
+        <dt class="col-sm-3">
+            Bezeichnung
+        </dt>
+        <dd class="col-sm-9">
+            @despatchLine.Item.Description
+        </dd>
 
-    <dt class="col-sm-3">
-        Artikeleigenschaft
-    </dt>
-    <dd class="col-sm-9">
-        @*@despatchLine.Item.Name*@
-    </dd>
+        @*<dt class="col-sm-3">
+            Artikeleigenschaft
+        </dt>
+        <dd class="col-sm-9">
+            @despatchLine.Item.AdditionalItemProperty
+        </dd>*@
 
-</dl>
+    </dl>
+}
 
 
 @*Unknown Elements*@

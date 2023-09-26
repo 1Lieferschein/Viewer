@@ -10,8 +10,14 @@ namespace _1Lieferschein.Models.DeliveryNotes
         public DespatchAdvice DespatchAdvice2 { get; set; }
     }
 
+    //public List<String> unknownInformation
+    //{
+    //    get; set;
+    //}
 
-    #region generated
+    #region gen
+
+
     // NOTE: Generated code may require at least .NET Framework 4.5 or .NET Core/Standard 2.0.
     /// <remarks/>
     [System.SerializableAttribute()]
@@ -45,7 +51,8 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         private Shipment shipmentField;
 
-        private DespatchLine despatchLineField;
+        private DespatchLine[] despatchLineField;
+
 
         public List<String> unknownInformation
         {
@@ -221,8 +228,8 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-        public DespatchLine DespatchLine
+        [System.Xml.Serialization.XmlElementAttribute("DespatchLine", Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
+        public DespatchLine[] DespatchLine
         {
             get
             {
@@ -755,7 +762,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         private string channelField;
 
-        private object valueField;
+        private string valueField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
@@ -773,7 +780,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public object Value
+        public string Value
         {
             get
             {
@@ -985,19 +992,42 @@ namespace _1Lieferschein.Models.DeliveryNotes
     public partial class DespatchSupplierParty
     {
 
+        private DespatchSupplierPartyParty partyField;
+
+        /// <remarks/>
+        public DespatchSupplierPartyParty Party
+        {
+            get
+            {
+                return this.partyField;
+            }
+            set
+            {
+                this.partyField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
+    public partial class DespatchSupplierPartyParty
+    {
+
         private string websiteURIField;
 
-        private DespatchSupplierPartyPartyIdentification partyIdentificationField;
+        private DespatchSupplierPartyPartyPartyIdentification partyIdentificationField;
 
         private string languageField;
 
-        private DespatchSupplierPartyPostalAddress postalAddressField;
+        private DespatchSupplierPartyPartyPostalAddress postalAddressField;
 
-        private DespatchSupplierPartyPartyLegalEntity partyLegalEntityField;
+        private DespatchSupplierPartyPartyPartyLegalEntity partyLegalEntityField;
 
-        private DespatchSupplierPartyContact contactField;
+        private DespatchSupplierPartyPartyContact contactField;
 
-        private DespatchSupplierPartyPerson personField;
+        private DespatchSupplierPartyPartyPerson personField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
@@ -1014,7 +1044,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public DespatchSupplierPartyPartyIdentification PartyIdentification
+        public DespatchSupplierPartyPartyPartyIdentification PartyIdentification
         {
             get
             {
@@ -1040,7 +1070,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public DespatchSupplierPartyPostalAddress PostalAddress
+        public DespatchSupplierPartyPartyPostalAddress PostalAddress
         {
             get
             {
@@ -1053,7 +1083,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public DespatchSupplierPartyPartyLegalEntity PartyLegalEntity
+        public DespatchSupplierPartyPartyPartyLegalEntity PartyLegalEntity
         {
             get
             {
@@ -1066,7 +1096,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public DespatchSupplierPartyContact Contact
+        public DespatchSupplierPartyPartyContact Contact
         {
             get
             {
@@ -1079,7 +1109,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public DespatchSupplierPartyPerson Person
+        public DespatchSupplierPartyPartyPerson Person
         {
             get
             {
@@ -1096,7 +1126,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class DespatchSupplierPartyPartyIdentification
+    public partial class DespatchSupplierPartyPartyPartyIdentification
     {
 
         private string idField;
@@ -1120,7 +1150,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class DespatchSupplierPartyPostalAddress
+    public partial class DespatchSupplierPartyPartyPostalAddress
     {
 
         private string streetNameField;
@@ -1137,7 +1167,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         private string timezoneOffsetField;
 
-        private DespatchSupplierPartyPostalAddressCountry countryField;
+        private DespatchSupplierPartyPartyPostalAddressCountry countryField;
 
         private object locationCoordinateField;
 
@@ -1240,7 +1270,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public DespatchSupplierPartyPostalAddressCountry Country
+        public DespatchSupplierPartyPartyPostalAddressCountry Country
         {
             get
             {
@@ -1270,7 +1300,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class DespatchSupplierPartyPostalAddressCountry
+    public partial class DespatchSupplierPartyPartyPostalAddressCountry
     {
 
         private string identificationCodeField;
@@ -1310,7 +1340,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class DespatchSupplierPartyPartyLegalEntity
+    public partial class DespatchSupplierPartyPartyPartyLegalEntity
     {
 
         private string registrationNameField;
@@ -1334,7 +1364,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class DespatchSupplierPartyContact
+    public partial class DespatchSupplierPartyPartyContact
     {
 
         private string idField;
@@ -1349,7 +1379,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         private string noteField;
 
-        private DespatchSupplierPartyContactOtherCommunication otherCommunicationField;
+        private DespatchSupplierPartyPartyContactOtherCommunication otherCommunicationField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
@@ -1436,7 +1466,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public DespatchSupplierPartyContactOtherCommunication OtherCommunication
+        public DespatchSupplierPartyPartyContactOtherCommunication OtherCommunication
         {
             get
             {
@@ -1453,12 +1483,12 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class DespatchSupplierPartyContactOtherCommunication
+    public partial class DespatchSupplierPartyPartyContactOtherCommunication
     {
 
         private string channelField;
 
-        private object valueField;
+        private string valueField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
@@ -1476,7 +1506,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public object Value
+        public string Value
         {
             get
             {
@@ -1493,7 +1523,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class DespatchSupplierPartyPerson
+    public partial class DespatchSupplierPartyPartyPerson
     {
 
         private string firstNameField;
@@ -1508,7 +1538,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         private string genderCodeField;
 
-        private DespatchSupplierPartyPersonContact contactField;
+        private DespatchSupplierPartyPartyPersonContact contactField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
@@ -1595,7 +1625,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public DespatchSupplierPartyPersonContact Contact
+        public DespatchSupplierPartyPartyPersonContact Contact
         {
             get
             {
@@ -1612,7 +1642,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class DespatchSupplierPartyPersonContact
+    public partial class DespatchSupplierPartyPartyPersonContact
     {
 
         private string nameField;
@@ -1688,19 +1718,42 @@ namespace _1Lieferschein.Models.DeliveryNotes
     public partial class DeliveryCustomerParty
     {
 
+        private DeliveryCustomerPartyParty partyField;
+
+        /// <remarks/>
+        public DeliveryCustomerPartyParty Party
+        {
+            get
+            {
+                return this.partyField;
+            }
+            set
+            {
+                this.partyField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
+    public partial class DeliveryCustomerPartyParty
+    {
+
         private string websiteURIField;
 
-        private DeliveryCustomerPartyPartyIdentification partyIdentificationField;
+        private DeliveryCustomerPartyPartyPartyIdentification partyIdentificationField;
 
         private string languageField;
 
-        private DeliveryCustomerPartyPostalAddress postalAddressField;
+        private DeliveryCustomerPartyPartyPostalAddress postalAddressField;
 
-        private DeliveryCustomerPartyPartyLegalEntity partyLegalEntityField;
+        private DeliveryCustomerPartyPartyPartyLegalEntity partyLegalEntityField;
 
-        private DeliveryCustomerPartyContact contactField;
+        private DeliveryCustomerPartyPartyContact contactField;
 
-        private DeliveryCustomerPartyPerson personField;
+        private DeliveryCustomerPartyPartyPerson personField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
@@ -1717,7 +1770,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public DeliveryCustomerPartyPartyIdentification PartyIdentification
+        public DeliveryCustomerPartyPartyPartyIdentification PartyIdentification
         {
             get
             {
@@ -1743,7 +1796,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public DeliveryCustomerPartyPostalAddress PostalAddress
+        public DeliveryCustomerPartyPartyPostalAddress PostalAddress
         {
             get
             {
@@ -1756,7 +1809,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public DeliveryCustomerPartyPartyLegalEntity PartyLegalEntity
+        public DeliveryCustomerPartyPartyPartyLegalEntity PartyLegalEntity
         {
             get
             {
@@ -1769,7 +1822,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public DeliveryCustomerPartyContact Contact
+        public DeliveryCustomerPartyPartyContact Contact
         {
             get
             {
@@ -1782,7 +1835,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public DeliveryCustomerPartyPerson Person
+        public DeliveryCustomerPartyPartyPerson Person
         {
             get
             {
@@ -1799,7 +1852,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class DeliveryCustomerPartyPartyIdentification
+    public partial class DeliveryCustomerPartyPartyPartyIdentification
     {
 
         private string idField;
@@ -1823,7 +1876,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class DeliveryCustomerPartyPostalAddress
+    public partial class DeliveryCustomerPartyPartyPostalAddress
     {
 
         private string streetNameField;
@@ -1840,7 +1893,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         private string timezoneOffsetField;
 
-        private DeliveryCustomerPartyPostalAddressCountry countryField;
+        private DeliveryCustomerPartyPartyPostalAddressCountry countryField;
 
         private object locationCoordinateField;
 
@@ -1943,7 +1996,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public DeliveryCustomerPartyPostalAddressCountry Country
+        public DeliveryCustomerPartyPartyPostalAddressCountry Country
         {
             get
             {
@@ -1973,7 +2026,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class DeliveryCustomerPartyPostalAddressCountry
+    public partial class DeliveryCustomerPartyPartyPostalAddressCountry
     {
 
         private string identificationCodeField;
@@ -2013,7 +2066,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class DeliveryCustomerPartyPartyLegalEntity
+    public partial class DeliveryCustomerPartyPartyPartyLegalEntity
     {
 
         private string registrationNameField;
@@ -2037,7 +2090,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class DeliveryCustomerPartyContact
+    public partial class DeliveryCustomerPartyPartyContact
     {
 
         private string nameField;
@@ -2050,7 +2103,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         private string noteField;
 
-        private DeliveryCustomerPartyContactOtherCommunication otherCommunicationField;
+        private DeliveryCustomerPartyPartyContactOtherCommunication otherCommunicationField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
@@ -2123,7 +2176,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public DeliveryCustomerPartyContactOtherCommunication OtherCommunication
+        public DeliveryCustomerPartyPartyContactOtherCommunication OtherCommunication
         {
             get
             {
@@ -2140,12 +2193,12 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class DeliveryCustomerPartyContactOtherCommunication
+    public partial class DeliveryCustomerPartyPartyContactOtherCommunication
     {
 
         private string channelField;
 
-        private object valueField;
+        private string valueField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
@@ -2163,7 +2216,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public object Value
+        public string Value
         {
             get
             {
@@ -2180,7 +2233,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class DeliveryCustomerPartyPerson
+    public partial class DeliveryCustomerPartyPartyPerson
     {
 
         private string firstNameField;
@@ -2195,7 +2248,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         private string genderCodeField;
 
-        private DeliveryCustomerPartyPersonContact contactField;
+        private DeliveryCustomerPartyPartyPersonContact contactField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
@@ -2282,7 +2335,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public DeliveryCustomerPartyPersonContact Contact
+        public DeliveryCustomerPartyPartyPersonContact Contact
         {
             get
             {
@@ -2299,7 +2352,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class DeliveryCustomerPartyPersonContact
+    public partial class DeliveryCustomerPartyPartyPersonContact
     {
 
         private string nameField;
@@ -2375,19 +2428,42 @@ namespace _1Lieferschein.Models.DeliveryNotes
     public partial class BuyerCustomerParty
     {
 
+        private BuyerCustomerPartyParty partyField;
+
+        /// <remarks/>
+        public BuyerCustomerPartyParty Party
+        {
+            get
+            {
+                return this.partyField;
+            }
+            set
+            {
+                this.partyField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
+    public partial class BuyerCustomerPartyParty
+    {
+
         private string websiteURIField;
 
-        private BuyerCustomerPartyPartyIdentification partyIdentificationField;
+        private BuyerCustomerPartyPartyPartyIdentification partyIdentificationField;
 
         private string languageField;
 
-        private BuyerCustomerPartyPostalAddress postalAddressField;
+        private BuyerCustomerPartyPartyPostalAddress postalAddressField;
 
-        private BuyerCustomerPartyPartyLegalEntity partyLegalEntityField;
+        private BuyerCustomerPartyPartyPartyLegalEntity partyLegalEntityField;
 
-        private BuyerCustomerPartyContact contactField;
+        private BuyerCustomerPartyPartyContact contactField;
 
-        private BuyerCustomerPartyPerson personField;
+        private BuyerCustomerPartyPartyPerson personField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
@@ -2404,7 +2480,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public BuyerCustomerPartyPartyIdentification PartyIdentification
+        public BuyerCustomerPartyPartyPartyIdentification PartyIdentification
         {
             get
             {
@@ -2430,7 +2506,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public BuyerCustomerPartyPostalAddress PostalAddress
+        public BuyerCustomerPartyPartyPostalAddress PostalAddress
         {
             get
             {
@@ -2443,7 +2519,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public BuyerCustomerPartyPartyLegalEntity PartyLegalEntity
+        public BuyerCustomerPartyPartyPartyLegalEntity PartyLegalEntity
         {
             get
             {
@@ -2456,7 +2532,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public BuyerCustomerPartyContact Contact
+        public BuyerCustomerPartyPartyContact Contact
         {
             get
             {
@@ -2469,7 +2545,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public BuyerCustomerPartyPerson Person
+        public BuyerCustomerPartyPartyPerson Person
         {
             get
             {
@@ -2486,7 +2562,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class BuyerCustomerPartyPartyIdentification
+    public partial class BuyerCustomerPartyPartyPartyIdentification
     {
 
         private string idField;
@@ -2510,7 +2586,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class BuyerCustomerPartyPostalAddress
+    public partial class BuyerCustomerPartyPartyPostalAddress
     {
 
         private string streetNameField;
@@ -2527,7 +2603,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         private string timezoneOffsetField;
 
-        private BuyerCustomerPartyPostalAddressCountry countryField;
+        private BuyerCustomerPartyPartyPostalAddressCountry countryField;
 
         private object locationCoordinateField;
 
@@ -2630,7 +2706,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public BuyerCustomerPartyPostalAddressCountry Country
+        public BuyerCustomerPartyPartyPostalAddressCountry Country
         {
             get
             {
@@ -2660,7 +2736,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class BuyerCustomerPartyPostalAddressCountry
+    public partial class BuyerCustomerPartyPartyPostalAddressCountry
     {
 
         private string identificationCodeField;
@@ -2700,7 +2776,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class BuyerCustomerPartyPartyLegalEntity
+    public partial class BuyerCustomerPartyPartyPartyLegalEntity
     {
 
         private string registrationNameField;
@@ -2724,7 +2800,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class BuyerCustomerPartyContact
+    public partial class BuyerCustomerPartyPartyContact
     {
 
         private string idField;
@@ -2739,7 +2815,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         private string noteField;
 
-        private BuyerCustomerPartyContactOtherCommunication otherCommunicationField;
+        private BuyerCustomerPartyPartyContactOtherCommunication otherCommunicationField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
@@ -2826,7 +2902,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public BuyerCustomerPartyContactOtherCommunication OtherCommunication
+        public BuyerCustomerPartyPartyContactOtherCommunication OtherCommunication
         {
             get
             {
@@ -2843,12 +2919,12 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class BuyerCustomerPartyContactOtherCommunication
+    public partial class BuyerCustomerPartyPartyContactOtherCommunication
     {
 
         private string channelField;
 
-        private object valueField;
+        private string valueField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
@@ -2866,7 +2942,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public object Value
+        public string Value
         {
             get
             {
@@ -2883,7 +2959,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class BuyerCustomerPartyPerson
+    public partial class BuyerCustomerPartyPartyPerson
     {
 
         private string firstNameField;
@@ -2898,7 +2974,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         private string genderCodeField;
 
-        private BuyerCustomerPartyPersonContact contactField;
+        private BuyerCustomerPartyPartyPersonContact contactField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
@@ -2985,7 +3061,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public BuyerCustomerPartyPersonContact Contact
+        public BuyerCustomerPartyPartyPersonContact Contact
         {
             get
             {
@@ -3002,7 +3078,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class BuyerCustomerPartyPersonContact
+    public partial class BuyerCustomerPartyPartyPersonContact
     {
 
         private string nameField;
@@ -3078,19 +3154,42 @@ namespace _1Lieferschein.Models.DeliveryNotes
     public partial class SellerSupplierParty
     {
 
+        private SellerSupplierPartyParty partyField;
+
+        /// <remarks/>
+        public SellerSupplierPartyParty Party
+        {
+            get
+            {
+                return this.partyField;
+            }
+            set
+            {
+                this.partyField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
+    public partial class SellerSupplierPartyParty
+    {
+
         private string websiteURIField;
 
-        private SellerSupplierPartyPartyIdentification partyIdentificationField;
+        private SellerSupplierPartyPartyPartyIdentification partyIdentificationField;
 
         private string languageField;
 
-        private SellerSupplierPartyPostalAddress postalAddressField;
+        private SellerSupplierPartyPartyPostalAddress postalAddressField;
 
-        private SellerSupplierPartyPartyLegalEntity partyLegalEntityField;
+        private SellerSupplierPartyPartyPartyLegalEntity partyLegalEntityField;
 
-        private SellerSupplierPartyContact contactField;
+        private SellerSupplierPartyPartyContact contactField;
 
-        private SellerSupplierPartyPerson personField;
+        private SellerSupplierPartyPartyPerson personField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
@@ -3107,7 +3206,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public SellerSupplierPartyPartyIdentification PartyIdentification
+        public SellerSupplierPartyPartyPartyIdentification PartyIdentification
         {
             get
             {
@@ -3133,7 +3232,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public SellerSupplierPartyPostalAddress PostalAddress
+        public SellerSupplierPartyPartyPostalAddress PostalAddress
         {
             get
             {
@@ -3146,7 +3245,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public SellerSupplierPartyPartyLegalEntity PartyLegalEntity
+        public SellerSupplierPartyPartyPartyLegalEntity PartyLegalEntity
         {
             get
             {
@@ -3159,7 +3258,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public SellerSupplierPartyContact Contact
+        public SellerSupplierPartyPartyContact Contact
         {
             get
             {
@@ -3172,7 +3271,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public SellerSupplierPartyPerson Person
+        public SellerSupplierPartyPartyPerson Person
         {
             get
             {
@@ -3189,7 +3288,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class SellerSupplierPartyPartyIdentification
+    public partial class SellerSupplierPartyPartyPartyIdentification
     {
 
         private string idField;
@@ -3213,7 +3312,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class SellerSupplierPartyPostalAddress
+    public partial class SellerSupplierPartyPartyPostalAddress
     {
 
         private string streetNameField;
@@ -3230,7 +3329,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         private string timezoneOffsetField;
 
-        private SellerSupplierPartyPostalAddressCountry countryField;
+        private SellerSupplierPartyPartyPostalAddressCountry countryField;
 
         private object locationCoordinateField;
 
@@ -3333,7 +3432,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public SellerSupplierPartyPostalAddressCountry Country
+        public SellerSupplierPartyPartyPostalAddressCountry Country
         {
             get
             {
@@ -3363,7 +3462,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class SellerSupplierPartyPostalAddressCountry
+    public partial class SellerSupplierPartyPartyPostalAddressCountry
     {
 
         private string identificationCodeField;
@@ -3403,7 +3502,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class SellerSupplierPartyPartyLegalEntity
+    public partial class SellerSupplierPartyPartyPartyLegalEntity
     {
 
         private string registrationNameField;
@@ -3427,7 +3526,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class SellerSupplierPartyContact
+    public partial class SellerSupplierPartyPartyContact
     {
 
         private string idField;
@@ -3442,7 +3541,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         private string noteField;
 
-        private SellerSupplierPartyContactOtherCommunication otherCommunicationField;
+        private SellerSupplierPartyPartyContactOtherCommunication otherCommunicationField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
@@ -3529,7 +3628,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public SellerSupplierPartyContactOtherCommunication OtherCommunication
+        public SellerSupplierPartyPartyContactOtherCommunication OtherCommunication
         {
             get
             {
@@ -3546,12 +3645,12 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class SellerSupplierPartyContactOtherCommunication
+    public partial class SellerSupplierPartyPartyContactOtherCommunication
     {
 
         private string channelField;
 
-        private object valueField;
+        private string valueField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
@@ -3569,7 +3668,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public object Value
+        public string Value
         {
             get
             {
@@ -3586,7 +3685,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class SellerSupplierPartyPerson
+    public partial class SellerSupplierPartyPartyPerson
     {
 
         private string firstNameField;
@@ -3601,7 +3700,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         private string genderCodeField;
 
-        private SellerSupplierPartyPersonContact contactField;
+        private SellerSupplierPartyPartyPersonContact contactField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
@@ -3688,7 +3787,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public SellerSupplierPartyPersonContact Contact
+        public SellerSupplierPartyPartyPersonContact Contact
         {
             get
             {
@@ -3705,7 +3804,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class SellerSupplierPartyPersonContact
+    public partial class SellerSupplierPartyPartyPersonContact
     {
 
         private string nameField;
@@ -3785,6 +3884,8 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         private ShipmentConsignment consignmentField;
 
+        private ShipmentShipmentStage shipmentStageField;
+
         private ShipmentDelivery deliveryField;
 
         /// <remarks/>
@@ -3815,6 +3916,19 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
+        public ShipmentShipmentStage ShipmentStage
+        {
+            get
+            {
+                return this.shipmentStageField;
+            }
+            set
+            {
+                this.shipmentStageField = value;
+            }
+        }
+
+        /// <remarks/>
         public ShipmentDelivery Delivery
         {
             get
@@ -3837,7 +3951,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         private string idField;
 
-        private ShipmentConsignmentCarrierParty carrierPartyField;
+        private ShipmentConsignmentConsigneeParty consigneePartyField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
@@ -3854,15 +3968,15 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public ShipmentConsignmentCarrierParty CarrierParty
+        public ShipmentConsignmentConsigneeParty ConsigneeParty
         {
             get
             {
-                return this.carrierPartyField;
+                return this.consigneePartyField;
             }
             set
             {
-                this.carrierPartyField = value;
+                this.consigneePartyField = value;
             }
         }
     }
@@ -3871,15 +3985,78 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class ShipmentConsignmentCarrierParty
+    public partial class ShipmentConsignmentConsigneeParty
     {
 
-        private ShipmentConsignmentCarrierPartyPartyLegalEntity partyLegalEntityField;
+        private string websiteURIField;
 
-        private ShipmentConsignmentCarrierPartyPostalAddress postalAddressField;
+        private ShipmentConsignmentConsigneePartyPartyIdentification partyIdentificationField;
+
+        private string languageField;
+
+        private ShipmentConsignmentConsigneePartyPostalAddress postalAddressField;
+
+        private ShipmentConsignmentConsigneePartyPartyLegalEntity partyLegalEntityField;
+
+        private ShipmentConsignmentConsigneePartyContact contactField;
+
+        private ShipmentConsignmentConsigneePartyPerson personField;
 
         /// <remarks/>
-        public ShipmentConsignmentCarrierPartyPartyLegalEntity PartyLegalEntity
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string WebsiteURI
+        {
+            get
+            {
+                return this.websiteURIField;
+            }
+            set
+            {
+                this.websiteURIField = value;
+            }
+        }
+
+        /// <remarks/>
+        public ShipmentConsignmentConsigneePartyPartyIdentification PartyIdentification
+        {
+            get
+            {
+                return this.partyIdentificationField;
+            }
+            set
+            {
+                this.partyIdentificationField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string Language
+        {
+            get
+            {
+                return this.languageField;
+            }
+            set
+            {
+                this.languageField = value;
+            }
+        }
+
+        /// <remarks/>
+        public ShipmentConsignmentConsigneePartyPostalAddress PostalAddress
+        {
+            get
+            {
+                return this.postalAddressField;
+            }
+            set
+            {
+                this.postalAddressField = value;
+            }
+        }
+
+        /// <remarks/>
+        public ShipmentConsignmentConsigneePartyPartyLegalEntity PartyLegalEntity
         {
             get
             {
@@ -3892,15 +4069,28 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public ShipmentConsignmentCarrierPartyPostalAddress PostalAddress
+        public ShipmentConsignmentConsigneePartyContact Contact
         {
             get
             {
-                return this.postalAddressField;
+                return this.contactField;
             }
             set
             {
-                this.postalAddressField = value;
+                this.contactField = value;
+            }
+        }
+
+        /// <remarks/>
+        public ShipmentConsignmentConsigneePartyPerson Person
+        {
+            get
+            {
+                return this.personField;
+            }
+            set
+            {
+                this.personField = value;
             }
         }
     }
@@ -3909,22 +4099,22 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class ShipmentConsignmentCarrierPartyPartyLegalEntity
+    public partial class ShipmentConsignmentConsigneePartyPartyIdentification
     {
 
-        private string registrationNameField;
+        private string idField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public string RegistrationName
+        public string ID
         {
             get
             {
-                return this.registrationNameField;
+                return this.idField;
             }
             set
             {
-                this.registrationNameField = value;
+                this.idField = value;
             }
         }
     }
@@ -3933,7 +4123,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class ShipmentConsignmentCarrierPartyPostalAddress
+    public partial class ShipmentConsignmentConsigneePartyPostalAddress
     {
 
         private string streetNameField;
@@ -3950,7 +4140,9 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         private string timezoneOffsetField;
 
-        private ShipmentConsignmentCarrierPartyPostalAddressCountry countryField;
+        private ShipmentConsignmentConsigneePartyPostalAddressCountry countryField;
+
+        private object locationCoordinateField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
@@ -4051,7 +4243,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public ShipmentConsignmentCarrierPartyPostalAddressCountry Country
+        public ShipmentConsignmentConsigneePartyPostalAddressCountry Country
         {
             get
             {
@@ -4062,13 +4254,26 @@ namespace _1Lieferschein.Models.DeliveryNotes
                 this.countryField = value;
             }
         }
+
+        /// <remarks/>
+        public object LocationCoordinate
+        {
+            get
+            {
+                return this.locationCoordinateField;
+            }
+            set
+            {
+                this.locationCoordinateField = value;
+            }
+        }
     }
 
     /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class ShipmentConsignmentCarrierPartyPostalAddressCountry
+    public partial class ShipmentConsignmentConsigneePartyPostalAddressCountry
     {
 
         private string identificationCodeField;
@@ -4108,43 +4313,1293 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class ShipmentDelivery
+    public partial class ShipmentConsignmentConsigneePartyPartyLegalEntity
     {
 
-        private object[] itemsField;
-
-        private ItemsChoiceType[] itemsElementNameField;
+        private string registrationNameField;
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("DeliveryAddress", typeof(ShipmentDeliveryDeliveryAddress))]
-        [System.Xml.Serialization.XmlElementAttribute("ActualDeliveryDate", typeof(string), Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        [System.Xml.Serialization.XmlElementAttribute("ActualDeliveryTime", typeof(object), Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        [System.Xml.Serialization.XmlElementAttribute("Quantity", typeof(object), Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        [System.Xml.Serialization.XmlChoiceIdentifierAttribute("ItemsElementName")]
-        public object[] Items
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string RegistrationName
         {
             get
             {
-                return this.itemsField;
+                return this.registrationNameField;
             }
             set
             {
-                this.itemsField = value;
+                this.registrationNameField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
+    public partial class ShipmentConsignmentConsigneePartyContact
+    {
+
+        private string idField;
+
+        private string nameField;
+
+        private string telephoneField;
+
+        private string telefaxField;
+
+        private string electronicMailField;
+
+        private string noteField;
+
+        private ShipmentConsignmentConsigneePartyContactOtherCommunication otherCommunicationField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string ID
+        {
+            get
+            {
+                return this.idField;
+            }
+            set
+            {
+                this.idField = value;
             }
         }
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("ItemsElementName")]
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public ItemsChoiceType[] ItemsElementName
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string Name
         {
             get
             {
-                return this.itemsElementNameField;
+                return this.nameField;
             }
             set
             {
-                this.itemsElementNameField = value;
+                this.nameField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string Telephone
+        {
+            get
+            {
+                return this.telephoneField;
+            }
+            set
+            {
+                this.telephoneField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string Telefax
+        {
+            get
+            {
+                return this.telefaxField;
+            }
+            set
+            {
+                this.telefaxField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string ElectronicMail
+        {
+            get
+            {
+                return this.electronicMailField;
+            }
+            set
+            {
+                this.electronicMailField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string Note
+        {
+            get
+            {
+                return this.noteField;
+            }
+            set
+            {
+                this.noteField = value;
+            }
+        }
+
+        /// <remarks/>
+        public ShipmentConsignmentConsigneePartyContactOtherCommunication OtherCommunication
+        {
+            get
+            {
+                return this.otherCommunicationField;
+            }
+            set
+            {
+                this.otherCommunicationField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
+    public partial class ShipmentConsignmentConsigneePartyContactOtherCommunication
+    {
+
+        private string channelField;
+
+        private string valueField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string Channel
+        {
+            get
+            {
+                return this.channelField;
+            }
+            set
+            {
+                this.channelField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string Value
+        {
+            get
+            {
+                return this.valueField;
+            }
+            set
+            {
+                this.valueField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
+    public partial class ShipmentConsignmentConsigneePartyPerson
+    {
+
+        private string firstNameField;
+
+        private string familyNameField;
+
+        private string titleField;
+
+        private string jobTitleField;
+
+        private string nationalityIDField;
+
+        private string genderCodeField;
+
+        private ShipmentConsignmentConsigneePartyPersonContact contactField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string FirstName
+        {
+            get
+            {
+                return this.firstNameField;
+            }
+            set
+            {
+                this.firstNameField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string FamilyName
+        {
+            get
+            {
+                return this.familyNameField;
+            }
+            set
+            {
+                this.familyNameField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string Title
+        {
+            get
+            {
+                return this.titleField;
+            }
+            set
+            {
+                this.titleField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string JobTitle
+        {
+            get
+            {
+                return this.jobTitleField;
+            }
+            set
+            {
+                this.jobTitleField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string NationalityID
+        {
+            get
+            {
+                return this.nationalityIDField;
+            }
+            set
+            {
+                this.nationalityIDField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string GenderCode
+        {
+            get
+            {
+                return this.genderCodeField;
+            }
+            set
+            {
+                this.genderCodeField = value;
+            }
+        }
+
+        /// <remarks/>
+        public ShipmentConsignmentConsigneePartyPersonContact Contact
+        {
+            get
+            {
+                return this.contactField;
+            }
+            set
+            {
+                this.contactField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
+    public partial class ShipmentConsignmentConsigneePartyPersonContact
+    {
+
+        private string nameField;
+
+        private string telephoneField;
+
+        private string electronicMailField;
+
+        private string noteField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string Name
+        {
+            get
+            {
+                return this.nameField;
+            }
+            set
+            {
+                this.nameField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string Telephone
+        {
+            get
+            {
+                return this.telephoneField;
+            }
+            set
+            {
+                this.telephoneField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string ElectronicMail
+        {
+            get
+            {
+                return this.electronicMailField;
+            }
+            set
+            {
+                this.electronicMailField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string Note
+        {
+            get
+            {
+                return this.noteField;
+            }
+            set
+            {
+                this.noteField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
+    public partial class ShipmentShipmentStage
+    {
+
+        private object estimatedDeliveryDateField;
+
+        private object estimatedDeliveryTimeField;
+
+        private ShipmentShipmentStageCarrierParty carrierPartyField;
+
+        private object receiptTransportEventField;
+
+        private ShipmentShipmentStageDriverPerson driverPersonField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public object EstimatedDeliveryDate
+        {
+            get
+            {
+                return this.estimatedDeliveryDateField;
+            }
+            set
+            {
+                this.estimatedDeliveryDateField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public object EstimatedDeliveryTime
+        {
+            get
+            {
+                return this.estimatedDeliveryTimeField;
+            }
+            set
+            {
+                this.estimatedDeliveryTimeField = value;
+            }
+        }
+
+        /// <remarks/>
+        public ShipmentShipmentStageCarrierParty CarrierParty
+        {
+            get
+            {
+                return this.carrierPartyField;
+            }
+            set
+            {
+                this.carrierPartyField = value;
+            }
+        }
+
+        /// <remarks/>
+        public object ReceiptTransportEvent
+        {
+            get
+            {
+                return this.receiptTransportEventField;
+            }
+            set
+            {
+                this.receiptTransportEventField = value;
+            }
+        }
+
+        /// <remarks/>
+        public ShipmentShipmentStageDriverPerson DriverPerson
+        {
+            get
+            {
+                return this.driverPersonField;
+            }
+            set
+            {
+                this.driverPersonField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
+    public partial class ShipmentShipmentStageCarrierParty
+    {
+
+        private string websiteURIField;
+
+        private ShipmentShipmentStageCarrierPartyPartyIdentification partyIdentificationField;
+
+        private string languageField;
+
+        private ShipmentShipmentStageCarrierPartyPartyLegalEntity partyLegalEntityField;
+
+        private ShipmentShipmentStageCarrierPartyPostalAddress postalAddressField;
+
+        private ShipmentShipmentStageCarrierPartyContact contactField;
+
+        private ShipmentShipmentStageCarrierPartyPerson personField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string WebsiteURI
+        {
+            get
+            {
+                return this.websiteURIField;
+            }
+            set
+            {
+                this.websiteURIField = value;
+            }
+        }
+
+        /// <remarks/>
+        public ShipmentShipmentStageCarrierPartyPartyIdentification PartyIdentification
+        {
+            get
+            {
+                return this.partyIdentificationField;
+            }
+            set
+            {
+                this.partyIdentificationField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string Language
+        {
+            get
+            {
+                return this.languageField;
+            }
+            set
+            {
+                this.languageField = value;
+            }
+        }
+
+        /// <remarks/>
+        public ShipmentShipmentStageCarrierPartyPartyLegalEntity PartyLegalEntity
+        {
+            get
+            {
+                return this.partyLegalEntityField;
+            }
+            set
+            {
+                this.partyLegalEntityField = value;
+            }
+        }
+
+        /// <remarks/>
+        public ShipmentShipmentStageCarrierPartyPostalAddress PostalAddress
+        {
+            get
+            {
+                return this.postalAddressField;
+            }
+            set
+            {
+                this.postalAddressField = value;
+            }
+        }
+
+        /// <remarks/>
+        public ShipmentShipmentStageCarrierPartyContact Contact
+        {
+            get
+            {
+                return this.contactField;
+            }
+            set
+            {
+                this.contactField = value;
+            }
+        }
+
+        /// <remarks/>
+        public ShipmentShipmentStageCarrierPartyPerson Person
+        {
+            get
+            {
+                return this.personField;
+            }
+            set
+            {
+                this.personField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
+    public partial class ShipmentShipmentStageCarrierPartyPartyIdentification
+    {
+
+        private string idField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string ID
+        {
+            get
+            {
+                return this.idField;
+            }
+            set
+            {
+                this.idField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
+    public partial class ShipmentShipmentStageCarrierPartyPartyLegalEntity
+    {
+
+        private string registrationNameField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string RegistrationName
+        {
+            get
+            {
+                return this.registrationNameField;
+            }
+            set
+            {
+                this.registrationNameField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
+    public partial class ShipmentShipmentStageCarrierPartyPostalAddress
+    {
+
+        private string streetNameField;
+
+        private string buildingNumberField;
+
+        private string cityNameField;
+
+        private uint postalZoneField;
+
+        private string countrySubentityField;
+
+        private string countrySubentityCodeField;
+
+        private string timezoneOffsetField;
+
+        private ShipmentShipmentStageCarrierPartyPostalAddressCountry countryField;
+
+        private object locationCoordinateField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string StreetName
+        {
+            get
+            {
+                return this.streetNameField;
+            }
+            set
+            {
+                this.streetNameField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string BuildingNumber
+        {
+            get
+            {
+                return this.buildingNumberField;
+            }
+            set
+            {
+                this.buildingNumberField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string CityName
+        {
+            get
+            {
+                return this.cityNameField;
+            }
+            set
+            {
+                this.cityNameField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public uint PostalZone
+        {
+            get
+            {
+                return this.postalZoneField;
+            }
+            set
+            {
+                this.postalZoneField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string CountrySubentity
+        {
+            get
+            {
+                return this.countrySubentityField;
+            }
+            set
+            {
+                this.countrySubentityField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string CountrySubentityCode
+        {
+            get
+            {
+                return this.countrySubentityCodeField;
+            }
+            set
+            {
+                this.countrySubentityCodeField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string TimezoneOffset
+        {
+            get
+            {
+                return this.timezoneOffsetField;
+            }
+            set
+            {
+                this.timezoneOffsetField = value;
+            }
+        }
+
+        /// <remarks/>
+        public ShipmentShipmentStageCarrierPartyPostalAddressCountry Country
+        {
+            get
+            {
+                return this.countryField;
+            }
+            set
+            {
+                this.countryField = value;
+            }
+        }
+
+        /// <remarks/>
+        public object LocationCoordinate
+        {
+            get
+            {
+                return this.locationCoordinateField;
+            }
+            set
+            {
+                this.locationCoordinateField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
+    public partial class ShipmentShipmentStageCarrierPartyPostalAddressCountry
+    {
+
+        private string identificationCodeField;
+
+        private string nameField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string IdentificationCode
+        {
+            get
+            {
+                return this.identificationCodeField;
+            }
+            set
+            {
+                this.identificationCodeField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string Name
+        {
+            get
+            {
+                return this.nameField;
+            }
+            set
+            {
+                this.nameField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
+    public partial class ShipmentShipmentStageCarrierPartyContact
+    {
+
+        private string idField;
+
+        private string nameField;
+
+        private string telephoneField;
+
+        private string telefaxField;
+
+        private string electronicMailField;
+
+        private string noteField;
+
+        private ShipmentShipmentStageCarrierPartyContactOtherCommunication otherCommunicationField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string ID
+        {
+            get
+            {
+                return this.idField;
+            }
+            set
+            {
+                this.idField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string Name
+        {
+            get
+            {
+                return this.nameField;
+            }
+            set
+            {
+                this.nameField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string Telephone
+        {
+            get
+            {
+                return this.telephoneField;
+            }
+            set
+            {
+                this.telephoneField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string Telefax
+        {
+            get
+            {
+                return this.telefaxField;
+            }
+            set
+            {
+                this.telefaxField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string ElectronicMail
+        {
+            get
+            {
+                return this.electronicMailField;
+            }
+            set
+            {
+                this.electronicMailField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string Note
+        {
+            get
+            {
+                return this.noteField;
+            }
+            set
+            {
+                this.noteField = value;
+            }
+        }
+
+        /// <remarks/>
+        public ShipmentShipmentStageCarrierPartyContactOtherCommunication OtherCommunication
+        {
+            get
+            {
+                return this.otherCommunicationField;
+            }
+            set
+            {
+                this.otherCommunicationField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
+    public partial class ShipmentShipmentStageCarrierPartyContactOtherCommunication
+    {
+
+        private string channelField;
+
+        private string valueField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string Channel
+        {
+            get
+            {
+                return this.channelField;
+            }
+            set
+            {
+                this.channelField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string Value
+        {
+            get
+            {
+                return this.valueField;
+            }
+            set
+            {
+                this.valueField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
+    public partial class ShipmentShipmentStageCarrierPartyPerson
+    {
+
+        private string firstNameField;
+
+        private string familyNameField;
+
+        private string titleField;
+
+        private string jobTitleField;
+
+        private string nationalityIDField;
+
+        private string genderCodeField;
+
+        private ShipmentShipmentStageCarrierPartyPersonContact contactField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string FirstName
+        {
+            get
+            {
+                return this.firstNameField;
+            }
+            set
+            {
+                this.firstNameField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string FamilyName
+        {
+            get
+            {
+                return this.familyNameField;
+            }
+            set
+            {
+                this.familyNameField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string Title
+        {
+            get
+            {
+                return this.titleField;
+            }
+            set
+            {
+                this.titleField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string JobTitle
+        {
+            get
+            {
+                return this.jobTitleField;
+            }
+            set
+            {
+                this.jobTitleField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string NationalityID
+        {
+            get
+            {
+                return this.nationalityIDField;
+            }
+            set
+            {
+                this.nationalityIDField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string GenderCode
+        {
+            get
+            {
+                return this.genderCodeField;
+            }
+            set
+            {
+                this.genderCodeField = value;
+            }
+        }
+
+        /// <remarks/>
+        public ShipmentShipmentStageCarrierPartyPersonContact Contact
+        {
+            get
+            {
+                return this.contactField;
+            }
+            set
+            {
+                this.contactField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
+    public partial class ShipmentShipmentStageCarrierPartyPersonContact
+    {
+
+        private string nameField;
+
+        private string telephoneField;
+
+        private string electronicMailField;
+
+        private string noteField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string Name
+        {
+            get
+            {
+                return this.nameField;
+            }
+            set
+            {
+                this.nameField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string Telephone
+        {
+            get
+            {
+                return this.telephoneField;
+            }
+            set
+            {
+                this.telephoneField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string ElectronicMail
+        {
+            get
+            {
+                return this.electronicMailField;
+            }
+            set
+            {
+                this.electronicMailField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string Note
+        {
+            get
+            {
+                return this.noteField;
+            }
+            set
+            {
+                this.noteField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
+    public partial class ShipmentShipmentStageDriverPerson
+    {
+
+        private string firstNameField;
+
+        private string familyNameField;
+
+        private string nationalityIDField;
+
+        private ShipmentShipmentStageDriverPersonContact contactField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string FirstName
+        {
+            get
+            {
+                return this.firstNameField;
+            }
+            set
+            {
+                this.firstNameField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string FamilyName
+        {
+            get
+            {
+                return this.familyNameField;
+            }
+            set
+            {
+                this.familyNameField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string NationalityID
+        {
+            get
+            {
+                return this.nationalityIDField;
+            }
+            set
+            {
+                this.nationalityIDField = value;
+            }
+        }
+
+        /// <remarks/>
+        public ShipmentShipmentStageDriverPersonContact Contact
+        {
+            get
+            {
+                return this.contactField;
+            }
+            set
+            {
+                this.contactField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
+    public partial class ShipmentShipmentStageDriverPersonContact
+    {
+
+        private string nameField;
+
+        private string telephoneField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string Name
+        {
+            get
+            {
+                return this.nameField;
+            }
+            set
+            {
+                this.nameField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string Telephone
+        {
+            get
+            {
+                return this.telephoneField;
+            }
+            set
+            {
+                this.telephoneField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
+    public partial class ShipmentDelivery
+    {
+
+        private ShipmentDeliveryDeliveryAddress deliveryAddressField;
+
+        /// <remarks/>
+        public ShipmentDeliveryDeliveryAddress DeliveryAddress
+        {
+            get
+            {
+                return this.deliveryAddressField;
+            }
+            set
+            {
+                this.deliveryAddressField = value;
             }
         }
     }
@@ -4342,30 +5797,6 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
     /// <remarks/>
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", IncludeInSchema = false)]
-    public enum ItemsChoiceType
-    {
-
-        /// <remarks/>
-        DeliveryAddress,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2:ActualDelive" +
-            "ryDate")]
-        ActualDeliveryDate,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2:ActualDelive" +
-            "ryTime")]
-        ActualDeliveryTime,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2:Quantity")]
-        Quantity,
-    }
-
-    /// <remarks/>
-    [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     [System.Xml.Serialization.XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", IsNullable = false)]
@@ -4442,11 +5873,11 @@ namespace _1Lieferschein.Models.DeliveryNotes
     public partial class DespatchLineOrderLineReference
     {
 
-        private object lineIDField;
+        private byte lineIDField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public object LineID
+        public byte LineID
         {
             get
             {
@@ -4468,7 +5899,11 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         private string descriptionField;
 
-        private DespatchLineItemManufacturersItemIdentification[] manufacturersItemIdentificationField;
+        private byte packQuantityField;
+
+        private DespatchLineItemSellersItemIdentification sellersItemIdentificationField;
+
+        private DespatchLineItemAdditionalItemProperty additionalItemPropertyField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
@@ -4485,16 +5920,42 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("ManufacturersItemIdentification")]
-        public DespatchLineItemManufacturersItemIdentification[] ManufacturersItemIdentification
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public byte PackQuantity
         {
             get
             {
-                return this.manufacturersItemIdentificationField;
+                return this.packQuantityField;
             }
             set
             {
-                this.manufacturersItemIdentificationField = value;
+                this.packQuantityField = value;
+            }
+        }
+
+        /// <remarks/>
+        public DespatchLineItemSellersItemIdentification SellersItemIdentification
+        {
+            get
+            {
+                return this.sellersItemIdentificationField;
+            }
+            set
+            {
+                this.sellersItemIdentificationField = value;
+            }
+        }
+
+        /// <remarks/>
+        public DespatchLineItemAdditionalItemProperty AdditionalItemProperty
+        {
+            get
+            {
+                return this.additionalItemPropertyField;
+            }
+            set
+            {
+                this.additionalItemPropertyField = value;
             }
         }
     }
@@ -4503,12 +5964,10 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class DespatchLineItemManufacturersItemIdentification
+    public partial class DespatchLineItemSellersItemIdentification
     {
 
         private string idField;
-
-        private DespatchLineItemManufacturersItemIdentificationMeasurementDimension measurementDimensionField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
@@ -4523,17 +5982,200 @@ namespace _1Lieferschein.Models.DeliveryNotes
                 this.idField = value;
             }
         }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
+    public partial class DespatchLineItemAdditionalItemProperty
+    {
+
+        private string nameField;
+
+        private ushort nameCodeField;
+
+        private string testMethodField;
+
+        private string valueField;
+
+        private ushort valueQuantityField;
+
+        private string valueQualifierField;
+
+        private string importanceCodeField;
+
+        private string listValueField;
+
+        private string usabilityPeriodField;
+
+        private DespatchLineItemAdditionalItemPropertyItemPropertyGroup itemPropertyGroupField;
+
+        private DespatchLineItemAdditionalItemPropertyRangeDimension rangeDimensionField;
+
+        private string itemPropertyRangeField;
 
         /// <remarks/>
-        public DespatchLineItemManufacturersItemIdentificationMeasurementDimension MeasurementDimension
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string Name
         {
             get
             {
-                return this.measurementDimensionField;
+                return this.nameField;
             }
             set
             {
-                this.measurementDimensionField = value;
+                this.nameField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public ushort NameCode
+        {
+            get
+            {
+                return this.nameCodeField;
+            }
+            set
+            {
+                this.nameCodeField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string TestMethod
+        {
+            get
+            {
+                return this.testMethodField;
+            }
+            set
+            {
+                this.testMethodField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string Value
+        {
+            get
+            {
+                return this.valueField;
+            }
+            set
+            {
+                this.valueField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public ushort ValueQuantity
+        {
+            get
+            {
+                return this.valueQuantityField;
+            }
+            set
+            {
+                this.valueQuantityField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string ValueQualifier
+        {
+            get
+            {
+                return this.valueQualifierField;
+            }
+            set
+            {
+                this.valueQualifierField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string ImportanceCode
+        {
+            get
+            {
+                return this.importanceCodeField;
+            }
+            set
+            {
+                this.importanceCodeField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string ListValue
+        {
+            get
+            {
+                return this.listValueField;
+            }
+            set
+            {
+                this.listValueField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string UsabilityPeriod
+        {
+            get
+            {
+                return this.usabilityPeriodField;
+            }
+            set
+            {
+                this.usabilityPeriodField = value;
+            }
+        }
+
+        /// <remarks/>
+        public DespatchLineItemAdditionalItemPropertyItemPropertyGroup ItemPropertyGroup
+        {
+            get
+            {
+                return this.itemPropertyGroupField;
+            }
+            set
+            {
+                this.itemPropertyGroupField = value;
+            }
+        }
+
+        /// <remarks/>
+        public DespatchLineItemAdditionalItemPropertyRangeDimension RangeDimension
+        {
+            get
+            {
+                return this.rangeDimensionField;
+            }
+            set
+            {
+                this.rangeDimensionField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string ItemPropertyRange
+        {
+            get
+            {
+                return this.itemPropertyRangeField;
+            }
+            set
+            {
+                this.itemPropertyRangeField = value;
             }
         }
     }
@@ -4542,18 +6184,38 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-    public partial class DespatchLineItemManufacturersItemIdentificationMeasurementDimension
+    public partial class DespatchLineItemAdditionalItemPropertyItemPropertyGroup
     {
 
-        private object attributeIDField;
-
-        private string measureField;
-
-        private string descriptionField;
+        private string idField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public object AttributeID
+        public string ID
+        {
+            get
+            {
+                return this.idField;
+            }
+            set
+            {
+                this.idField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
+    public partial class DespatchLineItemAdditionalItemPropertyRangeDimension
+    {
+
+        private byte attributeIDField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public byte AttributeID
         {
             get
             {
@@ -4564,34 +6226,10 @@ namespace _1Lieferschein.Models.DeliveryNotes
                 this.attributeIDField = value;
             }
         }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public string Measure
-        {
-            get
-            {
-                return this.measureField;
-            }
-            set
-            {
-                this.measureField = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public string Description
-        {
-            get
-            {
-                return this.descriptionField;
-            }
-            set
-            {
-                this.descriptionField = value;
-            }
-        }
     }
-    #endregion generated
+
+
+
+    #endregion
+
 }
