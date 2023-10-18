@@ -5805,7 +5805,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         private string idField;
 
-        private byte deliveredQuantityField;
+        private decimal deliveredQuantityField;
 
         private DespatchLineOrderLineReference orderLineReferenceField;
 
@@ -5827,7 +5827,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public byte DeliveredQuantity
+        public decimal DeliveredQuantity
         {
             get
             {
@@ -5873,11 +5873,11 @@ namespace _1Lieferschein.Models.DeliveryNotes
     public partial class DespatchLineOrderLineReference
     {
 
-        private byte lineIDField;
+        private decimal lineIDField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public byte LineID
+        public decimal LineID
         {
             get
             {
@@ -5899,7 +5899,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         private string descriptionField;
 
-        private byte packQuantityField;
+        private decimal packQuantityField;
 
         private DespatchLineItemSellersItemIdentification sellersItemIdentificationField;
 
@@ -5921,7 +5921,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public byte PackQuantity
+        public decimal PackQuantity
         {
             get
             {
@@ -6211,11 +6211,11 @@ namespace _1Lieferschein.Models.DeliveryNotes
     public partial class DespatchLineItemAdditionalItemPropertyRangeDimension
     {
 
-        private byte attributeIDField;
+        private decimal attributeIDField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public byte AttributeID
+        public decimal AttributeID
         {
             get
             {
