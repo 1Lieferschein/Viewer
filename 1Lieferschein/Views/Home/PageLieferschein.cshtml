@@ -6,6 +6,10 @@
     DateTime issueDate = (Model.IssueDate);
     string IssueDate = issueDate.ToString("dd.MM.yyyy");
 
+    DateTime issueTime = (Model.IssueTime);
+    string IssueTime = issueTime.ToString("HH.mm");
+
+
    }
 
 @model _1Lieferschein.Models.DeliveryNotes.DespatchAdvice
@@ -48,11 +52,30 @@
         @Html.DisplayFor(model => model.UUID)
     </dd>
 
+    @foreach (var orderReference in Model.OrderReference)
+    {
+        <dt class="col-sm-3">
+            Auftragsnummer            
+        </dt>
+        <dd class="col-sm-9">
+            @orderReference.ID<br />
+            @orderReference.SalesOrderID
+        </dd>
+    }
+  
+
     <dt class="col-sm-3">
         Datum Lieferschein
     </dt>
     <dd class="col-sm-9">
         @IssueDate
+    </dd>
+
+    <dt class="col-sm-3">
+        Uhrzeit
+    </dt>
+    <dd class="col-sm-9">
+        @IssueTime
     </dd>
 
 </dl>
@@ -92,12 +115,25 @@
         @Html.DisplayFor(model => model.Signature.SignatoryParty.WebsiteURI)
     </dd>
 
-    <dt class="col-sm-3">
-        Identifikator
-    </dt>
-    <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.Signature.SignatoryParty.PartyIdentification.ID)
-    </dd>
+    @if (Model.Signature.SignatoryParty.PartyIdentification != null)
+    {
+        @foreach (var partyIdentification in Model.Signature.SignatoryParty.PartyIdentification)
+        {
+            <dt class="col-sm-3">
+                Identifikator
+            </dt>
+            <dd class="col-sm-9">
+                @partyIdentification.ID
+            </dd>
+        }
+    }else
+    {
+        <dt class="col-sm-3">
+            Identifikator
+        </dt>
+        <dd class="col-sm-9"></dd>
+    }
+
 
     <dt class="col-sm-3">
         Sprache
@@ -158,7 +194,7 @@
         Mandant
     </dt>
     <dd class="col-sm-9">
-        @*fehlt*@
+        @Html.DisplayFor(model => model.DeliveryCustomerParty.CustomerAssignedAccountID)
     </dd>
 
     <dt class="col-sm-3">
@@ -198,12 +234,25 @@
         @Html.DisplayFor(model => model.SellerSupplierParty.Party.WebsiteURI)
     </dd>
 
-    <dt class="col-sm-3">
-        Identifikator
-    </dt>
-    <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.SellerSupplierParty.Party.PartyIdentification.ID)
-    </dd>
+    @if (Model.SellerSupplierParty.Party.PartyIdentification != null)
+    {
+        @foreach (var partyIdentification in Model.SellerSupplierParty.Party.PartyIdentification)
+        {
+            <dt class="col-sm-3">
+                Identifikator
+            </dt>
+            <dd class="col-sm-9">
+                @partyIdentification.ID
+            </dd>
+        }
+    }
+    else
+    {
+        <dt class="col-sm-3">
+            Identifikator
+        </dt>
+        <dd class="col-sm-9"></dd>
+    }
 
     <dt class="col-sm-3">
         Sprache
@@ -320,12 +369,25 @@
         @Html.DisplayFor(model => model.DespatchSupplierParty.Party.WebsiteURI)
     </dd>
 
-    <dt class="col-sm-3">
-        Identifikator
-    </dt>
-    <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.DespatchSupplierParty.Party.PartyIdentification.ID)
-    </dd>
+    @if (Model.DespatchSupplierParty.Party.PartyIdentification != null)
+    {
+        @foreach (var partyIdentification in Model.DespatchSupplierParty.Party.PartyIdentification)
+        {
+            <dt class="col-sm-3">
+                Identifikator
+            </dt>
+            <dd class="col-sm-9">
+                @partyIdentification.ID
+            </dd>
+        }
+    }
+    else
+    {
+        <dt class="col-sm-3">
+            Identifikator
+        </dt>
+        <dd class="col-sm-9"></dd>
+    }
 
     <dt class="col-sm-3">
         Sprache
@@ -428,12 +490,25 @@
         @Html.DisplayFor(model => model.BuyerCustomerParty.Party.WebsiteURI)
     </dd>
 
-    <dt class="col-sm-3">
-        Identifikator
-    </dt>
-    <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.BuyerCustomerParty.Party.PartyIdentification.ID)
-    </dd>
+    @if (Model.BuyerCustomerParty.Party.PartyIdentification != null)
+    {
+        @foreach (var partyIdentification in Model.BuyerCustomerParty.Party.PartyIdentification)
+        {
+            <dt class="col-sm-3">
+                Identifikator
+            </dt>
+            <dd class="col-sm-9">
+                @partyIdentification.ID
+            </dd>
+        }
+    }
+    else
+    {
+        <dt class="col-sm-3">
+            Identifikator
+        </dt>
+        <dd class="col-sm-9"></dd>
+    }
 
     <dt class="col-sm-3">
         Sprache
@@ -542,12 +617,25 @@
         @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.WebsiteURI)
     </dd>
 
-    <dt class="col-sm-3">
-        Identifikator
-    </dt>
-    <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.DeliveryCustomerParty.Party.PartyIdentification.ID)
-    </dd>
+    @if (Model.DeliveryCustomerParty.Party.PartyIdentification != null)
+    {
+        @foreach (var partyIdentification in Model.DeliveryCustomerParty.Party.PartyIdentification)
+        {
+            <dt class="col-sm-3">
+                Identifikator
+            </dt>
+            <dd class="col-sm-9">
+                @partyIdentification.ID
+            </dd>
+        }
+    }
+    else
+    {
+        <dt class="col-sm-3">
+            Identifikator
+        </dt>
+        <dd class="col-sm-9"></dd>
+    }
 
     <dt class="col-sm-3">
         Sprache
@@ -658,12 +746,25 @@
         @Html.DisplayFor(model => model.Shipment.Consignment.ConsigneeParty.WebsiteURI)
     </dd>
 
-    <dt class="col-sm-3">
-        Identifikator
+    @* @if (Model.Shipment.Consignment.ConsigneeParty.PartyIdentification != null)
+    {
+        @foreach (var partyIdentification in Model.Shipment.Consignment.ConsigneeParty.PartyIdentification)
+        {
+            <dt class="col-sm-3">
+                Identifikator
+            </dt>
+            <dd class="col-sm-9">
+                @partyIdentification.ID
+            </dd>
+        }
+    }
+    else
+    {
+        <dt class="col-sm-3">
+            Identifikator
     </dt>
-    <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.Shipment.Consignment.ConsigneeParty.PartyIdentification.ID)
-    </dd>
+    <dd class="col-sm-9"></dd>
+    } *@
 
     <dt class="col-sm-3">
         Sprache
@@ -771,12 +872,26 @@
         @Html.DisplayFor(model => model.Shipment.ShipmentStage.CarrierParty.WebsiteURI)
     </dd>
 
-    <dt class="col-sm-3">
-        Identifikator
+   @*  @if (Model.Shipment.ShipmentStage.CarrierParty.PartyIdentification != null)
+    {
+        @foreach (var partyIdentification in Model.Shipment.ShipmentStage.CarrierParty.PartyIdentification)
+        {
+            <dt class="col-sm-3">
+                Identifikator
+            </dt>
+            <dd class="col-sm-9">
+                @partyIdentification.ID
+            </dd>
+        }
+    }
+    else
+    {
+        <dt class="col-sm-3">
+            Identifikator
+        </dt>
     </dt>
-    <dd class="col-sm-9">
-        @Html.DisplayFor(model => model.Shipment.ShipmentStage.CarrierParty.PartyIdentification.ID)
-    </dd>
+    <dd class="col-sm-9"></dd>
+    } *@
 
     <dt class="col-sm-3">
         Sprache

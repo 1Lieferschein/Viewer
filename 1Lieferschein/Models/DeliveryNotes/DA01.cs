@@ -10,12 +10,13 @@ namespace _1Lieferschein.Models.DeliveryNotes
         public DespatchAdvice DespatchAdvice2 { get; set; }
     }
 
+    //must go under "private despatchLine[] despatchLineField;"
     //public List<String> unknownInformation
     //{
     //    get; set;
     //}
 
-    #region gen
+    #region generated
 
 
     // NOTE: Generated code may require at least .NET Framework 4.5 or .NET Core/Standard 2.0.
@@ -37,7 +38,11 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         private System.DateTime issueDateField;
 
+        private System.DateTime issueTimeField;
+
         private string noteField;
+
+        private OrderReference[] orderReferenceField;
 
         private Signature signatureField;
 
@@ -52,7 +57,6 @@ namespace _1Lieferschein.Models.DeliveryNotes
         private Shipment shipmentField;
 
         private DespatchLine[] despatchLineField;
-
 
         public List<String> unknownInformation
         {
@@ -130,6 +134,20 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", DataType = "time")]
+        public System.DateTime IssueTime
+        {
+            get
+            {
+                return this.issueTimeField;
+            }
+            set
+            {
+                this.issueTimeField = value;
+            }
+        }
+
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
         public string Note
         {
@@ -140,6 +158,20 @@ namespace _1Lieferschein.Models.DeliveryNotes
             set
             {
                 this.noteField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("OrderReference", Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
+        public OrderReference[] OrderReference
+        {
+            get
+            {
+                return this.orderReferenceField;
+            }
+            set
+            {
+                this.orderReferenceField = value;
             }
         }
 
@@ -247,6 +279,127 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     [System.Xml.Serialization.XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", IsNullable = false)]
+    public partial class OrderReference
+    {
+
+        private string idField;
+
+        private string salesOrderIDField;
+
+        private System.DateTime issueDateField;
+
+        private bool issueDateFieldSpecified;
+
+        private System.DateTime issueTimeField;
+
+        private bool issueTimeFieldSpecified;
+
+        private string customerReferenceField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string ID
+        {
+            get
+            {
+                return this.idField;
+            }
+            set
+            {
+                this.idField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string SalesOrderID
+        {
+            get
+            {
+                return this.salesOrderIDField;
+            }
+            set
+            {
+                this.salesOrderIDField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", DataType = "date")]
+        public System.DateTime IssueDate
+        {
+            get
+            {
+                return this.issueDateField;
+            }
+            set
+            {
+                this.issueDateField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool IssueDateSpecified
+        {
+            get
+            {
+                return this.issueDateFieldSpecified;
+            }
+            set
+            {
+                this.issueDateFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", DataType = "time")]
+        public System.DateTime IssueTime
+        {
+            get
+            {
+                return this.issueTimeField;
+            }
+            set
+            {
+                this.issueTimeField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool IssueTimeSpecified
+        {
+            get
+            {
+                return this.issueTimeFieldSpecified;
+            }
+            set
+            {
+                this.issueTimeFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string CustomerReference
+        {
+            get
+            {
+                return this.customerReferenceField;
+            }
+            set
+            {
+                this.customerReferenceField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", IsNullable = false)]
     public partial class Signature
     {
 
@@ -291,7 +444,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         private string websiteURIField;
 
-        private SignatureSignatoryPartyPartyIdentification partyIdentificationField;
+        private SignatureSignatoryPartyPartyIdentification[] partyIdentificationField;
 
         private string languageField;
 
@@ -318,7 +471,8 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public SignatureSignatoryPartyPartyIdentification PartyIdentification
+        [System.Xml.Serialization.XmlElementAttribute("PartyIdentification")]
+        public SignatureSignatoryPartyPartyIdentification[] PartyIdentification
         {
             get
             {
@@ -1017,7 +1171,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         private string websiteURIField;
 
-        private DespatchSupplierPartyPartyPartyIdentification partyIdentificationField;
+        private DespatchSupplierPartyPartyPartyIdentification[] partyIdentificationField;
 
         private string languageField;
 
@@ -1044,7 +1198,8 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public DespatchSupplierPartyPartyPartyIdentification PartyIdentification
+        [System.Xml.Serialization.XmlElementAttribute("PartyIdentification")]
+        public DespatchSupplierPartyPartyPartyIdentification[] PartyIdentification
         {
             get
             {
@@ -1718,7 +1873,23 @@ namespace _1Lieferschein.Models.DeliveryNotes
     public partial class DeliveryCustomerParty
     {
 
+        private string customerAssignedAccountIDField;
+
         private DeliveryCustomerPartyParty partyField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string CustomerAssignedAccountID
+        {
+            get
+            {
+                return this.customerAssignedAccountIDField;
+            }
+            set
+            {
+                this.customerAssignedAccountIDField = value;
+            }
+        }
 
         /// <remarks/>
         public DeliveryCustomerPartyParty Party
@@ -1743,7 +1914,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         private string websiteURIField;
 
-        private DeliveryCustomerPartyPartyPartyIdentification partyIdentificationField;
+        private DeliveryCustomerPartyPartyPartyIdentification[] partyIdentificationField;
 
         private string languageField;
 
@@ -1770,7 +1941,8 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public DeliveryCustomerPartyPartyPartyIdentification PartyIdentification
+        [System.Xml.Serialization.XmlElementAttribute("PartyIdentification")]
+        public DeliveryCustomerPartyPartyPartyIdentification[] PartyIdentification
         {
             get
             {
@@ -2453,7 +2625,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         private string websiteURIField;
 
-        private BuyerCustomerPartyPartyPartyIdentification partyIdentificationField;
+        private BuyerCustomerPartyPartyPartyIdentification[] partyIdentificationField;
 
         private string languageField;
 
@@ -2480,7 +2652,8 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public BuyerCustomerPartyPartyPartyIdentification PartyIdentification
+        [System.Xml.Serialization.XmlElementAttribute("PartyIdentification")]
+        public BuyerCustomerPartyPartyPartyIdentification[] PartyIdentification
         {
             get
             {
@@ -3179,7 +3352,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         private string websiteURIField;
 
-        private SellerSupplierPartyPartyPartyIdentification partyIdentificationField;
+        private SellerSupplierPartyPartyPartyIdentification[] partyIdentificationField;
 
         private string languageField;
 
@@ -3206,7 +3379,8 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public SellerSupplierPartyPartyPartyIdentification PartyIdentification
+        [System.Xml.Serialization.XmlElementAttribute("PartyIdentification")]
+        public SellerSupplierPartyPartyPartyIdentification[] PartyIdentification
         {
             get
             {
@@ -3990,7 +4164,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         private string websiteURIField;
 
-        private ShipmentConsignmentConsigneePartyPartyIdentification partyIdentificationField;
+        private ShipmentConsignmentConsigneePartyPartyIdentification[] partyIdentificationField;
 
         private string languageField;
 
@@ -4017,7 +4191,8 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public ShipmentConsignmentConsigneePartyPartyIdentification PartyIdentification
+        [System.Xml.Serialization.XmlElementAttribute("PartyIdentification")]
+        public ShipmentConsignmentConsigneePartyPartyIdentification[] PartyIdentification
         {
             get
             {
@@ -4777,7 +4952,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         private string websiteURIField;
 
-        private ShipmentShipmentStageCarrierPartyPartyIdentification partyIdentificationField;
+        private ShipmentShipmentStageCarrierPartyPartyIdentification[] partyIdentificationField;
 
         private string languageField;
 
@@ -4804,7 +4979,8 @@ namespace _1Lieferschein.Models.DeliveryNotes
         }
 
         /// <remarks/>
-        public ShipmentShipmentStageCarrierPartyPartyIdentification PartyIdentification
+        [System.Xml.Serialization.XmlElementAttribute("PartyIdentification")]
+        public ShipmentShipmentStageCarrierPartyPartyIdentification[] PartyIdentification
         {
             get
             {
@@ -5805,7 +5981,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         private string idField;
 
-        private decimal deliveredQuantityField;
+        private DeliveredQuantity deliveredQuantityField;
 
         private DespatchLineOrderLineReference orderLineReferenceField;
 
@@ -5827,7 +6003,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public decimal DeliveredQuantity
+        public DeliveredQuantity DeliveredQuantity
         {
             get
             {
@@ -5869,15 +6045,56 @@ namespace _1Lieferschein.Models.DeliveryNotes
     /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", IsNullable = false)]
+    public partial class DeliveredQuantity
+    {
+
+        private string unitCodeField;
+
+        private decimal valueField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string unitCode
+        {
+            get
+            {
+                return this.unitCodeField;
+            }
+            set
+            {
+                this.unitCodeField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public decimal Value
+        {
+            get
+            {
+                return this.valueField;
+            }
+            set
+            {
+                this.valueField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     public partial class DespatchLineOrderLineReference
     {
 
-        private decimal lineIDField;
+        private uint lineIDField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public decimal LineID
+        public uint LineID
         {
             get
             {
@@ -5897,13 +6114,37 @@ namespace _1Lieferschein.Models.DeliveryNotes
     public partial class DespatchLineItem
     {
 
+        private string nameField;
+
         private string descriptionField;
 
-        private decimal packQuantityField;
+        private string packQuantityField;
+
+        private bool packQuantityFieldSpecified;
 
         private DespatchLineItemSellersItemIdentification sellersItemIdentificationField;
 
+        private DespatchLineItemManufacturersItemIdentification manufacturersItemIdentificationField;
+
+        private DespatchLineItemBuyersItemIdentification buyersItemIdentificationField;
+
+        private DespatchLineItemItemSpecificationDocumentReference itemSpecificationDocumentReferenceField;
+
         private DespatchLineItemAdditionalItemProperty additionalItemPropertyField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string Name
+        {
+            get
+            {
+                return this.nameField;
+            }
+            set
+            {
+                this.nameField = value;
+            }
+        }
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
@@ -5921,7 +6162,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public decimal PackQuantity
+        public string PackQuantity
         {
             get
             {
@@ -5930,6 +6171,20 @@ namespace _1Lieferschein.Models.DeliveryNotes
             set
             {
                 this.packQuantityField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool PackQuantitySpecified
+        {
+            get
+            {
+                return this.packQuantityFieldSpecified;
+            }
+            set
+            {
+                this.packQuantityFieldSpecified = value;
             }
         }
 
@@ -5943,6 +6198,45 @@ namespace _1Lieferschein.Models.DeliveryNotes
             set
             {
                 this.sellersItemIdentificationField = value;
+            }
+        }
+
+        /// <remarks/>
+        public DespatchLineItemManufacturersItemIdentification ManufacturersItemIdentification
+        {
+            get
+            {
+                return this.manufacturersItemIdentificationField;
+            }
+            set
+            {
+                this.manufacturersItemIdentificationField = value;
+            }
+        }
+
+        /// <remarks/>
+        public DespatchLineItemBuyersItemIdentification BuyersItemIdentification
+        {
+            get
+            {
+                return this.buyersItemIdentificationField;
+            }
+            set
+            {
+                this.buyersItemIdentificationField = value;
+            }
+        }
+
+        /// <remarks/>
+        public DespatchLineItemItemSpecificationDocumentReference ItemSpecificationDocumentReference
+        {
+            get
+            {
+                return this.itemSpecificationDocumentReferenceField;
+            }
+            set
+            {
+                this.itemSpecificationDocumentReferenceField = value;
             }
         }
 
@@ -5988,18 +6282,152 @@ namespace _1Lieferschein.Models.DeliveryNotes
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
+    public partial class DespatchLineItemManufacturersItemIdentification
+    {
+
+        private string idField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string ID
+        {
+            get
+            {
+                return this.idField;
+            }
+            set
+            {
+                this.idField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
+    public partial class DespatchLineItemBuyersItemIdentification
+    {
+
+        private string idField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string ID
+        {
+            get
+            {
+                return this.idField;
+            }
+            set
+            {
+                this.idField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
+    public partial class DespatchLineItemItemSpecificationDocumentReference
+    {
+
+        private string idField;
+
+        private DespatchLineItemItemSpecificationDocumentReferenceAttachment attachmentField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string ID
+        {
+            get
+            {
+                return this.idField;
+            }
+            set
+            {
+                this.idField = value;
+            }
+        }
+
+        /// <remarks/>
+        public DespatchLineItemItemSpecificationDocumentReferenceAttachment Attachment
+        {
+            get
+            {
+                return this.attachmentField;
+            }
+            set
+            {
+                this.attachmentField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
+    public partial class DespatchLineItemItemSpecificationDocumentReferenceAttachment
+    {
+
+        private DespatchLineItemItemSpecificationDocumentReferenceAttachmentExternalReference externalReferenceField;
+
+        /// <remarks/>
+        public DespatchLineItemItemSpecificationDocumentReferenceAttachmentExternalReference ExternalReference
+        {
+            get
+            {
+                return this.externalReferenceField;
+            }
+            set
+            {
+                this.externalReferenceField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
+    public partial class DespatchLineItemItemSpecificationDocumentReferenceAttachmentExternalReference
+    {
+
+        private string uRIField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string URI
+        {
+            get
+            {
+                return this.uRIField;
+            }
+            set
+            {
+                this.uRIField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     public partial class DespatchLineItemAdditionalItemProperty
     {
 
         private string nameField;
 
-        private ushort nameCodeField;
+        private string nameCodeField;
 
         private string testMethodField;
 
         private string valueField;
 
-        private ushort valueQuantityField;
+        private string valueQuantityField;
 
         private string valueQualifierField;
 
@@ -6031,7 +6459,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public ushort NameCode
+        public string NameCode
         {
             get
             {
@@ -6073,7 +6501,7 @@ namespace _1Lieferschein.Models.DeliveryNotes
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public ushort ValueQuantity
+        public string ValueQuantity
         {
             get
             {
@@ -6211,11 +6639,11 @@ namespace _1Lieferschein.Models.DeliveryNotes
     public partial class DespatchLineItemAdditionalItemPropertyRangeDimension
     {
 
-        private decimal attributeIDField;
+        private string attributeIDField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public decimal AttributeID
+        public string AttributeID
         {
             get
             {
@@ -6229,7 +6657,5 @@ namespace _1Lieferschein.Models.DeliveryNotes
     }
 
 
-
     #endregion
-
 }
